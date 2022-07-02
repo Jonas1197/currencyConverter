@@ -19,6 +19,8 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     private var convertFromView:                 InputView!
     private var convertToView:                   InputView!
     
+    private var historyView: QuickGlanceView!
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,6 +38,21 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     //MARK: - SetUp
     private func setUp() {
         configureConvertToView()
+        configureHistoryView()
+    }
+    
+    
+    override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
+        
+        //MARK: Keyboard toggled
+        subscribe(to: \.$isKeyboardShowing) { [unowned self] isShowing in
+            guard let isShowing = isShowing else { return }
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) {
+                historyView.translucent(isShowing ? 0 : 1)
+                converterVstackBottomConstraint.constant = isShowing ? -330 : -32
+                view.layoutIfNeeded()
+            }
+        }
     }
     
     private func configureConvertToView() {
@@ -61,18 +78,20 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         viewModel.listenToKeyboardEvents()
     }
     
-    override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
+    private func configureHistoryView() {
+        historyView = .instantiateFromNib()
+        historyView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(historyView)
+        NSLayoutConstraint.activate([
+            historyView.topAnchor.constraint(equalTo: historyLabel.bottomAnchor, constant:  16),
+            historyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            historyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            historyView.bottomAnchor.constraint(equalTo: convertInputsVstack.topAnchor, constant: -16)
+        ])
         
-        //MARK: Keyboard toggled
-        subscribe(to: \.$isKeyboardShowing) { [unowned self] isShowing in
-            guard let isShowing = isShowing else { return }
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) {
-                converterVstackBottomConstraint.constant = isShowing ? -330 : -32
-                view.layoutIfNeeded()
-            }
-        }
-        
+        historyView.configure()
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

@@ -13,7 +13,7 @@ struct InputViewModel {
     var availableCurrencies: [String]
     var inputPlaceholder:    String
     
-    static let example = InputViewModel(title: "Convert title", availableCurrencies: ["$"], inputPlaceholder: "Tap to convert")
+    static let example = InputViewModel(title: "Convert title:", availableCurrencies: ["$"], inputPlaceholder: "Tap to convert")
 }
 
 struct InputViewValue {
@@ -36,7 +36,7 @@ final class InputView: UIView {
     @IBOutlet weak var shadowView: UIView!
     
     class func instantiateFromNib() -> InputView {
-        return UINib(nibName: String(describing: self), bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! InputView
+        UINib(nibName: String(describing: self), bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! InputView
     }
     
     override func layoutSubviews() {
@@ -67,7 +67,5 @@ final class InputView: UIView {
             print("\n~~> [InputView.swift] Could not retrieve value to convert.")
             return nil
         }
-        
     }
-
 }

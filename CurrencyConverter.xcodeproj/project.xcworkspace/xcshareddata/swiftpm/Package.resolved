@@ -9,6 +9,15 @@
           "revision": "b50cf2e080bb3100361837688d4503cdecb91da0",
           "version": null
         }
+      },
+      {
+        "package": "NotSwiftUI",
+        "repositoryURL": "https://github.com/Jonas1197/notSwiftUI",
+        "state": {
+          "branch": "main",
+          "revision": "ad60d768476899f7f946614e21166dedd7bc3701",
+          "version": null
+        }
       }
     ]
   },

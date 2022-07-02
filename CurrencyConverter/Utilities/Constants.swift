@@ -9,10 +9,12 @@ import UIKit
 
 
 enum Constants {
-    
     enum Colors {
         static let deepBlue = UIColor(named: "deepBlue")
         static let deepGray = UIColor(named: "deepGray")
     }
     
+    enum Identifier {
+        static let quickGlanceCell = "quickGlanceCell"
+    }
 }

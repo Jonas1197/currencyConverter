@@ -26,6 +26,15 @@
 		75E8E219286EFEC4008EE3AA /* HomeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E217286EFEC4008EE3AA /* HomeScreenViewController.xib */; };
 		75E8E21D2870351E008EE3AA /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E21C2870351D008EE3AA /* InputView.swift */; };
 		75E8E21F2870352B008EE3AA /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E21E2870352B008EE3AA /* InputView.xib */; };
+		75E8E22128703679008EE3AA /* InputViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E22028703679008EE3AA /* InputViewManager.swift */; };
+		75E8E224287038D6008EE3AA /* NotSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 75E8E223287038D6008EE3AA /* NotSwiftUI */; };
+		75E8E22628703A93008EE3AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E22528703A93008EE3AA /* Constants.swift */; };
+		75E8E229287048A7008EE3AA /* QuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E228287048A7008EE3AA /* QuickGlanceView.swift */; };
+		75E8E22B287048B8008EE3AA /* QuickGlanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E22A287048B8008EE3AA /* QuickGlanceView.xib */; };
+		75E8E22F287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E22D287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift */; };
+		75E8E230287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E22E287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib */; };
+		75E8E2322870510C008EE3AA /* QuickGlanceViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E2312870510C008EE3AA /* QuickGlanceViewManager.swift */; };
+		75E8E23428705175008EE3AA /* Subscribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E23328705175008EE3AA /* Subscribable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +58,14 @@
 		75E8E217286EFEC4008EE3AA /* HomeScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenViewController.xib; sourceTree = "<group>"; };
 		75E8E21C2870351D008EE3AA /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		75E8E21E2870352B008EE3AA /* InputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
+		75E8E22028703679008EE3AA /* InputViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewManager.swift; sourceTree = "<group>"; };
+		75E8E22528703A93008EE3AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		75E8E228287048A7008EE3AA /* QuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickGlanceView.swift; sourceTree = "<group>"; };
+		75E8E22A287048B8008EE3AA /* QuickGlanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickGlanceView.xib; sourceTree = "<group>"; };
+		75E8E22D287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickGlanceViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		75E8E22E287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickGlanceViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		75E8E2312870510C008EE3AA /* QuickGlanceViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickGlanceViewManager.swift; sourceTree = "<group>"; };
+		75E8E23328705175008EE3AA /* Subscribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E8E224287038D6008EE3AA /* NotSwiftUI in Frameworks */,
 				75E8E1F9286EE59E008EE3AA /* EKSwiftSuite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +128,8 @@
 				75E8E1FE286EE660008EE3AA /* UserManager.swift */,
 				75E8E208286EE7CF008EE3AA /* BaseViewController.swift */,
 				75E8E20A286EE802008EE3AA /* BindableViewController.swift */,
+				75E8E22528703A93008EE3AA /* Constants.swift */,
+				75E8E23328705175008EE3AA /* Subscribable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -155,6 +175,7 @@
 		75E8E21A287034E1008EE3AA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				75E8E2272870487E008EE3AA /* QuickGlanceView */,
 				75E8E21B287034E8008EE3AA /* InputView */,
 			);
 			path = Views;
@@ -165,8 +186,29 @@
 			children = (
 				75E8E21C2870351D008EE3AA /* InputView.swift */,
 				75E8E21E2870352B008EE3AA /* InputView.xib */,
+				75E8E22028703679008EE3AA /* InputViewManager.swift */,
 			);
 			path = InputView;
+			sourceTree = "<group>";
+		};
+		75E8E2272870487E008EE3AA /* QuickGlanceView */ = {
+			isa = PBXGroup;
+			children = (
+				75E8E22C2870498C008EE3AA /* HistoryViewCollectionViewCell */,
+				75E8E228287048A7008EE3AA /* QuickGlanceView.swift */,
+				75E8E22A287048B8008EE3AA /* QuickGlanceView.xib */,
+				75E8E2312870510C008EE3AA /* QuickGlanceViewManager.swift */,
+			);
+			path = QuickGlanceView;
+			sourceTree = "<group>";
+		};
+		75E8E22C2870498C008EE3AA /* HistoryViewCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				75E8E22D287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift */,
+				75E8E22E287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib */,
+			);
+			path = HistoryViewCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +229,7 @@
 			name = CurrencyConverter;
 			packageProductDependencies = (
 				75E8E1F8286EE59E008EE3AA /* EKSwiftSuite */,
+				75E8E223287038D6008EE3AA /* NotSwiftUI */,
 			);
 			productName = CurrencyConverter;
 			productReference = 75E8E1E0286EE454008EE3AA /* CurrencyConverter.app */;
@@ -218,6 +261,7 @@
 			mainGroup = 75E8E1D7286EE454008EE3AA;
 			packageReferences = (
 				75E8E1F7286EE59E008EE3AA /* XCRemoteSwiftPackageReference "EKSwiftSuite" */,
+				75E8E222287038D6008EE3AA /* XCRemoteSwiftPackageReference "notSwiftUI" */,
 			);
 			productRefGroup = 75E8E1E1286EE454008EE3AA /* Products */;
 			projectDirPath = "";
@@ -233,9 +277,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E8E230287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib in Resources */,
 				75E8E1F0286EE457008EE3AA /* LaunchScreen.storyboard in Resources */,
 				75E8E219286EFEC4008EE3AA /* HomeScreenViewController.xib in Resources */,
 				75E8E1ED286EE457008EE3AA /* Assets.xcassets in Resources */,
+				75E8E22B287048B8008EE3AA /* QuickGlanceView.xib in Resources */,
 				75E8E213286EE90D008EE3AA /* OnboardingViewController.xib in Resources */,
 				75E8E21F2870352B008EE3AA /* InputView.xib in Resources */,
 			);
@@ -249,12 +295,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				75E8E21D2870351E008EE3AA /* InputView.swift in Sources */,
+				75E8E23428705175008EE3AA /* Subscribable.swift in Sources */,
+				75E8E2322870510C008EE3AA /* QuickGlanceViewManager.swift in Sources */,
+				75E8E22128703679008EE3AA /* InputViewManager.swift in Sources */,
 				75E8E1E8286EE454008EE3AA /* ViewController.swift in Sources */,
 				75E8E1FD286EE61C008EE3AA /* MainCoordinator.swift in Sources */,
 				75E8E207286EE73A008EE3AA /* HomeScreenViewModel.swift in Sources */,
+				75E8E22628703A93008EE3AA /* Constants.swift in Sources */,
 				75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */,
 				75E8E1FF286EE660008EE3AA /* UserManager.swift in Sources */,
+				75E8E22F287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift in Sources */,
 				75E8E218286EFEC4008EE3AA /* HomeScreenViewController.swift in Sources */,
+				75E8E229287048A7008EE3AA /* QuickGlanceView.swift in Sources */,
 				75E8E20B286EE802008EE3AA /* BindableViewController.swift in Sources */,
 				75E8E209286EE7CF008EE3AA /* BaseViewController.swift in Sources */,
 				75E8E215286EE917008EE3AA /* OnboardingViewModel.swift in Sources */,
@@ -404,6 +456,7 @@
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Converty;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -417,7 +470,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -431,6 +484,7 @@
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Converty;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -444,7 +498,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -480,6 +534,14 @@
 				kind = branch;
 			};
 		};
+		75E8E222287038D6008EE3AA /* XCRemoteSwiftPackageReference "notSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jonas1197/notSwiftUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -487,6 +549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 75E8E1F7286EE59E008EE3AA /* XCRemoteSwiftPackageReference "EKSwiftSuite" */;
 			productName = EKSwiftSuite;
+		};
+		75E8E223287038D6008EE3AA /* NotSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75E8E222287038D6008EE3AA /* XCRemoteSwiftPackageReference "notSwiftUI" */;
+			productName = NotSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
