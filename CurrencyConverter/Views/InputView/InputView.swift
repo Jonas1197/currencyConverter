@@ -7,9 +7,8 @@
 
 import UIKit
 
-class InputView: UIView {
+final class InputView: UIView {
 
-    
     class func instantiateFromNib() -> InputView {
         return UINib(nibName: String(describing: self), bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! InputView
     }

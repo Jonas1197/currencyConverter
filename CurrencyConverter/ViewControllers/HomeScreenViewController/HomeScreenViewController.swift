@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
+final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var mainPanelView: UIView!
