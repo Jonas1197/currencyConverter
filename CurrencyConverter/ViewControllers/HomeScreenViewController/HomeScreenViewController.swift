@@ -31,6 +31,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     //MARK: - SetUp
     private func setUp() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
         LocationManager.shared.delegate = viewModel
         LocationManager.shared.requestLocationAuthorization()
         
@@ -39,7 +40,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     private func configureFloatingPanel() {
         floatingPanel = .init(delegate: viewModel)
-        floatingPanel.set(contentViewController: ConverterPanelViewController(viewModel: .init()))
+        floatingPanel.set(contentViewController: ConverterPanelViewController(viewModel: .init(floatingPanel: floatingPanel)))
         floatingPanel.isRemovalInteractionEnabled = false
         
         let appearence = SurfaceAppearance()

@@ -18,7 +18,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     
     
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,17 +42,18 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
     }
     
+    
     //MARK: - Actions
     
     @IBAction func upperButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation {
-            //
+            self.viewModel.move(to: .full)
         }
     }
     
     @IBAction func lowerButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation {
-            //
+            self.viewModel.move(to: .full)
         }
     }
     

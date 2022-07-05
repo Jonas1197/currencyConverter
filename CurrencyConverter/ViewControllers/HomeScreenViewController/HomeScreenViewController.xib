@@ -21,10 +21,21 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XPY-F0-Qen">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xfL-NN-enk">
+                    <rect key="frame" x="60" y="66" width="294" height="32"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <segments>
+                        <segment title="First"/>
+                        <segment title="Second"/>
+                    </segments>
+                </segmentedControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="xfL-NN-enk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="60" id="GVE-Wz-KDy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xfL-NN-enk" secondAttribute="trailing" constant="60" id="IVH-y5-RSA"/>
+                <constraint firstItem="xfL-NN-enk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="Myc-GE-7pK"/>
                 <constraint firstAttribute="bottom" secondItem="XPY-F0-Qen" secondAttribute="bottom" id="YQK-e2-Haz"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Yxs-7f-qXv"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="scM-Y7-eIx"/>
