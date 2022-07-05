@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreLocation
+import FloatingPanel
 import Combine
 
 protocol HomeScreenOutput: AnyObject {
@@ -35,5 +37,30 @@ final class HomeScreenViewModel: NSObject {
     @objc private func keyboardWillAppear() {
         isKeyboardShowing = true
     }
+}
+
+extension HomeScreenViewModel: FloatingPanelControllerDelegate {
     
+}
+
+
+extension HomeScreenViewModel: LocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ status: CLAuthorizationStatus) {
+        switch status {
+        case .denied:
+            print("\n~~> Location authorization denied.")
+            
+        case .authorized:
+            print("\n~~> Location authorized!")
+            
+        case .authorizedAlways:
+            print("\n~~> Location authorized!")
+            
+        case .authorizedWhenInUse:
+            print("\n~~> Location authorized!")
+            
+        default:
+            print("Defualt.")
+        }
+    }
 }
