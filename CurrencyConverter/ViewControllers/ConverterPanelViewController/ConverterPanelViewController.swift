@@ -31,7 +31,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     //MARK: - SetUp
     private func setUp() {
-        arrowsImageView.transform = .init(rotationAngle: .pi / 2)
         _ = [upperButton, lowerButton].map {
             $0?.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.1)
                 .attributedPlaceholder("Tap to enter", attributes: [.font : Constants.Font.regular, .foregroundColor : UIColor.white as Any])
@@ -44,7 +43,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     
     //MARK: - Actions
-    
     @IBAction func upperButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation {
             self.viewModel.move(to: .full)

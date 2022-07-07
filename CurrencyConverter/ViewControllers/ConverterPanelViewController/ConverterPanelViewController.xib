@@ -33,17 +33,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNR-3W-5SL">
-                    <rect key="frame" x="22" y="80" width="92" height="38.5"/>
-                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="26"/>
-                    <color key="textColor" name="titleLabel"/>
+                    <rect key="frame" x="22" y="76" width="113" height="47"/>
+                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="32"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWf-5F-8aW">
-                    <rect key="frame" x="22" y="148.5" width="150" height="52"/>
+                    <rect key="frame" x="233" y="155" width="159" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="52" id="55l-fb-FQk"/>
-                        <constraint firstAttribute="width" constant="150" id="KDm-cq-E5x"/>
+                        <constraint firstAttribute="height" constant="45" id="kOz-BI-Jk7"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -54,26 +52,11 @@
                         <action selector="upperButtonTapped:" destination="-1" eventType="touchUpInside" id="51e-mQ-FXI"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-0c-OXc">
-                    <rect key="frame" x="232" y="148.5" width="160" height="52"/>
-                    <color key="backgroundColor" name="text"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.left.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-6j-lag">
-                    <rect key="frame" x="87" y="215.5" width="20.5" height="32"/>
-                    <color key="tintColor" name="titleLabel"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="CDF-bc-qFW"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg9-xZ-NIW">
-                    <rect key="frame" x="22" y="262.5" width="150" height="52"/>
+                    <rect key="frame" x="22" y="155" width="159" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="LHo-aT-hmC"/>
-                        <constraint firstAttribute="height" constant="52" id="ekX-81-78D"/>
+                        <constraint firstAttribute="height" constant="45" id="QmN-2Q-GVs"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -84,35 +67,54 @@
                         <action selector="lowerButtonTapped:" destination="-1" eventType="touchUpInside" id="XNs-LK-dXB"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
-                    <rect key="frame" x="232" y="262.5" width="160" height="52"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-0c-OXc">
+                    <rect key="frame" x="22" y="222" width="159" height="45"/>
                     <color key="backgroundColor" name="text"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="WaL-w1-ps5"/>
+                    </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                </textField>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.left.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-6j-lag">
+                    <rect key="frame" x="197" y="161.5" width="20" height="32"/>
+                    <color key="tintColor" name="titleLabel"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Wid-ta-0xZ"/>
+                        <constraint firstAttribute="width" constant="20" id="v89-tu-n5g"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
+                    <rect key="frame" x="233" y="222" width="159" height="45"/>
+                    <color key="backgroundColor" name="text"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="sYP-Fz-L5e"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
-                <constraint firstItem="9Ph-ci-LHL" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="42d-I6-fLr"/>
-                <constraint firstItem="fWf-5F-8aW" firstAttribute="leading" secondItem="VNR-3W-5SL" secondAttribute="leading" id="7XP-wq-DYq"/>
-                <constraint firstItem="5Ot-0c-OXc" firstAttribute="top" secondItem="fWf-5F-8aW" secondAttribute="top" id="ALy-gV-bjh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Ot-0c-OXc" secondAttribute="trailing" constant="22" id="Dze-gA-n0m"/>
-                <constraint firstItem="5Ot-0c-OXc" firstAttribute="centerY" secondItem="fWf-5F-8aW" secondAttribute="centerY" id="Flh-p6-wQv"/>
+                <constraint firstItem="5Ot-0c-OXc" firstAttribute="top" secondItem="eg9-xZ-NIW" secondAttribute="bottom" constant="22" id="1pa-FU-VGZ"/>
+                <constraint firstItem="eg9-xZ-NIW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="AYD-Tx-7HD"/>
+                <constraint firstItem="5Ot-0c-OXc" firstAttribute="trailing" secondItem="eg9-xZ-NIW" secondAttribute="trailing" id="DJ7-h8-qxg"/>
+                <constraint firstItem="9Ph-ci-LHL" firstAttribute="trailing" secondItem="fWf-5F-8aW" secondAttribute="trailing" id="ErF-3W-feC"/>
                 <constraint firstItem="VNR-3W-5SL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="IdY-ib-3UH"/>
-                <constraint firstItem="9Ph-ci-LHL" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="trailing" constant="60" id="Ijd-dv-3gs"/>
-                <constraint firstItem="5kR-6j-lag" firstAttribute="top" secondItem="fWf-5F-8aW" secondAttribute="bottom" constant="16" id="Nzt-4t-imj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9Ph-ci-LHL" secondAttribute="trailing" constant="22" id="X9Z-b8-HEf"/>
-                <constraint firstItem="5kR-6j-lag" firstAttribute="centerX" secondItem="fWf-5F-8aW" secondAttribute="centerX" id="Y1l-pH-AeD"/>
-                <constraint firstItem="VNR-3W-5SL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="36" id="bhn-fg-9BT"/>
-                <constraint firstItem="5Ot-0c-OXc" firstAttribute="leading" secondItem="fWf-5F-8aW" secondAttribute="trailing" constant="60" id="gOx-AQ-KH3"/>
-                <constraint firstItem="9Ph-ci-LHL" firstAttribute="top" secondItem="eg9-xZ-NIW" secondAttribute="top" id="jrk-od-rfK"/>
-                <constraint firstItem="fWf-5F-8aW" firstAttribute="top" secondItem="VNR-3W-5SL" secondAttribute="bottom" constant="30" id="nVF-Cz-Ze6"/>
-                <constraint firstItem="eg9-xZ-NIW" firstAttribute="top" secondItem="5kR-6j-lag" secondAttribute="bottom" constant="16" id="qDf-8D-IbR"/>
-                <constraint firstItem="eg9-xZ-NIW" firstAttribute="leading" secondItem="fWf-5F-8aW" secondAttribute="leading" id="rNt-ZG-cnN"/>
-                <constraint firstItem="9Ph-ci-LHL" firstAttribute="bottom" secondItem="eg9-xZ-NIW" secondAttribute="bottom" id="tgi-T5-xZp"/>
-                <constraint firstItem="5Ot-0c-OXc" firstAttribute="bottom" secondItem="fWf-5F-8aW" secondAttribute="bottom" id="vQr-TY-7fq"/>
+                <constraint firstItem="eg9-xZ-NIW" firstAttribute="top" secondItem="VNR-3W-5SL" secondAttribute="bottom" constant="32" id="OXd-6F-BWo"/>
+                <constraint firstItem="5Ot-0c-OXc" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="leading" id="R3G-9Q-9Ed"/>
+                <constraint firstItem="5kR-6j-lag" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="trailing" constant="16" id="WQn-7b-sgQ"/>
+                <constraint firstItem="VNR-3W-5SL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="bhn-fg-9BT"/>
+                <constraint firstItem="fWf-5F-8aW" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="c6N-rT-zdr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fWf-5F-8aW" secondAttribute="trailing" constant="22" id="dfU-AK-mqp"/>
+                <constraint firstItem="5kR-6j-lag" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="gaP-dx-z5O"/>
+                <constraint firstItem="5kR-6j-lag" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="krG-N3-MMN"/>
+                <constraint firstItem="fWf-5F-8aW" firstAttribute="leading" secondItem="5kR-6j-lag" secondAttribute="trailing" constant="16" id="rHf-lh-jYu"/>
+                <constraint firstItem="9Ph-ci-LHL" firstAttribute="leading" secondItem="fWf-5F-8aW" secondAttribute="leading" id="xdU-XQ-d47"/>
+                <constraint firstItem="9Ph-ci-LHL" firstAttribute="top" secondItem="fWf-5F-8aW" secondAttribute="bottom" constant="22" id="yqG-sw-UwG"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </view>
