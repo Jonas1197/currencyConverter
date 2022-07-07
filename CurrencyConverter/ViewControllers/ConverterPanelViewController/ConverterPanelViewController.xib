@@ -69,11 +69,11 @@
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-0c-OXc">
                     <rect key="frame" x="22" y="222" width="159" height="45"/>
-                    <color key="backgroundColor" name="text"/>
+                    <color key="backgroundColor" name="textFieldBackground"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="WaL-w1-ps5"/>
                     </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" name="titleLabel"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
@@ -87,11 +87,11 @@
                 </imageView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
                     <rect key="frame" x="233" y="222" width="159" height="45"/>
-                    <color key="backgroundColor" name="text"/>
+                    <color key="backgroundColor" name="textFieldBackground"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="sYP-Fz-L5e"/>
                     </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" name="titleLabel"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
@@ -127,8 +127,8 @@
         <namedColor name="deepBlue">
             <color red="0.24300000071525574" green="0.3919999897480011" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="text">
-            <color red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="textFieldBackground">
+            <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="titleLabel">
             <color red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

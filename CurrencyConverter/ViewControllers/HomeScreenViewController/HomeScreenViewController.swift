@@ -12,7 +12,8 @@ import NotSwiftUI
 
 final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView:        MKMapView!
+    @IBOutlet weak var locateMeButton: UIButton!
     
     private var floatingPanel: FloatingPanelController!
     
@@ -26,6 +27,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        locateMeButton.roundCorners(to: .rounded)
     }
     
     
@@ -36,6 +38,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         LocationManager.shared.requestLocationAuthorization()
         
         configureFloatingPanel()
+        configureLocateMeButton()
     }
     
     private func configureFloatingPanel() {
@@ -60,11 +63,22 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         present(floatingPanel, animated: true, completion: nil)
     }
     
+    private func configureLocateMeButton() {
+        locateMeButton.shadowed(with: .black, offset: .init(width: 0, height: -3), radius: 12, 0.3)
+    }
+    
     
     override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
         
     }
     
+    //MARK: - Actions
+    
+    @IBAction func locateMeButtonTapped(_ sender: UIButton) {
+        sender.actionWithSpringAnimation {
+            //
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

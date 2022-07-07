@@ -3,12 +3,14 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeScreenViewController" customModule="CurrencyConverter" customModuleProvider="target">
             <connections>
+                <outlet property="locateMeButton" destination="dsm-Du-zHn" id="t51-cI-Qh4"/>
                 <outlet property="mapView" destination="XPY-F0-Qen" id="QZC-Je-us6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,19 +31,41 @@
                         <segment title="Second"/>
                     </segments>
                 </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn">
+                    <rect key="frame" x="22" y="722" width="40" height="40"/>
+                    <color key="backgroundColor" name="deepBlue"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Y0m-Qw-0TP"/>
+                        <constraint firstAttribute="height" constant="40" id="z8Z-dx-B3V"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="location.fill" catalog="system"/>
+                    <connections>
+                        <action selector="locateMeButtonTapped:" destination="-1" eventType="touchUpInside" id="0xW-tb-Miy"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="xfL-NN-enk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="60" id="GVE-Wz-KDy"/>
+                <constraint firstItem="dsm-Du-zHn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="Gd0-4h-6nW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xfL-NN-enk" secondAttribute="trailing" constant="60" id="IVH-y5-RSA"/>
                 <constraint firstItem="xfL-NN-enk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="Myc-GE-7pK"/>
                 <constraint firstAttribute="bottom" secondItem="XPY-F0-Qen" secondAttribute="bottom" id="YQK-e2-Haz"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Yxs-7f-qXv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dsm-Du-zHn" secondAttribute="bottom" constant="100" id="aAf-co-CUg"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="scM-Y7-eIx"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="woH-X6-beF"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="10.714285714285714"/>
         </view>
     </objects>
+    <resources>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="deepBlue">
+            <color red="0.24300000071525574" green="0.3919999897480011" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

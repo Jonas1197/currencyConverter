@@ -10,10 +10,11 @@ import UIKit
 
 enum Constants {
     enum Colors {
-        static let deepBlue   = UIColor(named: "deepBlue")
-        static let background = UIColor(named: "background")
-        static let text       = UIColor(named: "text")
-        static let titleLabel = UIColor(named: "titleLabel")
+        static let deepBlue            = UIColor(named: "deepBlue")
+        static let background          = UIColor(named: "background")
+        static let textFieldBackground = UIColor(named: "textFieldBackground")
+        static let text                = UIColor(named: "text")
+        static let titleLabel          = UIColor(named: "titleLabel")
     }
     
     enum Identifier {
