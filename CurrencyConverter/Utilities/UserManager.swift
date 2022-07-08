@@ -16,4 +16,7 @@ struct UserManager {
      Boolean indicating whether the user has been through the onboarding process or not.
      */
     var didSeeOnboarding = true
+    
+    var currencyList: [CurrencyModel] = []
 }
+

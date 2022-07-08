@@ -23,10 +23,10 @@
             <connections>
                 <outlet property="arrowsImageView" destination="5kR-6j-lag" id="4rl-Ri-Shk"/>
                 <outlet property="findConversionStoresButton" destination="aKU-nL-plg" id="smi-xh-sk0"/>
-                <outlet property="lowerButton" destination="eg9-xZ-NIW" id="dvt-CR-QT4"/>
+                <outlet property="leadingButton" destination="eg9-xZ-NIW" id="dvt-CR-QT4"/>
                 <outlet property="lowerTextField" destination="9Ph-ci-LHL" id="SbE-BT-gH1"/>
                 <outlet property="titleLabel" destination="VNR-3W-5SL" id="dKk-Vp-gfu"/>
-                <outlet property="upperButton" destination="fWf-5F-8aW" id="jgp-0x-oKW"/>
+                <outlet property="trailingButton" destination="fWf-5F-8aW" id="jgp-0x-oKW"/>
                 <outlet property="upperTextField" destination="5Ot-0c-OXc" id="ee6-MZ-yww"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -41,7 +41,7 @@
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="32"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWf-5F-8aW">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWf-5F-8aW">
                     <rect key="frame" x="233" y="155" width="159" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

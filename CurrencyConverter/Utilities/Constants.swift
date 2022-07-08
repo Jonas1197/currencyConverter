@@ -9,6 +9,13 @@ import UIKit
 
 
 enum Constants {
+    
+    enum Web: String {
+        case currenciesUrl = "https://datahub.io/core/currency-codes/r/codes-all.json"
+        
+        var url: URL { .init(string: rawValue)! }
+    }
+    
     enum Colors {
         static let deepBlue            = UIColor(named: "deepBlue")
         static let background          = UIColor(named: "background")

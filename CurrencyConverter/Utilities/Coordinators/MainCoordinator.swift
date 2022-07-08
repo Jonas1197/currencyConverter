@@ -21,6 +21,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     //MARK: - Lifecycle
     init(windowScene: UIWindowScene) {
         self.window = UIWindow(windowScene: windowScene)
+    
         
         if !UserManager.shared.didSeeOnboarding {
             let coordinator      = OnboardingCoordinator(output: nil)
@@ -42,6 +43,11 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     
     override func start() {
         window.makeKeyAndVisible()
+        
+        Task {
+            guard let data = await NetworkManager.shared.fetchWorldCurrencies() else { return }
+            UserManager.shared.currencyList = data
+        }
     }
     
     func homescreen() {

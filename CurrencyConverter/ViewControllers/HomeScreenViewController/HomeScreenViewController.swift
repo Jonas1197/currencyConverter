@@ -12,8 +12,8 @@ import NotSwiftUI
 
 final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
-    @IBOutlet weak var mapView:        MKMapView!
-    @IBOutlet weak var locateMeButton: UIButton!
+    @IBOutlet weak var mapView:            MKMapView!
+    @IBOutlet weak var locateMeButton:     UIButton!
     @IBOutlet weak var pageControlSegment: UISegmentedControl!
     
     private var floatingPanel: FloatingPanelController!
@@ -34,7 +34,6 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     private func setUp() {
         navigationController?.setNavigationBarHidden(true, animated: false)
         mapView.delegate = viewModel
-//        mapView.register(PinView.self, forAnnotationViewWithReuseIdentifier: Constants.Identifier.annotationId)
         LocationManager.shared.delegate = viewModel
         LocationManager.shared.requestLocationAuthorization()
         

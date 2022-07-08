@@ -105,6 +105,7 @@ extension HomeScreenViewModel: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("\n~~> Annotation: \(view)")
+        guard let annotation = view.annotation else { return }
+        print("\n~~> Annotation: \(annotation.coordinate)")
     }
 }

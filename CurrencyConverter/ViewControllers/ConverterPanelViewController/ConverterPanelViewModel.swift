@@ -17,7 +17,13 @@ final class ConverterPanelViewModel: NSObject {
     weak var floatingPanel: FloatingPanelController?
     
     var position: FloatingPanelState = .half
+    var selectedButtonTag = 0
     
+    @Published var leadingButtonTitle:  String?
+    @Published var trailingButtonTitle: String?
+    
+    
+    //MARK: - Lifecycle
     init(floatingPanel: FloatingPanelController) {
         super.init()
         self.floatingPanel = floatingPanel
@@ -46,15 +52,25 @@ final class ConverterPanelViewModel: NSObject {
 
 
 extension ConverterPanelViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        1
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        UserManager.shared.currencyList.count
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        "hello"
+        UserManager.shared.currencyList[row].Currency
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let title = UserManager.shared.currencyList[row].Currency ?? "Not avaialble"
+        if selectedButtonTag == 0 {
+            leadingButtonTitle = title
+            
+        } else if selectedButtonTag == 1 {
+            trailingButtonTitle = title
+        }
     }
 }
