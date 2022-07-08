@@ -10,6 +10,7 @@ import CoreLocation
 import FloatingPanel
 import Combine
 import MapKit
+import NotSwiftUI
 
 protocol HomeScreenOutput: AnyObject {
     
@@ -99,20 +100,11 @@ extension HomeScreenViewModel: ConverterPanelDelegate {
 //MARK: - MKMapView
 extension HomeScreenViewModel: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         guard annotation is MKPointAnnotation else { return nil }
-
-            let identifier = "Annotation"
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
-            if annotationView == nil {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView!.canShowCallout = true
-            } else {
-                annotationView!.annotation = annotation
-            }
-
-            return annotationView
-
+        return mapView.dequeueReusableAnnotationView(withIdentifier: Constants.Identifier.annotationId)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("\n~~> Annotation: \(view)")
     }
 }
