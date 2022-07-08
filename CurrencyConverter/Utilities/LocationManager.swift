@@ -37,10 +37,15 @@ final class LocationManager: NSObject {
         manager.startUpdatingLocation()
     }
     
-    func search(term: String, inRegion region: MKCoordinateRegion) async -> [MKMapItem]? {
+    func search(term: String, inRegion region: MKCoordinateRegion?) async -> [MKMapItem]? {
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = term
-        searchRequest.region = region
+        
+        if let region = region {
+            searchRequest.region = region
+        } else {
+            print("\n~~> [LocationManager] Searching without a region.")
+        }
         
         let search = MKLocalSearch(request: searchRequest)
 

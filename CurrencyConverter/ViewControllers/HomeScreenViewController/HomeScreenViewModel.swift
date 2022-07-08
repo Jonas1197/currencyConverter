@@ -19,24 +19,27 @@ final class HomeScreenViewModel: NSObject {
     weak var output: HomeScreenOutput?
     
     @Published var isKeyboardShowing: Bool?
+    @Published var currentUserRegion: MKCoordinateRegion?
+    @Published var searchResults:     [MKMapItem] = []
     
     init(output: HomeScreenOutput?) {
         super.init()
         self.output = output
     }
     
-    func zoomOnUserLocation(with mapView: MKMapView) {
+    func zoomOnUserLocation() {
         guard let coordinate = LocationManager.shared.currentLocationCoordinate else {
             print("\n~~> Could not get current location coordinate.")
             return
         }
         
-        DispatchQueue.main.async {
-            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-            mapView.showsUserLocation = true
-            mapView.setRegion(region, animated: true)
+        currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+    }
+    
+    func searchCurrencyConversionStores() {
+        Task {
+            
         }
-        
     }
     
     func listenToKeyboardEvents() {
@@ -56,7 +59,6 @@ final class HomeScreenViewModel: NSObject {
 
 //MARK: - FloatingPanelControllerDelegate
 extension HomeScreenViewModel: FloatingPanelControllerDelegate {
-    
 }
 
 //MARK: - LocationManagerDelegate
@@ -81,7 +83,36 @@ extension HomeScreenViewModel: LocationManagerDelegate {
     }
 }
 
+//MARK: - ConverterPanelDelegate
+extension HomeScreenViewModel: ConverterPanelDelegate {
+    func findConversionStores() {
+        searchResults = []
+        
+        zoomOnUserLocation()
+        Task {
+            guard let results = await LocationManager.shared.search(term: "Money Exchange", inRegion: currentUserRegion) else { return }
+            self.searchResults = results
+        }
+    }
+}
+
 //MARK: - MKMapView
 extension HomeScreenViewModel: MKMapViewDelegate {
- 
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard annotation is MKPointAnnotation else { return nil }
+
+            let identifier = "Annotation"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+            } else {
+                annotationView!.annotation = annotation
+            }
+
+            return annotationView
+
+    }
 }

@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Heebo-Bold.ttf">
+            <string>Heebo-Bold</string>
+        </array>
         <array key="Heebo-Medium.ttf">
             <string>Heebo-Medium</string>
         </array>
@@ -19,6 +22,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConverterPanelViewController" customModule="CurrencyConverter" customModuleProvider="target">
             <connections>
                 <outlet property="arrowsImageView" destination="5kR-6j-lag" id="4rl-Ri-Shk"/>
+                <outlet property="findConversionStoresButton" destination="aKU-nL-plg" id="smi-xh-sk0"/>
                 <outlet property="lowerButton" destination="eg9-xZ-NIW" id="dvt-CR-QT4"/>
                 <outlet property="lowerTextField" destination="9Ph-ci-LHL" id="SbE-BT-gH1"/>
                 <outlet property="titleLabel" destination="VNR-3W-5SL" id="dKk-Vp-gfu"/>
@@ -67,6 +71,16 @@
                         <action selector="lowerButtonTapped:" destination="-1" eventType="touchUpInside" id="XNs-LK-dXB"/>
                     </connections>
                 </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
+                    <rect key="frame" x="233" y="222" width="159" height="45"/>
+                    <color key="backgroundColor" name="textFieldBackground"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="sYP-Fz-L5e"/>
+                    </constraints>
+                    <color key="textColor" name="titleLabel"/>
+                    <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-0c-OXc">
                     <rect key="frame" x="22" y="222" width="159" height="45"/>
                     <color key="backgroundColor" name="textFieldBackground"/>
@@ -85,16 +99,21 @@
                         <constraint firstAttribute="width" constant="20" id="v89-tu-n5g"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
-                    <rect key="frame" x="233" y="222" width="159" height="45"/>
-                    <color key="backgroundColor" name="textFieldBackground"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKU-nL-plg">
+                    <rect key="frame" x="22" y="301" width="370" height="45"/>
+                    <color key="backgroundColor" name="deepBlue"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="sYP-Fz-L5e"/>
+                        <constraint firstAttribute="height" constant="45" id="Car-fG-qM9"/>
                     </constraints>
-                    <color key="textColor" name="titleLabel"/>
-                    <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                </textField>
+                    <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="24"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Find conversion stores">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="findConversionStoresButtonTapped:" destination="-1" eventType="touchUpInside" id="QhY-il-zBU"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
@@ -106,12 +125,15 @@
                 <constraint firstItem="VNR-3W-5SL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="IdY-ib-3UH"/>
                 <constraint firstItem="eg9-xZ-NIW" firstAttribute="top" secondItem="VNR-3W-5SL" secondAttribute="bottom" constant="32" id="OXd-6F-BWo"/>
                 <constraint firstItem="5Ot-0c-OXc" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="leading" id="R3G-9Q-9Ed"/>
+                <constraint firstItem="aKU-nL-plg" firstAttribute="trailing" secondItem="9Ph-ci-LHL" secondAttribute="trailing" id="WKM-Wb-ayf"/>
                 <constraint firstItem="5kR-6j-lag" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="trailing" constant="16" id="WQn-7b-sgQ"/>
                 <constraint firstItem="VNR-3W-5SL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="bhn-fg-9BT"/>
+                <constraint firstItem="aKU-nL-plg" firstAttribute="top" secondItem="9Ph-ci-LHL" secondAttribute="bottom" constant="34" id="bqS-lZ-xWB"/>
                 <constraint firstItem="fWf-5F-8aW" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="c6N-rT-zdr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fWf-5F-8aW" secondAttribute="trailing" constant="22" id="dfU-AK-mqp"/>
                 <constraint firstItem="5kR-6j-lag" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="gaP-dx-z5O"/>
                 <constraint firstItem="5kR-6j-lag" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="krG-N3-MMN"/>
+                <constraint firstItem="aKU-nL-plg" firstAttribute="leading" secondItem="5Ot-0c-OXc" secondAttribute="leading" id="qT4-S6-ljU"/>
                 <constraint firstItem="fWf-5F-8aW" firstAttribute="leading" secondItem="5kR-6j-lag" secondAttribute="trailing" constant="16" id="rHf-lh-jYu"/>
                 <constraint firstItem="9Ph-ci-LHL" firstAttribute="leading" secondItem="fWf-5F-8aW" secondAttribute="leading" id="xdU-XQ-d47"/>
                 <constraint firstItem="9Ph-ci-LHL" firstAttribute="top" secondItem="fWf-5F-8aW" secondAttribute="bottom" constant="22" id="yqG-sw-UwG"/>

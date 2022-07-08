@@ -33,6 +33,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     //MARK: - SetUp
     private func setUp() {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        mapView.delegate = viewModel
         LocationManager.shared.delegate = viewModel
         LocationManager.shared.requestLocationAuthorization()
         
@@ -45,7 +46,12 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     private func configureFloatingPanel() {
         floatingPanel = .init(delegate: viewModel)
-        floatingPanel.set(contentViewController: ConverterPanelViewController(viewModel: .init(floatingPanel: floatingPanel)))
+        
+        let viewModel = ConverterPanelViewModel(floatingPanel: floatingPanel)
+        viewModel.delegate = self.viewModel
+        let vc = ConverterPanelViewController(viewModel: viewModel)
+    
+        floatingPanel.set(contentViewController: vc)
         floatingPanel.isRemovalInteractionEnabled = false
         
         let appearence = SurfaceAppearance()
@@ -71,18 +77,46 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     private func configurePageControlSegment() {
         pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.deepBlue as Any,
-                                                    .font : UIFont(name: Constants.Font.bold, size: 14) as Any], for: .selected)
-        pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.text as Any], for: .normal)
+                                                   .font : UIFont(name: Constants.Font.bold, size: 14) as Any],
+                                                  for: .selected)
+        
+        pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.text as Any],
+                                                  for: .normal)
     }
     
     override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
         
+        //MARK: Current location region
+        subscribe(to: \.$currentUserRegion) { [unowned self] region in
+            guard let region = region else { return }
+            DispatchQueue.main.async {
+                mapView.showsUserLocation = true
+                mapView.setRegion(region, animated: true)
+            }
+        }
+        
+        //MARK: - Search results
+        subscribe(to: \.$searchResults) { [unowned self] results in
+            
+            if !results.isEmpty {
+                
+                let annotations: [MKAnnotation] = results.compactMap {
+                    let coordinate = $0.placemark.coordinate
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    return annotation
+                }
+                
+                self.mapView.addAnnotations(annotations)
+                
+            }
+        }
     }
     
     //MARK: - Actions
     @IBAction func locateMeButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
-            viewModel.zoomOnUserLocation(with: mapView)
+            viewModel.zoomOnUserLocation()
         }
     }
     

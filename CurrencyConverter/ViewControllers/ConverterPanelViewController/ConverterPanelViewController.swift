@@ -6,17 +6,17 @@
 //
 
 import UIKit
+import NotSwiftUI
 
 final class ConverterPanelViewController: BaseViewController<ConverterPanelViewModel> {
 
-    @IBOutlet weak var titleLabel:      UILabel!
-    @IBOutlet weak var upperButton:     UIButton!
-    @IBOutlet weak var lowerButton:     UIButton!
-    @IBOutlet weak var arrowsImageView: UIImageView!
-    @IBOutlet weak var upperTextField:  UITextField!
-    @IBOutlet weak var lowerTextField:  UITextField!
-    
-    
+    @IBOutlet weak var titleLabel:                 UILabel!
+    @IBOutlet weak var upperButton:                UIButton!
+    @IBOutlet weak var lowerButton:                UIButton!
+    @IBOutlet weak var arrowsImageView:            UIImageView!
+    @IBOutlet weak var upperTextField:             UITextField!
+    @IBOutlet weak var lowerTextField:             UITextField!
+    @IBOutlet weak var findConversionStoresButton: UIButton!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                 .attributedPlaceholder("Tap to enter", attributes: [.font : Constants.Font.regular, .foregroundColor : UIColor.white as Any])
         }
         
-        _ = [upperTextField, lowerTextField].map {
+        _ = [upperTextField, lowerTextField, findConversionStoresButton].map {
             $0?.rounded($0!.frame.height / 4)
         }
     }
@@ -52,6 +52,13 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBAction func lowerButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation {
             self.viewModel.move(to: .full)
+        }
+    }
+    
+    @IBAction func findConversionStoresButtonTapped(_ sender: UIButton) {
+        sender.actionWithSpringAnimation { [unowned self] in
+            viewModel.move(to: .tip)
+            viewModel.delegate?.findConversionStores()
         }
     }
     

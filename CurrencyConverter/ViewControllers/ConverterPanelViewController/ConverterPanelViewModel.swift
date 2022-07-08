@@ -8,7 +8,12 @@
 import UIKit
 import FloatingPanel
 
+protocol ConverterPanelDelegate: AnyObject {
+    func findConversionStores()
+}
+
 final class ConverterPanelViewModel: NSObject {
+    weak var delegate:      ConverterPanelDelegate?
     weak var floatingPanel: FloatingPanelController?
     
     var position: FloatingPanelState = .half
