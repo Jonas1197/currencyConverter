@@ -14,6 +14,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
     @IBOutlet weak var mapView:        MKMapView!
     @IBOutlet weak var locateMeButton: UIButton!
+    @IBOutlet weak var pageControlSegment: UISegmentedControl!
     
     private var floatingPanel: FloatingPanelController!
     
@@ -37,6 +38,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         
         configureFloatingPanel()
         configureLocateMeButton()
+        configurePageControlSegment()
         
         mapView.delegate = viewModel
     }
@@ -65,6 +67,12 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     private func configureLocateMeButton() {
         locateMeButton.shadowed(with: .black, offset: .init(width: 0, height: -3), radius: 12, 0.3)
+    }
+    
+    private func configurePageControlSegment() {
+        pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.deepBlue as Any,
+                                                    .font : UIFont(name: Constants.Font.bold, size: 14) as Any], for: .selected)
+        pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.text as Any], for: .normal)
     }
     
     override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {

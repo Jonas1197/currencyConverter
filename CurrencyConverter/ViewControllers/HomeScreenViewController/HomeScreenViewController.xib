@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="locateMeButton" destination="dsm-Du-zHn" id="t51-cI-Qh4"/>
                 <outlet property="mapView" destination="XPY-F0-Qen" id="QZC-Je-us6"/>
+                <outlet property="pageControlSegment" destination="xfL-NN-enk" id="pvb-gp-fFu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,8 +28,8 @@
                     <rect key="frame" x="60" y="66" width="294" height="32"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <segments>
-                        <segment title="First"/>
-                        <segment title="Second"/>
+                        <segment title="Map"/>
+                        <segment title="Quick glance"/>
                     </segments>
                 </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn">
