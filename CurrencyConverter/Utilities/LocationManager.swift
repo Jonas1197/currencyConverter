@@ -18,19 +18,26 @@ final class LocationManager: NSObject {
     
     private var manager: CLLocationManager!
     
+    var currentLocationCoordinate: CLLocationCoordinate2D? {
+        manager.location?.coordinate
+    }
+    
     static var shared: LocationManager = {
         .init()
     }()
     
     
     func requestLocationAuthorization() {
-        manager = .init()
+        manager                 = .init()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.delegate        = self
+        
         manager.requestWhenInUseAuthorization()
-        manager.delegate = self
+        manager.startUpdatingLocation()
     }
-    
 }
 
+//MARK: - CLLocationManagerDelegate
 extension LocationManager: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         delegate?.locationManagerDidChangeAuthorization(manager.authorizationStatus)

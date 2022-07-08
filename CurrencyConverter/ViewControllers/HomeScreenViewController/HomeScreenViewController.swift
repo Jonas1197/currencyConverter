@@ -21,8 +21,6 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,6 +37,8 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         
         configureFloatingPanel()
         configureLocateMeButton()
+        
+        mapView.delegate = viewModel
     }
     
     private func configureFloatingPanel() {
@@ -53,9 +53,9 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         shadow.color   = .black
         shadow.opacity = 0.2
         
-        appearence.shadows      = [shadow]
-        appearence.cornerCurve  = .continuous
-        appearence.cornerRadius = 20
+        appearence.shadows         = [shadow]
+        appearence.cornerCurve     = .continuous
+        appearence.cornerRadius    = 20
         appearence.backgroundColor = Constants.Colors.background
         
         floatingPanel.surfaceView.appearance = appearence
@@ -67,16 +67,14 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         locateMeButton.shadowed(with: .black, offset: .init(width: 0, height: -3), radius: 12, 0.3)
     }
     
-    
     override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
         
     }
     
     //MARK: - Actions
-    
     @IBAction func locateMeButtonTapped(_ sender: UIButton) {
-        sender.actionWithSpringAnimation {
-            //
+        sender.actionWithSpringAnimation { [unowned self] in
+            viewModel.zoomOnUserLocation(with: mapView)
         }
     }
     

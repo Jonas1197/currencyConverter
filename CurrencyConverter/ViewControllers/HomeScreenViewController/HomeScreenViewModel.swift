@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import FloatingPanel
 import Combine
+import MapKit
 
 protocol HomeScreenOutput: AnyObject {
     
@@ -22,6 +23,20 @@ final class HomeScreenViewModel: NSObject {
     init(output: HomeScreenOutput?) {
         super.init()
         self.output = output
+    }
+    
+    func zoomOnUserLocation(with mapView: MKMapView) {
+        guard let coordinate = LocationManager.shared.currentLocationCoordinate else {
+            print("\n~~> Could not get current location coordinate.")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+            mapView.showsUserLocation = true
+            mapView.setRegion(region, animated: true)
+        }
+        
     }
     
     func listenToKeyboardEvents() {
@@ -39,11 +54,12 @@ final class HomeScreenViewModel: NSObject {
     }
 }
 
+//MARK: - FloatingPanelControllerDelegate
 extension HomeScreenViewModel: FloatingPanelControllerDelegate {
     
 }
 
-
+//MARK: - LocationManagerDelegate
 extension HomeScreenViewModel: LocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ status: CLAuthorizationStatus) {
         switch status {
@@ -63,4 +79,9 @@ extension HomeScreenViewModel: LocationManagerDelegate {
             print("Defualt.")
         }
     }
+}
+
+//MARK: - MKMapView
+extension HomeScreenViewModel: MKMapViewDelegate {
+ 
 }
