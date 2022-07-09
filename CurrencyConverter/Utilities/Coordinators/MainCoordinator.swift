@@ -43,10 +43,37 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     
     override func start() {
         window.makeKeyAndVisible()
+        fetchCurrencyData()
+    }
+    
+    private func fetchCurrencyData() {
+        let lastUpdatedTimestamp = UserManager.shared.currencyUpdatedTimestamp
+        if !lastUpdatedTimestamp.isEmpty,
+            let timeInterval = TimeInterval(lastUpdatedTimestamp),
+           timeInterval - Date().timeIntervalSince1970 < (24 * 60 * 60) {
+            print("\n~~> Currency data not older than one day.")
+        } else {
+            print("\n~~> Updating currency data.")
+            updateCurrencyData()
+        }
         
+    }
+    
+    private func updateCurrencyData() {
         Task {
-            guard let data = await NetworkManager.shared.fetchWorldCurrencies() else { return }
-            UserManager.shared.currencyList = data
+            guard let parsedData = await NetworkManager.shared.fetchWorldCurrencies() else { return }
+            
+            do {
+                let data = try JSONEncoder().encode(parsedData)
+                UserManager.shared.currencyList = parsedData
+                UserManager.shared.currencyListData = data
+                
+                let timestamp = "\(Date().timeIntervalSince1970)"
+                UserManager.shared.currencyUpdatedTimestamp = timestamp
+                
+            } catch {
+                print("\n~~> Couldn't encode parsed data: \(error.localizedDescription)")
+            }
         }
     }
     

@@ -39,6 +39,8 @@ final class ConverterPanelViewModel: NSObject {
         self.position = position
     }
     
+    
+    //MARK: - Actions
     @objc private func keyboardWillShow(_ notification: Notification) {
         floatingPanel?.move(to: .full, animated: true, completion: nil)
         self.position = .full
