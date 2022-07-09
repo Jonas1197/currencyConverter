@@ -33,12 +33,15 @@ struct UserManager {
      */
     var didSeeOnboarding = true
     
+    var conversionRates: ConversionModel = .init(result: "", conversion_rates: [:])
     
     var currencyList: [CurrencyModel] = []
     
+    @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.conversionRatesData, defaultValue: .init())
+    var conversionRatesData: Data
+    
     @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.currencyData, defaultValue: .init())
     var currencyListData: Data
-    
     
     @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.lastUpdatedTimestamp, defaultValue: "")
     var currencyUpdatedTimestamp: String

@@ -35,6 +35,16 @@ final class ConverterPanelViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if let euro = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "EUR" }) {
+            leadingCurrencyModel = euro
+        }
+        
+        if let usd = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "USD" }) {
+            trailingCurrencyModel = usd
+        }
+        
+        
     }
     
     func move(to position: FloatingPanelState, animated: Bool = true, handler: (() -> Void)? = nil) {
@@ -56,16 +66,29 @@ final class ConverterPanelViewModel: NSObject {
     }
     
     func convert(valueFromTextField textField: UITextField) {
-        if textField.tag == 0 {
+        
+        if let text             = textField.text,
+           let value            = Double(text),
+           let leadingModel     = leadingCurrencyModel,
+           let trailingModel    = trailingCurrencyModel,
+           let leadingCurrency  = leadingModel.AlphabeticCode,
+           let trailingCurrency = trailingModel.AlphabeticCode {
             
-            // get leading currency
-            // convert leading to trailing
-            // update trailing textField
+            if textField.tag == 0 {
+                if let devider = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == trailingCurrency }),
+                   let devisor  = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == leadingCurrency }) {
+                    let convertedValue = Double(round(1000 * (value * (devider.value / devisor.value))) / 1000)
+                    trailingTextFieldText = "\(convertedValue)"
+                }
             
-        } else if textField.tag == 1 {
-            // get trailing currency
-            // convert trailing to leading
-            // update leading textField
+        
+                
+            } else if textField.tag == 1 {
+                // convert trailing to leading
+                // update leading textField
+                
+//                print("\n~~> Converting \(value) \(trailingCurrency) to \(leadingCurrency).")
+            }
         }
     }
     
@@ -97,6 +120,7 @@ extension ConverterPanelViewModel: UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("\n Button tag: \(selectedButtonTag)")
         if selectedButtonTag == 0 {
             leadingCurrencyModel = UserManager.shared.currencyList[row]
             

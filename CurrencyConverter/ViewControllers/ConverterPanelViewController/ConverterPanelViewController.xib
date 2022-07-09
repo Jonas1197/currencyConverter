@@ -25,10 +25,10 @@
                 <outlet property="currencyLastUpdatedLabel" destination="E4u-5L-hoA" id="TAc-Jh-xZD"/>
                 <outlet property="findConversionStoresButton" destination="aKU-nL-plg" id="smi-xh-sk0"/>
                 <outlet property="leadingButton" destination="eg9-xZ-NIW" id="dvt-CR-QT4"/>
-                <outlet property="lowerTextField" destination="9Ph-ci-LHL" id="SbE-BT-gH1"/>
+                <outlet property="leadingTextField" destination="5Ot-0c-OXc" id="ee6-MZ-yww"/>
                 <outlet property="titleLabel" destination="VNR-3W-5SL" id="dKk-Vp-gfu"/>
                 <outlet property="trailingButton" destination="fWf-5F-8aW" id="jgp-0x-oKW"/>
-                <outlet property="upperTextField" destination="5Ot-0c-OXc" id="ee6-MZ-yww"/>
+                <outlet property="trailingTextField" destination="9Ph-ci-LHL" id="SbE-BT-gH1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,7 +50,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="🇪🇺 Euros €">
+                    <state key="normal" title="USD">
                         <color key="titleColor" name="deepBlue"/>
                     </state>
                     <connections>
@@ -65,7 +65,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="🇪🇺 Euros €">
+                    <state key="normal" title="Euro">
                         <color key="titleColor" name="deepBlue"/>
                     </state>
                     <connections>
@@ -81,6 +81,9 @@
                     <color key="textColor" name="titleLabel"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <connections>
+                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="1G4-5U-NgS"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-0c-OXc">
                     <rect key="frame" x="22" y="228" width="159" height="45"/>
@@ -91,6 +94,9 @@
                     <color key="textColor" name="titleLabel"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <connections>
+                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="khk-8s-fPI"/>
+                    </connections>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.left.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-6j-lag">
                     <rect key="frame" x="197" y="167.5" width="20" height="32"/>

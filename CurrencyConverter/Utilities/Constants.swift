@@ -43,6 +43,7 @@ enum Constants {
     enum UserDefaultsKeys {
         static let lastUpdatedTimestamp = "lastUpdatedTimestamp"
         static let currencyData         = "currencyData"
+        static let conversionRatesData  = "conversionRatesData"
     }
     
     //MARK: - Text

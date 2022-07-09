@@ -14,11 +14,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBOutlet weak var trailingButton:             UIButton!
     @IBOutlet weak var leadingButton:              UIButton!
     @IBOutlet weak var arrowsImageView:            UIImageView!
-    @IBOutlet weak var upperTextField:             UITextField!
-    @IBOutlet weak var lowerTextField:             UITextField!
+    @IBOutlet weak var leadingTextField:           UITextField!
+    @IBOutlet weak var trailingTextField:          UITextField!
     @IBOutlet weak var findConversionStoresButton: UIButton!
     @IBOutlet weak var currencyLastUpdatedLabel:   UILabel!
     
+    private var valueRetrieved = false
     private var textFieldContainer: UITextField!
     private var currencyPicker:     UIPickerView!
     
@@ -30,7 +31,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        _ = [trailingButton, leadingButton, upperTextField, lowerTextField, findConversionStoresButton].map { $0!.rounded($0!.frame.height / 4)}
+        _ = [trailingButton, leadingButton, leadingTextField, trailingTextField, findConversionStoresButton].map { $0!.rounded($0!.frame.height / 4)}
     }
     
     //MARK: - SetUp
@@ -42,6 +43,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         
         configureCurrencyPicker()
         viewModel.updateCurrencyRatesDate()
+        
     }
     
     override func subscribeToViewModel(_ viewModel: ConverterPanelViewModel) {
@@ -65,6 +67,30 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             guard let dateString = dateString else { return }
             configureCurrencyLastUpdatedLabel(dateString: dateString)
         }
+        
+        //MARK: Trailing text field update
+        subscribe(to: \.$trailingTextFieldText) { [unowned self] text in
+            guard let text = text else { return }
+            updateTextField(leading: false, text: text)
+        }
+        
+        //MARK: Leading text field update
+        subscribe(to: \.$leadingTextFieldText) { [unowned self] text in
+            guard let text = text else { return }
+            updateTextField(leading: true, text: text)
+        }
+    }
+    
+    private func updateTextField(leading: Bool, text: String) {
+        valueRetrieved = true
+        
+        if leading {
+            leadingTextField.text = text
+        } else {
+            trailingTextField.text = text
+        }
+        
+        valueRetrieved = false
     }
     
     private func configureCurrencyPicker() {
@@ -105,6 +131,24 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             viewModel.move(to: .tip)
         }
     }
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if !valueRetrieved {
+            print("\nSAender tag: \(sender.tag)")
+            if let text = sender.text,
+               text != "" {
+                viewModel.convert(valueFromTextField: sender)
+            } else {
+                if sender.tag == 0 {
+                    trailingTextField.text = ""
+                } else {
+                    leadingTextField.text = ""
+                }
+            }
+           
+        }
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

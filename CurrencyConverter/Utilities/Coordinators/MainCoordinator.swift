@@ -21,7 +21,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     //MARK: - Lifecycle
     init(windowScene: UIWindowScene) {
         self.window = UIWindow(windowScene: windowScene)
-    
+        
         
         if !UserManager.shared.didSeeOnboarding {
             let coordinator      = OnboardingCoordinator(output: nil)
@@ -49,18 +49,10 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     private func fetchCurrencyData() {
         let lastUpdatedTimestamp = UserManager.shared.currencyUpdatedTimestamp
         if !lastUpdatedTimestamp.isEmpty,
-            let timeInterval = TimeInterval(lastUpdatedTimestamp),
+           let timeInterval = TimeInterval(lastUpdatedTimestamp),
            timeInterval - Date().timeIntervalSince1970 < (24 * 60 * 60) {
             print("\n~~> Currency data not older than one day.")
-            let data = UserManager.shared.currencyListData
-            if data.count != Data().count {
-                do {
-                    let decodedData = try JSONDecoder().decode([CurrencyModel].self, from: data)
-                    UserManager.shared.currencyList = decodedData
-                } catch {
-                    print("\n~~> Couldn't decode parsed data: \(error.localizedDescription)")
-                }
-            }
+            decodeSavedCurrencyData()
         } else {
             print("\n~~> Updating currency data.")
             updateCurrencyData()
@@ -70,18 +62,40 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     
     private func updateCurrencyData() {
         Task {
-            guard let parsedData = await NetworkManager.shared.fetchWorldCurrencies() else { return }
+            guard let parsedCurrenciesData      = await NetworkManager.shared.fetchWorldCurrencies(),
+                  let parsedConversionRatesData = await NetworkManager.shared.updateConversionRates() else { return }
             
             do {
-                let data = try JSONEncoder().encode(parsedData)
-                UserManager.shared.currencyList     = parsedData
-                UserManager.shared.currencyListData = data
+                let currenciesListData  = try JSONEncoder().encode(parsedCurrenciesData)
+                let conversionRatesData = try JSONEncoder().encode(parsedConversionRatesData)
+                UserManager.shared.currencyList     = parsedCurrenciesData
+                UserManager.shared.currencyListData = currenciesListData
+
+                UserManager.shared.conversionRates     = parsedConversionRatesData
+                UserManager.shared.conversionRatesData = conversionRatesData
                 
                 let timestamp = "\(Date().timeIntervalSince1970)"
                 UserManager.shared.currencyUpdatedTimestamp = timestamp
                 
             } catch {
                 print("\n~~> Couldn't encode parsed data: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func decodeSavedCurrencyData() {
+        let currenciesData = UserManager.shared.currencyListData
+        let conversionRatesData = UserManager.shared.conversionRatesData
+        
+        if currenciesData.count != Data().count || conversionRatesData.count != Data().count {
+            do {
+                let decodedCurrencyData = try JSONDecoder().decode([CurrencyModel].self, from: currenciesData)
+                let decodedConversionRatesData = try JSONDecoder().decode(ConversionModel.self, from: conversionRatesData)
+                
+                UserManager.shared.conversionRates = decodedConversionRatesData
+                UserManager.shared.currencyList    = decodedCurrencyData
+            } catch {
+                print("\n~~> Couldn't decode parsed data: \(error.localizedDescription)")
             }
         }
     }
