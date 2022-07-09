@@ -19,8 +19,9 @@ final class ConverterPanelViewModel: NSObject {
     var position: FloatingPanelState = .half
     var selectedButtonTag = 0
     
-    @Published var leadingButtonTitle:  String?
-    @Published var trailingButtonTitle: String?
+    @Published var leadingButtonTitle:    String?
+    @Published var trailingButtonTitle:   String?
+    @Published var lastUpdatedDateString: String?
     
     
     //MARK: - Lifecycle
@@ -31,12 +32,24 @@ final class ConverterPanelViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     func move(to position: FloatingPanelState, animated: Bool = true, handler: (() -> Void)? = nil) {
         floatingPanel?.move(to: position, animated: animated, completion: handler)
         self.position = position
+    }
+    
+    func updateCurrencyRatesDate() {
+        let timestamp = UserManager.shared.currencyUpdatedTimestamp
+        if !timestamp.isEmpty,
+           let timeInterval = TimeInterval(timestamp) {
+            let dateFormatter        = DateFormatter()
+            dateFormatter.timeStyle  = .none
+            dateFormatter.dateStyle  = .medium
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let dateString = dateFormatter.string(from: .init(timeIntervalSince1970: timeInterval))
+            lastUpdatedDateString = dateString
+        }
     }
     
     

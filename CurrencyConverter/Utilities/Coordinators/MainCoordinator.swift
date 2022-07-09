@@ -65,7 +65,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
             
             do {
                 let data = try JSONEncoder().encode(parsedData)
-                UserManager.shared.currencyList = parsedData
+                UserManager.shared.currencyList     = parsedData
                 UserManager.shared.currencyListData = data
                 
                 let timestamp = "\(Date().timeIntervalSince1970)"

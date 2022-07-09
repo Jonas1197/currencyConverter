@@ -45,5 +45,10 @@ enum Constants {
         static let currencyData         = "currencyData"
     }
     
+    //MARK: - Text
+    enum Text {
+        static let ratesLastUpdatedLabel = "Currency rates last updated: "
+    }
+    
     
 }

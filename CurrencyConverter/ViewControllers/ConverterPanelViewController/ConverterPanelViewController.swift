@@ -17,6 +17,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBOutlet weak var upperTextField:             UITextField!
     @IBOutlet weak var lowerTextField:             UITextField!
     @IBOutlet weak var findConversionStoresButton: UIButton!
+    @IBOutlet weak var currencyLastUpdatedLabel:   UILabel!
     
     private var textFieldContainer: UITextField!
     private var currencyPicker:     UIPickerView!
@@ -40,6 +41,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
         
         configureCurrencyPicker()
+        viewModel.updateCurrencyRatesDate()
     }
     
     override func subscribeToViewModel(_ viewModel: ConverterPanelViewModel) {
@@ -55,6 +57,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             guard let title = title else { return }
             trailingButton.setTitle(title, for: .normal)
         }
+        
+        //MARK: Last updated date string
+        subscribe(to: \.$lastUpdatedDateString) { [unowned self] dateString in
+            guard let dateString = dateString else { return }
+            configureCurrencyLastUpdatedLabel(dateString: dateString)
+        }
     }
     
     
@@ -65,6 +73,10 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         currencyPicker.dataSource = viewModel
         view.addSubview(textFieldContainer)
         textFieldContainer.inputView = currencyPicker
+    }
+    
+    private func configureCurrencyLastUpdatedLabel(dateString: String) {
+        currencyLastUpdatedLabel.text = "\(Constants.Text.ratesLastUpdatedLabel)\(dateString)"
     }
     
     
