@@ -52,6 +52,15 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
             let timeInterval = TimeInterval(lastUpdatedTimestamp),
            timeInterval - Date().timeIntervalSince1970 < (24 * 60 * 60) {
             print("\n~~> Currency data not older than one day.")
+            let data = UserManager.shared.currencyListData
+            if data.count != Data().count {
+                do {
+                    let decodedData = try JSONDecoder().decode([CurrencyModel].self, from: data)
+                    UserManager.shared.currencyList = decodedData
+                } catch {
+                    print("\n~~> Couldn't decode parsed data: \(error.localizedDescription)")
+                }
+            }
         } else {
             print("\n~~> Updating currency data.")
             updateCurrencyData()

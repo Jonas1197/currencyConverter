@@ -46,15 +46,17 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     override func subscribeToViewModel(_ viewModel: ConverterPanelViewModel) {
         
-        //MARK: Left button title
-        subscribe(to: \.$leadingButtonTitle) { [unowned self] title in
-            guard let title = title else { return }
+        //MARK: Leading button
+        subscribe(to: \.$leadingCurrencyModel) { [unowned self] model in
+            guard let model = model,
+                  let title = model.Currency else { return }
             leadingButton.setTitle(title, for: .normal)
         }
         
-        //MARK: Right button title
-        subscribe(to: \.$trailingButtonTitle) { [unowned self] title in
-            guard let title = title else { return }
+        //MARK: Trailing button
+        subscribe(to: \.$trailingCurrencyModel) { [unowned self] model in
+            guard let model = model,
+                  let title = model.Currency else { return }
             trailingButton.setTitle(title, for: .normal)
         }
         
@@ -64,7 +66,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             configureCurrencyLastUpdatedLabel(dateString: dateString)
         }
     }
-    
     
     private func configureCurrencyPicker() {
         textFieldContainer        = .init(frame: .zero)

@@ -72,7 +72,7 @@
                         <action selector="lowerButtonTapped:" destination="-1" eventType="touchUpInside" id="XNs-LK-dXB"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
+                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
                     <rect key="frame" x="233" y="228" width="159" height="45"/>
                     <color key="backgroundColor" name="textFieldBackground"/>
                     <constraints>

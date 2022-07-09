@@ -19,9 +19,12 @@ final class ConverterPanelViewModel: NSObject {
     var position: FloatingPanelState = .half
     var selectedButtonTag = 0
     
-    @Published var leadingButtonTitle:    String?
-    @Published var trailingButtonTitle:   String?
+    @Published var leadingCurrencyModel:  CurrencyModel?
+    @Published var trailingCurrencyModel: CurrencyModel?
+    
     @Published var lastUpdatedDateString: String?
+    @Published var leadingTextFieldText:  String?
+    @Published var trailingTextFieldText: String?
     
     
     //MARK: - Lifecycle
@@ -49,6 +52,20 @@ final class ConverterPanelViewModel: NSObject {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             let dateString = dateFormatter.string(from: .init(timeIntervalSince1970: timeInterval))
             lastUpdatedDateString = dateString
+        }
+    }
+    
+    func convert(valueFromTextField textField: UITextField) {
+        if textField.tag == 0 {
+            
+            // get leading currency
+            // convert leading to trailing
+            // update trailing textField
+            
+        } else if textField.tag == 1 {
+            // get trailing currency
+            // convert trailing to leading
+            // update leading textField
         }
     }
     
@@ -80,12 +97,11 @@ extension ConverterPanelViewModel: UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let title = UserManager.shared.currencyList[row].Currency ?? "Not avaialble"
         if selectedButtonTag == 0 {
-            leadingButtonTitle = title
+            leadingCurrencyModel = UserManager.shared.currencyList[row]
             
         } else if selectedButtonTag == 1 {
-            trailingButtonTitle = title
+            trailingCurrencyModel = UserManager.shared.currencyList[row]
         }
     }
 }
