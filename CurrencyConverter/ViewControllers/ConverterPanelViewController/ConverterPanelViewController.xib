@@ -54,7 +54,7 @@
                         <color key="titleColor" name="deepBlue"/>
                     </state>
                     <connections>
-                        <action selector="upperButtonTapped:" destination="-1" eventType="touchUpInside" id="51e-mQ-FXI"/>
+                        <action selector="trailingButtonTapped:" destination="-1" eventType="touchUpInside" id="JXW-r3-bu1"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg9-xZ-NIW">
@@ -69,7 +69,7 @@
                         <color key="titleColor" name="deepBlue"/>
                     </state>
                     <connections>
-                        <action selector="lowerButtonTapped:" destination="-1" eventType="touchUpInside" id="XNs-LK-dXB"/>
+                        <action selector="leadingButtonTapped:" destination="-1" eventType="touchUpInside" id="asc-Re-SRU"/>
                     </connections>
                 </button>
                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">

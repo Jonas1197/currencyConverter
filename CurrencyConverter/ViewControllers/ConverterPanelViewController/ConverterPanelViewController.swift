@@ -106,21 +106,26 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         currencyLastUpdatedLabel.text = "\(Constants.Text.ratesLastUpdatedLabel)\(dateString)"
     }
     
+    private func emptyTextFields() {
+        _ = [leadingTextField, trailingTextField].map { $0?.setText("") }
+    }
     
     //MARK: - Actions
-    @IBAction func upperButtonTapped(_ sender: UIButton) {
+    @IBAction func trailingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
             textFieldContainer.becomeFirstResponder()
+            emptyTextFields()
         }
     }
     
-    @IBAction func lowerButtonTapped(_ sender: UIButton) {
+    @IBAction func leadingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
             textFieldContainer.becomeFirstResponder()
+            emptyTextFields()
         }
     }
     
@@ -134,7 +139,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         if !valueRetrieved {
-            print("\nSAender tag: \(sender.tag)")
             if let text = sender.text,
                text != "" {
                 viewModel.convert(valueFromTextField: sender)

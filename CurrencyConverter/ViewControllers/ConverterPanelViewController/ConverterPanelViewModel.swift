@@ -72,22 +72,17 @@ final class ConverterPanelViewModel: NSObject {
            let leadingModel     = leadingCurrencyModel,
            let trailingModel    = trailingCurrencyModel,
            let leadingCurrency  = leadingModel.AlphabeticCode,
-           let trailingCurrency = trailingModel.AlphabeticCode {
+           let trailingCurrency = trailingModel.AlphabeticCode,
+           let devider          = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == trailingCurrency }),
+           let devisor          = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == leadingCurrency }) {
             
             if textField.tag == 0 {
-                if let devider = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == trailingCurrency }),
-                   let devisor  = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == leadingCurrency }) {
-                    let convertedValue = Double(round(1000 * (value * (devider.value / devisor.value))) / 1000)
-                    trailingTextFieldText = "\(convertedValue)"
-                }
-            
-        
+                let convertedValue = Double(round(100 * (value * (devider.value / devisor.value))) / 100)
+                trailingTextFieldText = "\(convertedValue)"
                 
-            } else if textField.tag == 1 {
-                // convert trailing to leading
-                // update leading textField
-                
-//                print("\n~~> Converting \(value) \(trailingCurrency) to \(leadingCurrency).")
+            } else {
+                let convertedValue = Double(round(100 * (value * (devisor.value / devider.value))) / 100)
+                leadingTextFieldText = "\(convertedValue)"
             }
         }
     }
