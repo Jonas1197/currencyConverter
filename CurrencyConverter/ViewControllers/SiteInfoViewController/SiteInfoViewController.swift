@@ -33,13 +33,23 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
         nameLabel.text        = viewModel.item?.name ?? "N/A"
         phoneNumberLabel.text = viewModel.item?.phoneNumber ?? "N/A"
         addressLabel.text     = viewModel.item?.placemark.title ?? "N/A"
-        urlLabel.text         = viewModel.item?.url?.absoluteString ?? "N/A"
+        urlLabel
+            .setText(viewModel.item?.url?.absoluteString ?? "N/A")
+            .targeted(self, action: #selector(urlLabelTapped(_:)))
     }
     
     
     @IBAction func goButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation {
             //
+        }
+    }
+    
+    @objc private func urlLabelTapped(_ sender: UITapGestureRecognizer) {
+        self.urlLabel.actionWithSpringAnimation {
+            DispatchQueue.main.async {
+                self.viewModel.open(urlStr: self.urlLabel.text)
+            }
         }
     }
 }

@@ -20,4 +20,11 @@ final class SiteInfoViewModel: NSObject {
         self.floatingPanel = floatingPanel
         self.item          = item
     }
+    
+    func open(urlStr: String?) {
+        if let str = urlStr,
+           let url = URL(string: str) {
+            UIApplication.shared.open(url)
+        }
+    }
 }

@@ -52,7 +52,7 @@
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="url" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFJ-dm-mVu">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="url" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFJ-dm-mVu">
                     <rect key="frame" x="22" y="234" width="370" height="23.5"/>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="16"/>
                     <color key="textColor" name="deepBlue"/>
