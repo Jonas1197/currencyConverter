@@ -31,7 +31,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        _ = [trailingButton, leadingButton, leadingTextField, trailingTextField, findConversionStoresButton].map { $0!.rounded($0!.frame.height / 4)}
+        _ = [trailingButton, leadingButton, leadingTextField, trailingTextField, findConversionStoresButton].map { $0!.rounded($0!.frame.height / 4) }
     }
     
     //MARK: - SetUp
@@ -40,6 +40,9 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             $0?.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.1)
                 .attributedPlaceholder("Tap to enter", attributes: [.font : Constants.Font.regular, .foregroundColor : UIColor.white as Any])
         }
+        
+        findConversionStoresButton
+            .shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
         
         configureCurrencyPicker()
         viewModel.updateCurrencyRatesDate()
@@ -149,12 +152,15 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                     leadingTextField.text = ""
                 }
             }
-           
         }
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+        
+        if viewModel.floatingPanel?.state == .full {
+            viewModel.floatingPanel?.move(to: .half, animated: true)
+        }
     }
 }

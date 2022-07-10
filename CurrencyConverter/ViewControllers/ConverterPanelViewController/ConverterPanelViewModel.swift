@@ -12,6 +12,7 @@ protocol ConverterPanelDelegate: AnyObject {
     func findConversionStores()
 }
 
+
 final class ConverterPanelViewModel: NSObject {
     weak var delegate:      ConverterPanelDelegate?
     weak var floatingPanel: FloatingPanelController?
@@ -77,11 +78,11 @@ final class ConverterPanelViewModel: NSObject {
            let devisor          = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == leadingCurrency }) {
             
             if textField.tag == 0 {
-                let convertedValue = Double(round(100 * (value * (devider.value / devisor.value))) / 100)
+                let convertedValue    = Double(round(100 * (value * (devider.value / devisor.value))) / 100)
                 trailingTextFieldText = "\(convertedValue)"
                 
             } else {
-                let convertedValue = Double(round(100 * (value * (devisor.value / devider.value))) / 100)
+                let convertedValue   = Double(round(100 * (value * (devisor.value / devider.value))) / 100)
                 leadingTextFieldText = "\(convertedValue)"
             }
         }

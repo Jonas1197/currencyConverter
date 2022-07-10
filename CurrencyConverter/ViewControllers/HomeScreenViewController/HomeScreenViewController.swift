@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import FloatingPanel
 import NotSwiftUI
+import EKSwiftSuite
 
 final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
@@ -36,7 +37,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         mapView.delegate = viewModel
         LocationManager.shared.delegate = viewModel
         LocationManager.shared.requestLocationAuthorization()
-        
+        pageControlSegment.isUserInteractionEnabled = false
         configureFloatingPanel()
         configureLocateMeButton()
         configurePageControlSegment()
@@ -47,15 +48,15 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     private func configureFloatingPanel() {
         floatingPanel = .init(delegate: viewModel)
         
-        let viewModel = ConverterPanelViewModel(floatingPanel: floatingPanel)
+        let viewModel      = ConverterPanelViewModel(floatingPanel: floatingPanel)
         viewModel.delegate = self.viewModel
-        let vc = ConverterPanelViewController(viewModel: viewModel)
+        let vc             = ConverterPanelViewController(viewModel: viewModel)
     
         floatingPanel.set(contentViewController: vc)
         floatingPanel.isRemovalInteractionEnabled = false
         
         let appearence = SurfaceAppearance()
-        let shadow = SurfaceAppearance.Shadow()
+        let shadow     = SurfaceAppearance.Shadow()
         shadow.offset  = .init(width: 0, height: -6)
         shadow.radius  = 12
         shadow.color   = .black
@@ -101,14 +102,27 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
             if !results.isEmpty {
                 
                 let annotations: [MKAnnotation] = results.compactMap {
-                    let coordinate = $0.placemark.coordinate
-                    let annotation = MKPointAnnotation()
+                    let coordinate        = $0.placemark.coordinate
+                    let annotation        = MKPointAnnotation()
                     annotation.coordinate = coordinate
                     return annotation
                 }
                 
                 self.mapView.addAnnotations(annotations)
-                
+            }
+        }
+        
+        //MARK: Selected map item
+        subscribe(to: \.$selectedMapItem) { [unowned self] item in
+            guard let item = item else { return }
+            pageControlSegment.selectedSegmentIndex = 1
+            pageControlSegment.isUserInteractionEnabled = true
+            floatingPanel.move(to: .hidden, animated: true)
+            let vc = SiteInfoViewController(viewModel: .init(floatingPanel: floatingPanel, item: item))
+            floatingPanel.set(contentViewController: vc)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.floatingPanel.move(to: .half, animated: true)
             }
         }
     }
@@ -119,6 +133,23 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
             viewModel.zoomOnUserLocation()
         }
     }
+    
+    @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            pageControlSegment.isUserInteractionEnabled = false
+            floatingPanel.move(to: .hidden, animated: true)
+            let viewModel      = ConverterPanelViewModel(floatingPanel: floatingPanel)
+            viewModel.delegate = self.viewModel
+            let vc             = ConverterPanelViewController(viewModel: viewModel)
+            floatingPanel.set(contentViewController: vc)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.floatingPanel.move(to: .half, animated: true)
+            }
+            
+        }
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

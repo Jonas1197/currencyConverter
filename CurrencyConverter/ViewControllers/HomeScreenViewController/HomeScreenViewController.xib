@@ -28,9 +28,12 @@
                     <rect key="frame" x="60" y="66" width="294" height="32"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <segments>
-                        <segment title="Map"/>
-                        <segment title="Quick glance"/>
+                        <segment title="Converter"/>
+                        <segment title="Info"/>
                     </segments>
+                    <connections>
+                        <action selector="segmentDidChange:" destination="-1" eventType="valueChanged" id="Srq-Ad-lwy"/>
+                    </connections>
                 </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn">
                     <rect key="frame" x="22" y="722" width="40" height="40"/>

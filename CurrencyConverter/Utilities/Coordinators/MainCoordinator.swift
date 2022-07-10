@@ -50,14 +50,13 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
         let lastUpdatedTimestamp = UserManager.shared.currencyUpdatedTimestamp
         if !lastUpdatedTimestamp.isEmpty,
            let timeInterval = TimeInterval(lastUpdatedTimestamp),
-           timeInterval - Date().timeIntervalSince1970 < (24 * 60 * 60) {
+           Date().timeIntervalSince1970 - timeInterval < (24 * 60 * 60) {
             print("\n~~> Currency data not older than one day.")
             decodeSavedCurrencyData()
         } else {
             print("\n~~> Updating currency data.")
             updateCurrencyData()
         }
-        
     }
     
     private func updateCurrencyData() {

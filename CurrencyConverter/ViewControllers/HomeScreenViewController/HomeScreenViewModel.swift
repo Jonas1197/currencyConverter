@@ -19,9 +19,10 @@ protocol HomeScreenOutput: AnyObject {
 final class HomeScreenViewModel: NSObject {
     weak var output: HomeScreenOutput?
     
-    @Published var isKeyboardShowing: Bool?
-    @Published var currentUserRegion: MKCoordinateRegion?
-    @Published var searchResults:     [MKMapItem] = []
+    @Published var isKeyboardShowing:   Bool?
+    @Published var currentUserRegion:   MKCoordinateRegion?
+    @Published var searchResults:       [MKMapItem] = []
+    @Published var selectedMapItem:     MKMapItem?
     
     init(output: HomeScreenOutput?) {
         super.init()
@@ -35,12 +36,6 @@ final class HomeScreenViewModel: NSObject {
         }
         
         currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-    }
-    
-    func searchCurrencyConversionStores() {
-        Task {
-            
-        }
     }
     
     func listenToKeyboardEvents() {
@@ -99,13 +94,10 @@ extension HomeScreenViewModel: ConverterPanelDelegate {
 
 //MARK: - MKMapView
 extension HomeScreenViewModel: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is MKPointAnnotation else { return nil }
-        return mapView.dequeueReusableAnnotationView(withIdentifier: Constants.Identifier.annotationId)
-    }
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation else { return }
-        print("\n~~> Annotation: \(annotation.coordinate)")
+        if let selectedResult = searchResults.first(where: { $0.placemark.coordinate.latitude == annotation.coordinate.latitude && $0.placemark.coordinate.longitude == annotation.coordinate.longitude }) {
+            selectedMapItem = selectedResult
+        }
     }
 }
