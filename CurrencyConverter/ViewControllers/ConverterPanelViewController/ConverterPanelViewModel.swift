@@ -26,6 +26,7 @@ final class ConverterPanelViewModel: NSObject {
     @Published var leadingTextFieldText:  String?
     @Published var trailingTextFieldText: String?
     @Published var keyboardAppeared:      Bool?
+    @Published var floatingPanelState:    FloatingPanelState?
     
     
     //MARK: - Lifecycle
@@ -55,7 +56,7 @@ final class ConverterPanelViewModel: NSObject {
     func updateCurrencyRatesDate() {
         let timestamp = UserManager.shared.currencyUpdatedTimestamp
         if !timestamp.isEmpty,
-           let timeInterval = TimeInterval(timestamp) {
+           let timeInterval          = TimeInterval(timestamp) {
             let dateFormatter        = DateFormatter()
             dateFormatter.timeStyle  = .none
             dateFormatter.dateStyle  = .medium
@@ -66,7 +67,6 @@ final class ConverterPanelViewModel: NSObject {
     }
     
     func convert(valueFromTextField textField: UITextField) {
-        
         if let text             = textField.text,
            let value            = Double(text),
            let leadingModel     = leadingCurrencyModel,

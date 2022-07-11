@@ -9,18 +9,27 @@ import UIKit
 import MapKit
 import FloatingPanel
 
+protocol SiteInfoDelegate: AnyObject {
+    func userTappedBackButton()
+}
+
 final class SiteInfoViewModel: NSObject {
-    
+    weak var delegate:      SiteInfoDelegate?
     weak var floatingPanel: FloatingPanelController?
     weak var item:          MKMapItem?
     
-    @Published var navigationAlert: UIAlertController?
+    @Published var navigationAlert:    UIAlertController?
+    @Published var floatingPanelState: FloatingPanelState?
     
     //MARK: - Lifecycle
     init(floatingPanel: FloatingPanelController, item: MKMapItem) {
         super.init()
         self.floatingPanel = floatingPanel
         self.item          = item
+    }
+    
+    func handleBackButtonTapped() {
+        delegate?.userTappedBackButton()
     }
     
     func open(urlStr: String?) {
@@ -36,12 +45,12 @@ final class SiteInfoViewModel: NSObject {
         let latitude   = Double( item.placemark.coordinate.latitude)
         let longitude  = Double( item.placemark.coordinate.longitude)
  
-        let appleURL = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
+        let appleURL  = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
         let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
-        let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+        let wazeURL   = "waze://?ll=\(latitude),\(longitude)&navigate=false"
         
-        let googleItem = ("Google Map", URL(string:googleURL)!)
-        let wazeItem = ("Waze", URL(string:wazeURL)!)
+        let googleItem              = ("Google Map", URL(string:googleURL)!)
+        let wazeItem                = ("Waze", URL(string:wazeURL)!)
         var installedNavigationApps = [("Apple Maps", URL(string:appleURL)!)]
         
         if UIApplication.shared.canOpenURL(googleItem.1) {
@@ -55,11 +64,14 @@ final class SiteInfoViewModel: NSObject {
         let alert = UIAlertController(title: "Selection", message: "Select Navigation App", preferredStyle: .actionSheet)
         
         for app in installedNavigationApps {
+            
             let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
                 UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
             })
+            
             alert.addAction(button)
         }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancel)
         navigationAlert = alert

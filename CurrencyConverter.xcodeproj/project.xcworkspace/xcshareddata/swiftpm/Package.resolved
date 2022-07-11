@@ -1,43 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "EKSwiftSuite",
-        "repositoryURL": "https://github.com/eilonkr/EKSwiftSuite.git",
-        "state": {
-          "branch": "main",
-          "revision": "b50cf2e080bb3100361837688d4503cdecb91da0",
-          "version": null
-        }
-      },
-      {
-        "package": "FloatingPanel",
-        "repositoryURL": "https://github.com/scenee/FloatingPanel.git",
-        "state": {
-          "branch": null,
-          "revision": "639e4221e83a92363ae2c0b30abca44b83854ac9",
-          "version": "2.5.3"
-        }
-      },
-      {
-        "package": "NotSwiftUI",
-        "repositoryURL": "https://github.com/Jonas1197/notSwiftUI",
-        "state": {
-          "branch": "main",
-          "revision": "ad60d768476899f7f946614e21166dedd7bc3701",
-          "version": null
-        }
-      },
-      {
-        "package": "UniversalHTTP",
-        "repositoryURL": "https://github.com/Jonas1197/UniversalHTTP.git",
-        "state": {
-          "branch": "main",
-          "revision": "5a3a74a323656f73ff59b4468463076aefebcd7b",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "ekswiftsuite",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/eilonkr/EKSwiftSuite.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b50cf2e080bb3100361837688d4503cdecb91da0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "floatingpanel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scenee/FloatingPanel.git",
+      "state" : {
+        "revision" : "639e4221e83a92363ae2c0b30abca44b83854ac9",
+        "version" : "2.5.3"
+      }
+    },
+    {
+      "identity" : "notswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Jonas1197/notSwiftUI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ad60d768476899f7f946614e21166dedd7bc3701"
+      }
+    },
+    {
+      "identity" : "universalhttp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Jonas1197/UniversalHTTP.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c19163955111978ccf966e01969ba6f1be96d7cc"
+      }
+    }
+  ],
+  "version" : 2
 }

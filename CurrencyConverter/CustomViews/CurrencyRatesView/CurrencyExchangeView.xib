@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Heebo-Bold.ttf">
+            <string>Heebo-Bold</string>
+        </array>
+        <array key="Heebo-Medium.ttf">
+            <string>Heebo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CurrencyExchangeView" customModule="CurrencyConverter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="364"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rtM-LC-yzw">
+                    <rect key="frame" x="22" y="44" width="370" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency exchange rates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNd-9a-JSY">
+                            <rect key="frame" x="61.5" y="0.0" width="247" height="32.5"/>
+                            <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                            <color key="textColor" name="titleLabel"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="According to 1 US Dollar " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkg-Th-2Yb">
+                            <rect key="frame" x="95.5" y="40.5" width="179" height="23.5"/>
+                            <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="16"/>
+                            <color key="textColor" name="titleLabel"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rtM-LC-yzw" secondAttribute="trailing" constant="22" id="1NQ-di-j6W"/>
+                <constraint firstItem="rtM-LC-yzw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="3yc-Ur-zQ2"/>
+                <constraint firstItem="rtM-LC-yzw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="yOt-4X-dNr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tileLabelAndSubtitleVstack" destination="rtM-LC-yzw" id="aWp-0H-Vbn"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="164.0625"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="titleLabel">
+            <color red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

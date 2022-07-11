@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D28CA4E287C14D4009BB63E /* CurrencyExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */; };
+		3D28CA50287C14DC009BB63E /* CurrencyExchangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */; };
 		75D898A528709A6E00433661 /* UniversalHTTP in Frameworks */ = {isa = PBXBuildFile; productRef = 75D898A428709A6E00433661 /* UniversalHTTP */; };
 		75D898A8287433B200433661 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 75D898A7287433B200433661 /* FloatingPanel */; };
 		75D898AA2874346F00433661 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898A92874346F00433661 /* LocationManager.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeView.swift; sourceTree = "<group>"; };
+		3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyExchangeView.xib; sourceTree = "<group>"; };
 		75D898A92874346F00433661 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		75D898AC2874476000433661 /* ConverterPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelViewController.swift; sourceTree = "<group>"; };
 		75D898AD2874476000433661 /* ConverterPanelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConverterPanelViewController.xib; sourceTree = "<group>"; };
@@ -95,6 +99,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D28CA4B287C14AB009BB63E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D28CA4C287C14B5009BB63E /* CurrencyRatesView */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		3D28CA4C287C14B5009BB63E /* CurrencyRatesView */ = {
+			isa = PBXGroup;
+			children = (
+				3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */,
+				3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */,
+			);
+			path = CurrencyRatesView;
+			sourceTree = "<group>";
+		};
 		75D898AB2874473900433661 /* ConverterPanelViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +182,7 @@
 		75E8E1E2286EE454008EE3AA /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
+				3D28CA4B287C14AB009BB63E /* CustomViews */,
 				75E8E200286EE6E6008EE3AA /* ViewControllers */,
 				75E8E1FB286EE60D008EE3AA /* Utilities */,
 				75E8E1FA286EE607008EE3AA /* Lifecycle */,
@@ -314,6 +336,7 @@
 				75D898D8287ADD5B00433661 /* SiteInfoViewController.xib in Resources */,
 				75D898B8287466CD00433661 /* Heebo-Bold.ttf in Resources */,
 				75D898B6287466CD00433661 /* Heebo-Medium.ttf in Resources */,
+				3D28CA50287C14DC009BB63E /* CurrencyExchangeView.xib in Resources */,
 				75D898AF2874476000433661 /* ConverterPanelViewController.xib in Resources */,
 				75E8E213286EE90D008EE3AA /* OnboardingViewController.xib in Resources */,
 				75D898B7287466CD00433661 /* Heebo-Regular.ttf in Resources */,
@@ -328,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75E8E23428705175008EE3AA /* Subscribable.swift in Sources */,
+				3D28CA4E287C14D4009BB63E /* CurrencyExchangeView.swift in Sources */,
 				75D898D7287ADD5B00433661 /* SiteInfoViewController.swift in Sources */,
 				75D898BA28781CB900433661 /* Extensions.swift in Sources */,
 				75E8E1E8286EE454008EE3AA /* ViewController.swift in Sources */,
@@ -489,7 +513,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 678L74QEPX;
+				DEVELOPMENT_TEAM = HY3ZV4VA8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Converty;
@@ -517,7 +541,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 678L74QEPX;
+				DEVELOPMENT_TEAM = HY3ZV4VA8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Converty;

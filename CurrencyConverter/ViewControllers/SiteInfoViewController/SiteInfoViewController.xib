@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,6 +23,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SiteInfoViewController" customModule="CurrencyConverter" customModuleProvider="target">
             <connections>
                 <outlet property="addressLabel" destination="SbJ-3o-Ow2" id="kA5-mV-wX8"/>
+                <outlet property="backButton" destination="dhK-Gt-ZkG" id="m0y-DE-gGd"/>
                 <outlet property="goButton" destination="P9h-hZ-hmU" id="0Ho-mx-yjq"/>
                 <outlet property="nameLabel" destination="3A4-cj-VYH" id="olg-bt-Vfv"/>
                 <outlet property="phoneNumberLabel" destination="SNG-Uw-WYn" id="0yJ-gd-DHw"/>
@@ -74,6 +75,21 @@
                         <action selector="goButtonTapped:" destination="-1" eventType="touchUpInside" id="r6R-uU-33D"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhK-Gt-ZkG">
+                    <rect key="frame" x="22" y="364" width="370" height="45"/>
+                    <color key="backgroundColor" name="background"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="sM2-As-gmO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="24"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Back">
+                        <color key="titleColor" name="titleLabel"/>
+                    </state>
+                    <connections>
+                        <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="ZTw-Kt-O8u"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -86,12 +102,15 @@
                 <constraint firstItem="SbJ-3o-Ow2" firstAttribute="top" secondItem="3A4-cj-VYH" secondAttribute="bottom" constant="32" id="MRK-YN-Nvx"/>
                 <constraint firstItem="P9h-hZ-hmU" firstAttribute="leading" secondItem="OFJ-dm-mVu" secondAttribute="leading" id="Sxk-jR-h4j"/>
                 <constraint firstItem="OFJ-dm-mVu" firstAttribute="trailing" secondItem="SNG-Uw-WYn" secondAttribute="trailing" id="UyU-tN-Ff0"/>
+                <constraint firstItem="dhK-Gt-ZkG" firstAttribute="top" secondItem="P9h-hZ-hmU" secondAttribute="bottom" constant="22" id="YPv-tk-nqj"/>
                 <constraint firstItem="P9h-hZ-hmU" firstAttribute="top" secondItem="OFJ-dm-mVu" secondAttribute="bottom" constant="52" id="fKn-bT-jdL"/>
                 <constraint firstItem="OFJ-dm-mVu" firstAttribute="leading" secondItem="SNG-Uw-WYn" secondAttribute="leading" id="nP0-aa-axH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SbJ-3o-Ow2" secondAttribute="trailing" constant="22" id="pYc-FP-DSD"/>
+                <constraint firstItem="dhK-Gt-ZkG" firstAttribute="trailing" secondItem="P9h-hZ-hmU" secondAttribute="trailing" id="tfP-do-iN2"/>
                 <constraint firstItem="3A4-cj-VYH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="tj0-u4-jOJ"/>
                 <constraint firstItem="SNG-Uw-WYn" firstAttribute="leading" secondItem="SbJ-3o-Ow2" secondAttribute="leading" id="vjc-Me-MIC"/>
                 <constraint firstItem="SNG-Uw-WYn" firstAttribute="trailing" secondItem="SbJ-3o-Ow2" secondAttribute="trailing" id="wSv-J3-EJg"/>
+                <constraint firstItem="dhK-Gt-ZkG" firstAttribute="leading" secondItem="P9h-hZ-hmU" secondAttribute="leading" id="xq3-1x-Ahc"/>
                 <constraint firstItem="P9h-hZ-hmU" firstAttribute="trailing" secondItem="OFJ-dm-mVu" secondAttribute="trailing" id="y1P-ZG-ApO"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
@@ -99,6 +118,9 @@
     </objects>
     <resources>
         <image name="arrow.triangle.turn.up.right.diamond.fill" catalog="system" width="128" height="122"/>
+        <namedColor name="background">
+            <color red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="deepBlue">
             <color red="0.24300000071525574" green="0.3919999897480011" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

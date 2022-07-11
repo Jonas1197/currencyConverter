@@ -19,7 +19,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBOutlet weak var findConversionStoresButton: UIButton!
     @IBOutlet weak var currencyLastUpdatedLabel:   UILabel!
     
-    @IBOutlet weak var findConversionStoresButtonCenterYConstraint: NSLayoutConstraint!
+    private let currencyExchangeView = CurrencyExchangeView.instantiateFromNib()
     
     private var valueRetrieved = false
     private var textFieldContainer: UITextField!
@@ -49,6 +49,21 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         configureCurrencyPicker()
         viewModel.updateCurrencyRatesDate()
         
+        configureCurrencyExchangeView()
+        
+    }
+    
+    private func configureCurrencyExchangeView() {
+        currencyExchangeView.translatesAutoresizingMaskIntoConstraints = false
+        currencyExchangeView.configure(withModel: .init(valuesToConvert: UserManager.shared.currencyExchangeViewCurrencies))
+        currencyExchangeView.invisible()
+        view.addSubview(currencyExchangeView)
+        NSLayoutConstraint.activate([
+            currencyExchangeView.topAnchor.constraint(equalTo: findConversionStoresButton.bottomAnchor, constant: 42),
+            currencyExchangeView.leadingAnchor.constraint(equalTo: findConversionStoresButton.leadingAnchor),
+            currencyExchangeView.trailingAnchor.constraint(equalTo: findConversionStoresButton.trailingAnchor),
+            currencyExchangeView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -22)
+        ])
     }
     
     override func subscribeToViewModel(_ viewModel: ConverterPanelViewModel) {
@@ -85,6 +100,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             updateTextField(leading: true, text: text)
         }
         
+        //MARK: Keyboard has appeared
         subscribe(to: \.$keyboardAppeared) { [unowned self] appeared in
             guard let appeared = appeared else { return }
             
@@ -92,11 +108,27 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                 UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
                     guard let self = self else { return }
                     self.findConversionStoresButton.translucent(appeared ? 0 : 1)
-                    self.findConversionStoresButtonCenterYConstraint.constant = appeared ? 150 : -60
-                    self.view.layoutIfNeeded()
                 }
             }
-            
+        }
+        
+        //MARK: Floating panel state changed
+        subscribe(to: \.$floatingPanelState) { state in
+            guard let state = state else { return }
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                    if let keyboardAppeared = viewModel.keyboardAppeared {
+                        if !keyboardAppeared && state == .full {
+                            self?.currencyExchangeView.visible()
+                        } else if !keyboardAppeared {
+                            self?.currencyExchangeView.translucent(state == .full ? 1 : 0)
+                        }
+                        
+                    } else {
+                        self?.currencyExchangeView.translucent(state == .full ? 1 : 0)
+                    }
+                }
+            }
         }
     }
     

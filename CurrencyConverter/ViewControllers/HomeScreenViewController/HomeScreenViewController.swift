@@ -15,9 +15,10 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
     @IBOutlet weak var mapView:            MKMapView!
     @IBOutlet weak var locateMeButton:     UIButton!
-    @IBOutlet weak var pageControlSegment: UISegmentedControl!
     
     private var floatingPanel: FloatingPanelController!
+    
+    private var converterPanelViewContrller: ConverterPanelViewController?
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,22 +38,21 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         mapView.delegate = viewModel
         LocationManager.shared.delegate = viewModel
         LocationManager.shared.requestLocationAuthorization()
-        pageControlSegment.isUserInteractionEnabled = false
         configureFloatingPanel()
         configureLocateMeButton()
-        configurePageControlSegment()
         
         mapView.delegate = viewModel
     }
     
     private func configureFloatingPanel() {
         floatingPanel = .init(delegate: viewModel)
+        self.viewModel.floatingPanel = floatingPanel
         
-        let viewModel      = ConverterPanelViewModel(floatingPanel: floatingPanel)
-        viewModel.delegate = self.viewModel
-        let vc             = ConverterPanelViewController(viewModel: viewModel)
+        let viewModel                    = ConverterPanelViewModel(floatingPanel: floatingPanel)
+        viewModel.delegate               = self.viewModel
+        self.converterPanelViewContrller = ConverterPanelViewController(viewModel: viewModel)
     
-        floatingPanel.set(contentViewController: vc)
+        floatingPanel.set(contentViewController: converterPanelViewContrller!)
         floatingPanel.isRemovalInteractionEnabled = false
         
         let appearence = SurfaceAppearance()
@@ -76,23 +76,14 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         locateMeButton.shadowed(with: .black, offset: .init(width: 0, height: -3), radius: 12, 0.3)
     }
     
-    private func configurePageControlSegment() {
-        pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.deepBlue as Any,
-                                                   .font : UIFont(name: Constants.Font.bold, size: 14) as Any],
-                                                  for: .selected)
-        
-        pageControlSegment.setTitleTextAttributes([.foregroundColor : Constants.Colors.text as Any],
-                                                  for: .normal)
-    }
-    
     override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
         
         //MARK: Current location region
         subscribe(to: \.$currentUserRegion) { [unowned self] region in
             guard let region = region else { return }
             DispatchQueue.main.async {
-                mapView.showsUserLocation = true
-                mapView.setRegion(region, animated: true)
+                self.mapView.showsUserLocation = true
+                self.mapView.setRegion(region, animated: true)
             }
         }
         
@@ -113,17 +104,9 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         }
         
         //MARK: Selected map item
-        subscribe(to: \.$selectedMapItem) { [unowned self] item in
+        subscribe(to: \.$selectedMapItem) { item in
             guard let item = item else { return }
-            pageControlSegment.selectedSegmentIndex = 1
-            pageControlSegment.isUserInteractionEnabled = true
-            floatingPanel.move(to: .hidden, animated: true)
-            let vc = SiteInfoViewController(viewModel: .init(floatingPanel: floatingPanel, item: item))
-            floatingPanel.set(contentViewController: vc)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                self.floatingPanel.move(to: .half, animated: true)
-            }
+            viewModel.presentSiteInfoPanel(forSelectedItem: item)
         }
     }
     
@@ -133,23 +116,6 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
             viewModel.zoomOnUserLocation()
         }
     }
-    
-    @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            pageControlSegment.isUserInteractionEnabled = false
-            floatingPanel.move(to: .hidden, animated: true)
-            let viewModel      = ConverterPanelViewModel(floatingPanel: floatingPanel)
-            viewModel.delegate = self.viewModel
-            let vc             = ConverterPanelViewController(viewModel: viewModel)
-            floatingPanel.set(contentViewController: vc)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                self.floatingPanel.move(to: .half, animated: true)
-            }
-            
-        }
-    }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

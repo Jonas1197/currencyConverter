@@ -14,7 +14,12 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var urlLabel:         UILabel!
     @IBOutlet weak var goButton:         UIButton!
+    @IBOutlet weak var backButton:       UIButton!
     
+    private let currencyExchangeView = CurrencyExchangeView.instantiateFromNib()
+    
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -22,17 +27,20 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        goButton.rounded(goButton.frame.height / 4)
-        
+        _ = [goButton, backButton].map { $0?.rounded($0!.frame.height / 4)}
     }
 
     //MARK: - SetUp
     private func setUp() {
         guard let item = viewModel.item else { return }
-        goButton.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
+        _ = [goButton, backButton].map {
+            $0?.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
+        }
         
-        nameLabel.text        = item.name ?? "N/A"
-        phoneNumberLabel.text = item.phoneNumber ?? "Not provided by business"
+        backButton.bordered(width: 2, color: Constants.Colors.deepBlue!)
+        
+        nameLabel.text        = item.name            ?? "N/A"
+        phoneNumberLabel.text = item.phoneNumber     ?? "Not provided by business"
         addressLabel.text     = item.placemark.title ?? "Not provided by business"
         
         if let url = item.url {
@@ -45,6 +53,20 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
             urlLabel.invisible()
         }
         
+        configureCurrencyExchangeView()
+    }
+    
+    private func configureCurrencyExchangeView() {
+        currencyExchangeView.translatesAutoresizingMaskIntoConstraints = false
+        currencyExchangeView.configure(withModel: .init(valuesToConvert: UserManager.shared.currencyExchangeViewCurrencies))
+        currencyExchangeView.invisible()
+        view.addSubview(currencyExchangeView)
+        NSLayoutConstraint.activate([
+            currencyExchangeView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 42),
+            currencyExchangeView.leadingAnchor.constraint(equalTo: backButton.leadingAnchor),
+            currencyExchangeView.trailingAnchor.constraint(equalTo: backButton.trailingAnchor),
+            currencyExchangeView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -22)
+        ])
     }
     
     override func subscribeToViewModel(_ viewModel: SiteInfoViewModel) {
@@ -54,6 +76,16 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
             guard let navigationAlert = navigationAlert else { return }
             present(navigationAlert, animated: true, completion: nil)
         }
+        
+        //MARK: Floating panel state changed
+        subscribe(to: \.$floatingPanelState) { state in
+            guard let state = state else { return }
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                    self?.currencyExchangeView.translucent(state == .full ? 1 : 0)
+                }
+            }
+        }
     }
     
     //MARK: - Actions
@@ -62,6 +94,13 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
             viewModel.openMapButtonAction()
         }
     }
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        sender.actionWithSpringAnimation { [unowned self] in
+            viewModel.handleBackButtonTapped()
+        }
+    }
+    
     
     @objc private func urlLabelTapped(_ sender: UITapGestureRecognizer) {
         self.urlLabel.actionWithSpringAnimation {

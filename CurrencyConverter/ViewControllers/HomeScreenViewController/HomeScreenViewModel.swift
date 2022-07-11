@@ -18,11 +18,13 @@ protocol HomeScreenOutput: AnyObject {
 
 final class HomeScreenViewModel: NSObject {
     weak var output: HomeScreenOutput?
+    weak var floatingPanel: FloatingPanelController?
     
-    @Published var isKeyboardShowing:   Bool?
-    @Published var currentUserRegion:   MKCoordinateRegion?
-    @Published var searchResults:       [MKMapItem] = []
-    @Published var selectedMapItem:     MKMapItem?
+    @Published var isKeyboardShowing:     Bool?
+    @Published var currentUserRegion:     MKCoordinateRegion?
+    @Published var searchResults:         [MKMapItem] = []
+    @Published var selectedMapItem:       MKMapItem?
+    @Published var floatingPanelState:    FloatingPanelState?
     
     init(output: HomeScreenOutput?) {
         super.init()
@@ -44,6 +46,31 @@ final class HomeScreenViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
+    func presentConverterPanel() {
+        guard let floatingPanel = floatingPanel else { return }
+        floatingPanel.move(to: .hidden, animated: true)
+        let viewModel      = ConverterPanelViewModel(floatingPanel: floatingPanel)
+        viewModel.delegate = self
+        let vc             = ConverterPanelViewController(viewModel: viewModel)
+        floatingPanel.set(contentViewController: vc)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            floatingPanel.move(to: .half, animated: true)
+        }
+    }
+    
+    func presentSiteInfoPanel(forSelectedItem item: MKMapItem) {
+        guard let floatingPanel = floatingPanel else { return }
+        floatingPanel.move(to: .hidden, animated: true)
+        let vc = SiteInfoViewController(viewModel: .init(floatingPanel: floatingPanel, item: item))
+        vc.viewModel.delegate = self
+        floatingPanel.set(contentViewController: vc)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            floatingPanel.move(to: .half, animated: true)
+        }
+    }
+    
     @objc private func keyboardWillDisappear() {
         isKeyboardShowing = false
     }
@@ -55,6 +82,15 @@ final class HomeScreenViewModel: NSObject {
 
 //MARK: - FloatingPanelControllerDelegate
 extension HomeScreenViewModel: FloatingPanelControllerDelegate {
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        
+        if let converterPanel = floatingPanel?.contentViewController as? ConverterPanelViewController {
+            converterPanel.viewModel.floatingPanelState = fpc.state
+            
+        } else if let sitePanel = floatingPanel?.contentViewController as? SiteInfoViewController {
+            sitePanel.viewModel.floatingPanelState = fpc.state
+        }
+    }
 }
 
 //MARK: - LocationManagerDelegate
@@ -89,6 +125,13 @@ extension HomeScreenViewModel: ConverterPanelDelegate {
             guard let results = await LocationManager.shared.search(term: "Money Exchange", inRegion: currentUserRegion) else { return }
             self.searchResults = results
         }
+    }
+}
+
+//MARK: - SiteInfoDelegate
+extension HomeScreenViewModel: SiteInfoDelegate {
+    func userTappedBackButton() {
+        presentConverterPanel()
     }
 }
 
