@@ -24,7 +24,6 @@ final class HomeScreenViewModel: NSObject {
     @Published var currentUserRegion:     MKCoordinateRegion?
     @Published var searchResults:         [MKMapItem] = []
     @Published var selectedMapItem:       MKMapItem?
-    @Published var floatingPanelState:    FloatingPanelState?
     
     init(output: HomeScreenOutput?) {
         super.init()
