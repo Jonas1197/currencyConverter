@@ -28,20 +28,38 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
 
     //MARK: - SetUp
     private func setUp() {
+        guard let item = viewModel.item else { return }
         goButton.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
         
-        nameLabel.text        = viewModel.item?.name ?? "N/A"
-        phoneNumberLabel.text = viewModel.item?.phoneNumber ?? "N/A"
-        addressLabel.text     = viewModel.item?.placemark.title ?? "N/A"
-        urlLabel
-            .setText(viewModel.item?.url?.absoluteString ?? "N/A")
-            .targeted(self, action: #selector(urlLabelTapped(_:)))
+        nameLabel.text        = item.name ?? "N/A"
+        phoneNumberLabel.text = item.phoneNumber ?? "Not provided by business"
+        addressLabel.text     = item.placemark.title ?? "Not provided by business"
+        
+        if let url = item.url {
+            urlLabel
+                .setText(url.absoluteString)
+                .visible()
+                .targeted(self, action: #selector(urlLabelTapped(_:)))
+    
+        } else {
+            urlLabel.invisible()
+        }
+        
     }
     
+    override func subscribeToViewModel(_ viewModel: SiteInfoViewModel) {
+        
+        //MARK: Present navigation alert
+        subscribe(to: \.$navigationAlert) { [unowned self] navigationAlert in
+            guard let navigationAlert = navigationAlert else { return }
+            present(navigationAlert, animated: true, completion: nil)
+        }
+    }
     
+    //MARK: - Actions
     @IBAction func goButtonTapped(_ sender: UIButton) {
-        sender.actionWithSpringAnimation {
-            //
+        sender.actionWithSpringAnimation { [unowned self] in
+            viewModel.openMapButtonAction()
         }
     }
     

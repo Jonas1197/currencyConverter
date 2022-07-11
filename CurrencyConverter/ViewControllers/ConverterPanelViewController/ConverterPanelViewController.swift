@@ -19,6 +19,8 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBOutlet weak var findConversionStoresButton: UIButton!
     @IBOutlet weak var currencyLastUpdatedLabel:   UILabel!
     
+    @IBOutlet weak var findConversionStoresButtonCenterYConstraint: NSLayoutConstraint!
+    
     private var valueRetrieved = false
     private var textFieldContainer: UITextField!
     private var currencyPicker:     UIPickerView!
@@ -82,6 +84,20 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             guard let text = text else { return }
             updateTextField(leading: true, text: text)
         }
+        
+        subscribe(to: \.$keyboardAppeared) { [unowned self] appeared in
+            guard let appeared = appeared else { return }
+            
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                    guard let self = self else { return }
+                    self.findConversionStoresButton.translucent(appeared ? 0 : 1)
+                    self.findConversionStoresButtonCenterYConstraint.constant = appeared ? 150 : -60
+                    self.view.layoutIfNeeded()
+                }
+            }
+            
+        }
     }
     
     private func updateTextField(leading: Bool, text: String) {
@@ -113,9 +129,53 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         _ = [leadingTextField, trailingTextField].map { $0?.setText("") }
     }
     
+    private func animateWhitenButtons() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                _ = [self?.trailingButton, self?.leadingButton].map {
+                    $0?.backgroundColored(.white)
+                        .coloredText(Constants.Colors.deepBlue!)
+                }
+            }
+        }
+    }
+    
+    private func animateButton(_ button: UIButton, leading: Bool) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                button
+                    .backgroundColored(Constants.Colors.deepBlue!)
+                    .coloredText(.white)
+                
+                if leading {
+                    self?.trailingButton
+                        .backgroundColored(.white)
+                        .coloredText(Constants.Colors.deepBlue!)
+                } else {
+                    self?.leadingButton
+                        .backgroundColored(.white)
+                        .coloredText(Constants.Colors.deepBlue!)
+                }
+            }
+        }
+    }
+    
     //MARK: - Actions
     @IBAction func trailingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                    sender.titleLabel?.adjustedFontSizeToFitWidth()
+                    sender
+                        .backgroundColored(Constants.Colors.deepBlue!)
+                        .coloredText(.white)
+                    
+                    self?.leadingButton
+                        .backgroundColored(.white)
+                        .coloredText(Constants.Colors.deepBlue!)
+                }
+            }
+            
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
             textFieldContainer.becomeFirstResponder()
@@ -125,6 +185,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     @IBAction func leadingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
+            animateButton(sender, leading: true)
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
             textFieldContainer.becomeFirstResponder()
@@ -134,6 +195,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     @IBAction func findConversionStoresButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
+            animateButton(sender, leading: false)
             viewModel.delegate?.findConversionStores()
             view.endEditing(true)
             viewModel.move(to: .tip)
@@ -156,9 +218,10 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-        
+        animateWhitenButtons()
         if viewModel.floatingPanel?.state == .full {
             viewModel.floatingPanel?.move(to: .half, animated: true)
         }

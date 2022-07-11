@@ -17,7 +17,6 @@ final class ConverterPanelViewModel: NSObject {
     weak var delegate:      ConverterPanelDelegate?
     weak var floatingPanel: FloatingPanelController?
     
-    var position: FloatingPanelState = .half
     var selectedButtonTag = 0
     
     @Published var leadingCurrencyModel:  CurrencyModel?
@@ -26,6 +25,7 @@ final class ConverterPanelViewModel: NSObject {
     @Published var lastUpdatedDateString: String?
     @Published var leadingTextFieldText:  String?
     @Published var trailingTextFieldText: String?
+    @Published var keyboardAppeared:      Bool?
     
     
     //MARK: - Lifecycle
@@ -50,7 +50,6 @@ final class ConverterPanelViewModel: NSObject {
     
     func move(to position: FloatingPanelState, animated: Bool = true, handler: (() -> Void)? = nil) {
         floatingPanel?.move(to: position, animated: animated, completion: handler)
-        self.position = position
     }
     
     func updateCurrencyRatesDate() {
@@ -92,16 +91,16 @@ final class ConverterPanelViewModel: NSObject {
     //MARK: - Actions
     @objc private func keyboardWillShow(_ notification: Notification) {
         floatingPanel?.move(to: .full, animated: true, completion: nil)
-        self.position = .full
+        keyboardAppeared = true
     }
     
     @objc private func keyboardWillHide(_ notification: Notification) {
         floatingPanel?.move(to: .full, animated: true, completion: nil)
-        self.position = .full
+        keyboardAppeared = false
     }
 }
 
-
+//MARK: UIPickerViewDelegate
 extension ConverterPanelViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1

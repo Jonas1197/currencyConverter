@@ -24,6 +24,7 @@
                 <outlet property="arrowsImageView" destination="5kR-6j-lag" id="4rl-Ri-Shk"/>
                 <outlet property="currencyLastUpdatedLabel" destination="E4u-5L-hoA" id="TAc-Jh-xZD"/>
                 <outlet property="findConversionStoresButton" destination="aKU-nL-plg" id="smi-xh-sk0"/>
+                <outlet property="findConversionStoresButtonCenterYConstraint" destination="TLe-I7-R0T" id="nH7-F7-ig4"/>
                 <outlet property="leadingButton" destination="eg9-xZ-NIW" id="dvt-CR-QT4"/>
                 <outlet property="leadingTextField" destination="5Ot-0c-OXc" id="ee6-MZ-yww"/>
                 <outlet property="titleLabel" destination="VNR-3W-5SL" id="dKk-Vp-gfu"/>
@@ -38,12 +39,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNR-3W-5SL">
-                    <rect key="frame" x="22" y="76" width="142" height="47"/>
-                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="32"/>
+                    <rect key="frame" x="22" y="70" width="132.5" height="44.5"/>
+                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWf-5F-8aW">
-                    <rect key="frame" x="233" y="161" width="159" height="45"/>
+                    <rect key="frame" x="233" y="189.5" width="159" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="kOz-BI-Jk7"/>
@@ -58,7 +59,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg9-xZ-NIW">
-                    <rect key="frame" x="22" y="161" width="159" height="45"/>
+                    <rect key="frame" x="22" y="189.5" width="159" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="QmN-2Q-GVs"/>
@@ -73,7 +74,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-ci-LHL">
-                    <rect key="frame" x="233" y="228" width="159" height="45"/>
+                    <rect key="frame" x="233" y="256.5" width="159" height="45"/>
                     <color key="backgroundColor" name="textFieldBackground"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="sYP-Fz-L5e"/>
@@ -86,7 +87,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to enter" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-0c-OXc">
-                    <rect key="frame" x="22" y="228" width="159" height="45"/>
+                    <rect key="frame" x="22" y="256.5" width="159" height="45"/>
                     <color key="backgroundColor" name="textFieldBackground"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="WaL-w1-ps5"/>
@@ -99,7 +100,7 @@
                     </connections>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.left.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-6j-lag">
-                    <rect key="frame" x="197" y="167.5" width="20" height="32"/>
+                    <rect key="frame" x="197" y="196" width="20" height="32"/>
                     <color key="tintColor" name="titleLabel"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Wid-ta-0xZ"/>
@@ -107,7 +108,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKU-nL-plg">
-                    <rect key="frame" x="22" y="369" width="370" height="45"/>
+                    <rect key="frame" x="22" y="365.5" width="370" height="45"/>
                     <color key="backgroundColor" name="deepBlue"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Car-fG-qM9"/>
@@ -122,7 +123,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency rates last update: dd/MM/yyyy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4u-5L-hoA">
-                    <rect key="frame" x="22" y="311" width="370" height="20"/>
+                    <rect key="frame" x="22" y="323.5" width="370" height="20"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="13"/>
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
@@ -131,19 +132,19 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
-                <constraint firstItem="aKU-nL-plg" firstAttribute="top" secondItem="E4u-5L-hoA" secondAttribute="bottom" constant="38" id="07o-Hz-Mxa"/>
+                <constraint firstItem="aKU-nL-plg" firstAttribute="top" secondItem="E4u-5L-hoA" secondAttribute="bottom" constant="22" id="07o-Hz-Mxa"/>
                 <constraint firstItem="5Ot-0c-OXc" firstAttribute="top" secondItem="eg9-xZ-NIW" secondAttribute="bottom" constant="22" id="1pa-FU-VGZ"/>
-                <constraint firstItem="E4u-5L-hoA" firstAttribute="top" secondItem="9Ph-ci-LHL" secondAttribute="bottom" constant="38" id="3yV-FE-TQu"/>
+                <constraint firstItem="E4u-5L-hoA" firstAttribute="top" secondItem="9Ph-ci-LHL" secondAttribute="bottom" constant="22" id="3yV-FE-TQu"/>
                 <constraint firstItem="eg9-xZ-NIW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="AYD-Tx-7HD"/>
                 <constraint firstItem="5Ot-0c-OXc" firstAttribute="trailing" secondItem="eg9-xZ-NIW" secondAttribute="trailing" id="DJ7-h8-qxg"/>
                 <constraint firstItem="9Ph-ci-LHL" firstAttribute="trailing" secondItem="fWf-5F-8aW" secondAttribute="trailing" id="ErF-3W-feC"/>
                 <constraint firstItem="VNR-3W-5SL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="IdY-ib-3UH"/>
-                <constraint firstItem="eg9-xZ-NIW" firstAttribute="top" secondItem="VNR-3W-5SL" secondAttribute="bottom" constant="38" id="OXd-6F-BWo"/>
                 <constraint firstItem="5Ot-0c-OXc" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="leading" id="R3G-9Q-9Ed"/>
+                <constraint firstItem="aKU-nL-plg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-60" id="TLe-I7-R0T"/>
                 <constraint firstItem="aKU-nL-plg" firstAttribute="trailing" secondItem="9Ph-ci-LHL" secondAttribute="trailing" id="WKM-Wb-ayf"/>
                 <constraint firstItem="5kR-6j-lag" firstAttribute="leading" secondItem="eg9-xZ-NIW" secondAttribute="trailing" constant="16" id="WQn-7b-sgQ"/>
                 <constraint firstItem="E4u-5L-hoA" firstAttribute="leading" secondItem="5Ot-0c-OXc" secondAttribute="leading" id="X0V-aJ-0LL"/>
-                <constraint firstItem="VNR-3W-5SL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="bhn-fg-9BT"/>
+                <constraint firstItem="VNR-3W-5SL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="26" id="bhn-fg-9BT"/>
                 <constraint firstItem="fWf-5F-8aW" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="c6N-rT-zdr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fWf-5F-8aW" secondAttribute="trailing" constant="22" id="dfU-AK-mqp"/>
                 <constraint firstItem="5kR-6j-lag" firstAttribute="centerY" secondItem="eg9-xZ-NIW" secondAttribute="centerY" id="gaP-dx-z5O"/>

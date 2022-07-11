@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75D898A528709A6E00433661 /* UniversalHTTP in Frameworks */ = {isa = PBXBuildFile; productRef = 75D898A428709A6E00433661 /* UniversalHTTP */; };
+		75D898A8287433B200433661 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 75D898A7287433B200433661 /* FloatingPanel */; };
+		75D898AA2874346F00433661 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898A92874346F00433661 /* LocationManager.swift */; };
+		75D898AE2874476000433661 /* ConverterPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898AC2874476000433661 /* ConverterPanelViewController.swift */; };
+		75D898AF2874476000433661 /* ConverterPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D898AD2874476000433661 /* ConverterPanelViewController.xib */; };
+		75D898B12874477B00433661 /* ConverterPanelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898B02874477B00433661 /* ConverterPanelViewModel.swift */; };
+		75D898B6287466CD00433661 /* Heebo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D898B3287466CC00433661 /* Heebo-Medium.ttf */; };
+		75D898B7287466CD00433661 /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D898B4287466CC00433661 /* Heebo-Regular.ttf */; };
+		75D898B8287466CD00433661 /* Heebo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D898B5287466CC00433661 /* Heebo-Bold.ttf */; };
+		75D898BA28781CB900433661 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898B928781CB900433661 /* Extensions.swift */; };
+		75D898C428786ADD00433661 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898C328786ADD00433661 /* NetworkManager.swift */; };
+		75D898C82878842000433661 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898C72878842000433661 /* CurrencyModel.swift */; };
+		75D898D7287ADD5B00433661 /* SiteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898D5287ADD5B00433661 /* SiteInfoViewController.swift */; };
+		75D898D8287ADD5B00433661 /* SiteInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D898D6287ADD5B00433661 /* SiteInfoViewController.xib */; };
+		75D898DA287ADD6D00433661 /* SiteInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898D9287ADD6D00433661 /* SiteInfoViewModel.swift */; };
 		75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E1E3286EE454008EE3AA /* AppDelegate.swift */; };
 		75E8E1E6286EE454008EE3AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E1E5286EE454008EE3AA /* SceneDelegate.swift */; };
 		75E8E1E8286EE454008EE3AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E1E7286EE454008EE3AA /* ViewController.swift */; };
@@ -24,20 +39,25 @@
 		75E8E215286EE917008EE3AA /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E214286EE917008EE3AA /* OnboardingViewModel.swift */; };
 		75E8E218286EFEC4008EE3AA /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E216286EFEC4008EE3AA /* HomeScreenViewController.swift */; };
 		75E8E219286EFEC4008EE3AA /* HomeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E217286EFEC4008EE3AA /* HomeScreenViewController.xib */; };
-		75E8E21D2870351E008EE3AA /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E21C2870351D008EE3AA /* InputView.swift */; };
-		75E8E21F2870352B008EE3AA /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E21E2870352B008EE3AA /* InputView.xib */; };
-		75E8E22128703679008EE3AA /* InputViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E22028703679008EE3AA /* InputViewManager.swift */; };
 		75E8E224287038D6008EE3AA /* NotSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 75E8E223287038D6008EE3AA /* NotSwiftUI */; };
 		75E8E22628703A93008EE3AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E22528703A93008EE3AA /* Constants.swift */; };
-		75E8E229287048A7008EE3AA /* QuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E228287048A7008EE3AA /* QuickGlanceView.swift */; };
-		75E8E22B287048B8008EE3AA /* QuickGlanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E22A287048B8008EE3AA /* QuickGlanceView.xib */; };
-		75E8E22F287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E22D287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift */; };
-		75E8E230287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E22E287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib */; };
-		75E8E2322870510C008EE3AA /* QuickGlanceViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E2312870510C008EE3AA /* QuickGlanceViewManager.swift */; };
 		75E8E23428705175008EE3AA /* Subscribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E23328705175008EE3AA /* Subscribable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75D898A92874346F00433661 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		75D898AC2874476000433661 /* ConverterPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelViewController.swift; sourceTree = "<group>"; };
+		75D898AD2874476000433661 /* ConverterPanelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConverterPanelViewController.xib; sourceTree = "<group>"; };
+		75D898B02874477B00433661 /* ConverterPanelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelViewModel.swift; sourceTree = "<group>"; };
+		75D898B3287466CC00433661 /* Heebo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Medium.ttf"; sourceTree = "<group>"; };
+		75D898B4287466CC00433661 /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Regular.ttf"; sourceTree = "<group>"; };
+		75D898B5287466CC00433661 /* Heebo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Bold.ttf"; sourceTree = "<group>"; };
+		75D898B928781CB900433661 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		75D898C328786ADD00433661 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		75D898C72878842000433661 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		75D898D5287ADD5B00433661 /* SiteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteInfoViewController.swift; sourceTree = "<group>"; };
+		75D898D6287ADD5B00433661 /* SiteInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SiteInfoViewController.xib; sourceTree = "<group>"; };
+		75D898D9287ADD6D00433661 /* SiteInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteInfoViewModel.swift; sourceTree = "<group>"; };
 		75E8E1E0286EE454008EE3AA /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E8E1E3286EE454008EE3AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75E8E1E5286EE454008EE3AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,15 +76,7 @@
 		75E8E214286EE917008EE3AA /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		75E8E216286EFEC4008EE3AA /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		75E8E217286EFEC4008EE3AA /* HomeScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenViewController.xib; sourceTree = "<group>"; };
-		75E8E21C2870351D008EE3AA /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
-		75E8E21E2870352B008EE3AA /* InputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
-		75E8E22028703679008EE3AA /* InputViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewManager.swift; sourceTree = "<group>"; };
 		75E8E22528703A93008EE3AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		75E8E228287048A7008EE3AA /* QuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickGlanceView.swift; sourceTree = "<group>"; };
-		75E8E22A287048B8008EE3AA /* QuickGlanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickGlanceView.xib; sourceTree = "<group>"; };
-		75E8E22D287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickGlanceViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		75E8E22E287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickGlanceViewCollectionViewCell.xib; sourceTree = "<group>"; };
-		75E8E2312870510C008EE3AA /* QuickGlanceViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickGlanceViewManager.swift; sourceTree = "<group>"; };
 		75E8E23328705175008EE3AA /* Subscribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D898A528709A6E00433661 /* UniversalHTTP in Frameworks */,
+				75D898A8287433B200433661 /* FloatingPanel in Frameworks */,
 				75E8E224287038D6008EE3AA /* NotSwiftUI in Frameworks */,
 				75E8E1F9286EE59E008EE3AA /* EKSwiftSuite in Frameworks */,
 			);
@@ -81,6 +95,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75D898AB2874473900433661 /* ConverterPanelViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75D898AC2874476000433661 /* ConverterPanelViewController.swift */,
+				75D898AD2874476000433661 /* ConverterPanelViewController.xib */,
+				75D898B02874477B00433661 /* ConverterPanelViewModel.swift */,
+			);
+			path = ConverterPanelViewController;
+			sourceTree = "<group>";
+		};
+		75D898B2287466AF00433661 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				75D898B5287466CC00433661 /* Heebo-Bold.ttf */,
+				75D898B3287466CC00433661 /* Heebo-Medium.ttf */,
+				75D898B4287466CC00433661 /* Heebo-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		75D898C5287883F900433661 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				75D898C62878840000433661 /* Models */,
+				75D898C328786ADD00433661 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		75D898C62878840000433661 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75D898C72878842000433661 /* CurrencyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75D898D4287ADD3500433661 /* SiteInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75D898D5287ADD5B00433661 /* SiteInfoViewController.swift */,
+				75D898D6287ADD5B00433661 /* SiteInfoViewController.xib */,
+				75D898D9287ADD6D00433661 /* SiteInfoViewModel.swift */,
+			);
+			path = SiteInfoViewController;
+			sourceTree = "<group>";
+		};
 		75E8E1D7286EE454008EE3AA = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +161,6 @@
 		75E8E1E2286EE454008EE3AA /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				75E8E21A287034E1008EE3AA /* Views */,
 				75E8E200286EE6E6008EE3AA /* ViewControllers */,
 				75E8E1FB286EE60D008EE3AA /* Utilities */,
 				75E8E1FA286EE607008EE3AA /* Lifecycle */,
@@ -124,12 +184,16 @@
 		75E8E1FB286EE60D008EE3AA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				75D898B2287466AF00433661 /* Fonts */,
 				75E8E20E286EE8E7008EE3AA /* Coordinators */,
 				75E8E1FE286EE660008EE3AA /* UserManager.swift */,
 				75E8E208286EE7CF008EE3AA /* BaseViewController.swift */,
 				75E8E20A286EE802008EE3AA /* BindableViewController.swift */,
 				75E8E22528703A93008EE3AA /* Constants.swift */,
 				75E8E23328705175008EE3AA /* Subscribable.swift */,
+				75D898A92874346F00433661 /* LocationManager.swift */,
+				75D898B928781CB900433661 /* Extensions.swift */,
+				75D898C5287883F900433661 /* Networking */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -137,6 +201,8 @@
 		75E8E200286EE6E6008EE3AA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				75D898D4287ADD3500433661 /* SiteInfoViewController */,
+				75D898AB2874473900433661 /* ConverterPanelViewController */,
 				75E8E20F286EE8F1008EE3AA /* OnboardingViewController */,
 				75E8E201286EE6EC008EE3AA /* HomeScreenViewController */,
 			);
@@ -172,45 +238,6 @@
 			path = OnboardingViewController;
 			sourceTree = "<group>";
 		};
-		75E8E21A287034E1008EE3AA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				75E8E2272870487E008EE3AA /* QuickGlanceView */,
-				75E8E21B287034E8008EE3AA /* InputView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		75E8E21B287034E8008EE3AA /* InputView */ = {
-			isa = PBXGroup;
-			children = (
-				75E8E21C2870351D008EE3AA /* InputView.swift */,
-				75E8E21E2870352B008EE3AA /* InputView.xib */,
-				75E8E22028703679008EE3AA /* InputViewManager.swift */,
-			);
-			path = InputView;
-			sourceTree = "<group>";
-		};
-		75E8E2272870487E008EE3AA /* QuickGlanceView */ = {
-			isa = PBXGroup;
-			children = (
-				75E8E22C2870498C008EE3AA /* HistoryViewCollectionViewCell */,
-				75E8E228287048A7008EE3AA /* QuickGlanceView.swift */,
-				75E8E22A287048B8008EE3AA /* QuickGlanceView.xib */,
-				75E8E2312870510C008EE3AA /* QuickGlanceViewManager.swift */,
-			);
-			path = QuickGlanceView;
-			sourceTree = "<group>";
-		};
-		75E8E22C2870498C008EE3AA /* HistoryViewCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				75E8E22D287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift */,
-				75E8E22E287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib */,
-			);
-			path = HistoryViewCollectionViewCell;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,6 +257,8 @@
 			packageProductDependencies = (
 				75E8E1F8286EE59E008EE3AA /* EKSwiftSuite */,
 				75E8E223287038D6008EE3AA /* NotSwiftUI */,
+				75D898A428709A6E00433661 /* UniversalHTTP */,
+				75D898A7287433B200433661 /* FloatingPanel */,
 			);
 			productName = CurrencyConverter;
 			productReference = 75E8E1E0286EE454008EE3AA /* CurrencyConverter.app */;
@@ -262,6 +291,8 @@
 			packageReferences = (
 				75E8E1F7286EE59E008EE3AA /* XCRemoteSwiftPackageReference "EKSwiftSuite" */,
 				75E8E222287038D6008EE3AA /* XCRemoteSwiftPackageReference "notSwiftUI" */,
+				75D898A328709A6E00433661 /* XCRemoteSwiftPackageReference "UniversalHTTP" */,
+				75D898A6287433B200433661 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 75E8E1E1286EE454008EE3AA /* Products */;
 			projectDirPath = "";
@@ -277,13 +308,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75E8E230287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.xib in Resources */,
 				75E8E1F0286EE457008EE3AA /* LaunchScreen.storyboard in Resources */,
 				75E8E219286EFEC4008EE3AA /* HomeScreenViewController.xib in Resources */,
 				75E8E1ED286EE457008EE3AA /* Assets.xcassets in Resources */,
-				75E8E22B287048B8008EE3AA /* QuickGlanceView.xib in Resources */,
+				75D898D8287ADD5B00433661 /* SiteInfoViewController.xib in Resources */,
+				75D898B8287466CD00433661 /* Heebo-Bold.ttf in Resources */,
+				75D898B6287466CD00433661 /* Heebo-Medium.ttf in Resources */,
+				75D898AF2874476000433661 /* ConverterPanelViewController.xib in Resources */,
 				75E8E213286EE90D008EE3AA /* OnboardingViewController.xib in Resources */,
-				75E8E21F2870352B008EE3AA /* InputView.xib in Resources */,
+				75D898B7287466CD00433661 /* Heebo-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,22 +327,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75E8E21D2870351E008EE3AA /* InputView.swift in Sources */,
 				75E8E23428705175008EE3AA /* Subscribable.swift in Sources */,
-				75E8E2322870510C008EE3AA /* QuickGlanceViewManager.swift in Sources */,
-				75E8E22128703679008EE3AA /* InputViewManager.swift in Sources */,
+				75D898D7287ADD5B00433661 /* SiteInfoViewController.swift in Sources */,
+				75D898BA28781CB900433661 /* Extensions.swift in Sources */,
 				75E8E1E8286EE454008EE3AA /* ViewController.swift in Sources */,
+				75D898C428786ADD00433661 /* NetworkManager.swift in Sources */,
+				75D898AA2874346F00433661 /* LocationManager.swift in Sources */,
 				75E8E1FD286EE61C008EE3AA /* MainCoordinator.swift in Sources */,
+				75D898AE2874476000433661 /* ConverterPanelViewController.swift in Sources */,
 				75E8E207286EE73A008EE3AA /* HomeScreenViewModel.swift in Sources */,
 				75E8E22628703A93008EE3AA /* Constants.swift in Sources */,
 				75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */,
 				75E8E1FF286EE660008EE3AA /* UserManager.swift in Sources */,
-				75E8E22F287049A7008EE3AA /* QuickGlanceViewCollectionViewCell.swift in Sources */,
+				75D898B12874477B00433661 /* ConverterPanelViewModel.swift in Sources */,
 				75E8E218286EFEC4008EE3AA /* HomeScreenViewController.swift in Sources */,
-				75E8E229287048A7008EE3AA /* QuickGlanceView.swift in Sources */,
 				75E8E20B286EE802008EE3AA /* BindableViewController.swift in Sources */,
+				75D898DA287ADD6D00433661 /* SiteInfoViewModel.swift in Sources */,
 				75E8E209286EE7CF008EE3AA /* BaseViewController.swift in Sources */,
 				75E8E215286EE917008EE3AA /* OnboardingViewModel.swift in Sources */,
+				75D898C82878842000433661 /* CurrencyModel.swift in Sources */,
 				75E8E1E6286EE454008EE3AA /* SceneDelegate.swift in Sources */,
 				75E8E212286EE90D008EE3AA /* OnboardingViewController.swift in Sources */,
 				75E8E20D286EE8D5008EE3AA /* OnboardingCoordinator.swift in Sources */,
@@ -526,6 +562,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		75D898A328709A6E00433661 /* XCRemoteSwiftPackageReference "UniversalHTTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jonas1197/UniversalHTTP.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		75D898A6287433B200433661 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		75E8E1F7286EE59E008EE3AA /* XCRemoteSwiftPackageReference "EKSwiftSuite" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/eilonkr/EKSwiftSuite.git";
@@ -545,6 +597,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		75D898A428709A6E00433661 /* UniversalHTTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75D898A328709A6E00433661 /* XCRemoteSwiftPackageReference "UniversalHTTP" */;
+			productName = UniversalHTTP;
+		};
+		75D898A7287433B200433661 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75D898A6287433B200433661 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
 		75E8E1F8286EE59E008EE3AA /* EKSwiftSuite */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 75E8E1F7286EE59E008EE3AA /* XCRemoteSwiftPackageReference "EKSwiftSuite" */;

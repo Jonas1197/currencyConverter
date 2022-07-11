@@ -35,7 +35,7 @@ final class HomeScreenViewModel: NSObject {
             return
         }
         
-        currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+        currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
     }
     
     func listenToKeyboardEvents() {

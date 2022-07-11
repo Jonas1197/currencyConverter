@@ -35,31 +35,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A4-cj-VYH">
-                    <rect key="frame" x="22" y="76" width="144" height="47"/>
-                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="32"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3A4-cj-VYH">
+                    <rect key="frame" x="22" y="66" width="370" height="44.5"/>
+                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbJ-3o-Ow2">
-                    <rect key="frame" x="22" y="155" width="370" height="23.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbJ-3o-Ow2">
+                    <rect key="frame" x="22" y="142.5" width="370" height="23.5"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="16"/>
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-Uw-WYn">
-                    <rect key="frame" x="22" y="194.5" width="370" height="23.5"/>
+                    <rect key="frame" x="22" y="182" width="370" height="23.5"/>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="16"/>
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="url" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFJ-dm-mVu">
-                    <rect key="frame" x="22" y="234" width="370" height="23.5"/>
+                    <rect key="frame" x="22" y="221.5" width="370" height="23.5"/>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="16"/>
                     <color key="textColor" name="deepBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9h-hZ-hmU">
-                    <rect key="frame" x="22" y="309.5" width="370" height="45"/>
+                    <rect key="frame" x="22" y="297" width="370" height="45"/>
                     <color key="backgroundColor" name="deepBlue"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="VgN-4C-tkQ"/>
@@ -78,6 +78,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3A4-cj-VYH" secondAttribute="trailing" constant="22" id="0xh-1t-s7F"/>
                 <constraint firstItem="3A4-cj-VYH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="1VD-lT-TWG"/>
                 <constraint firstItem="OFJ-dm-mVu" firstAttribute="top" secondItem="SNG-Uw-WYn" secondAttribute="bottom" constant="16" id="7RY-N1-ZVJ"/>
                 <constraint firstItem="SNG-Uw-WYn" firstAttribute="top" secondItem="SbJ-3o-Ow2" secondAttribute="bottom" constant="16" id="8q7-9q-QmU"/>
@@ -88,7 +89,7 @@
                 <constraint firstItem="P9h-hZ-hmU" firstAttribute="top" secondItem="OFJ-dm-mVu" secondAttribute="bottom" constant="52" id="fKn-bT-jdL"/>
                 <constraint firstItem="OFJ-dm-mVu" firstAttribute="leading" secondItem="SNG-Uw-WYn" secondAttribute="leading" id="nP0-aa-axH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SbJ-3o-Ow2" secondAttribute="trailing" constant="22" id="pYc-FP-DSD"/>
-                <constraint firstItem="3A4-cj-VYH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="tj0-u4-jOJ"/>
+                <constraint firstItem="3A4-cj-VYH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="tj0-u4-jOJ"/>
                 <constraint firstItem="SNG-Uw-WYn" firstAttribute="leading" secondItem="SbJ-3o-Ow2" secondAttribute="leading" id="vjc-Me-MIC"/>
                 <constraint firstItem="SNG-Uw-WYn" firstAttribute="trailing" secondItem="SbJ-3o-Ow2" secondAttribute="trailing" id="wSv-J3-EJg"/>
                 <constraint firstItem="P9h-hZ-hmU" firstAttribute="trailing" secondItem="OFJ-dm-mVu" secondAttribute="trailing" id="y1P-ZG-ApO"/>

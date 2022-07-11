@@ -11,11 +11,29 @@
         }
       },
       {
+        "package": "FloatingPanel",
+        "repositoryURL": "https://github.com/scenee/FloatingPanel.git",
+        "state": {
+          "branch": null,
+          "revision": "639e4221e83a92363ae2c0b30abca44b83854ac9",
+          "version": "2.5.3"
+        }
+      },
+      {
         "package": "NotSwiftUI",
         "repositoryURL": "https://github.com/Jonas1197/notSwiftUI",
         "state": {
           "branch": "main",
           "revision": "ad60d768476899f7f946614e21166dedd7bc3701",
+          "version": null
+        }
+      },
+      {
+        "package": "UniversalHTTP",
+        "repositoryURL": "https://github.com/Jonas1197/UniversalHTTP.git",
+        "state": {
+          "branch": "main",
+          "revision": "5a3a74a323656f73ff59b4468463076aefebcd7b",
           "version": null
         }
       }
