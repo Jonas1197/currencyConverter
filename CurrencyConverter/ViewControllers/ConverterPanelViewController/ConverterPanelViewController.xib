@@ -84,6 +84,7 @@
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                     <connections>
+                        <action selector="textFieldEditingBegin:" destination="-1" eventType="editingDidBegin" id="T6G-gQ-amt"/>
                         <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="1G4-5U-NgS"/>
                     </connections>
                 </textField>
@@ -97,6 +98,7 @@
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="18"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                     <connections>
+                        <action selector="textFieldEditingBegin:" destination="-1" eventType="editingDidBegin" id="Gas-8c-gtb"/>
                         <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="khk-8s-fPI"/>
                     </connections>
                 </textField>

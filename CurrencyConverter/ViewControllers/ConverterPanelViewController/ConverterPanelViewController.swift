@@ -263,6 +263,9 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
     }
     
+    @IBAction func textFieldEditingBegin(_ sender: UITextField) {
+        animateWhitenButtons()
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
