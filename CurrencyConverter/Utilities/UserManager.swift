@@ -33,7 +33,7 @@ struct UserManager {
      */
     var didSeeOnboarding = true
     
-    var currencyExchangeViewCurrencies: [String] = ["USD", "EUR", "ILS", "CH", "GBP", "RUB"]
+    var currencyExchangeViewCurrencies: [String] = ["USD", "EUR", "ILS", "CZK", "CH", "GBP", "RUB"]
     
     var conversionRates: ConversionModel = .init(result: "", conversion_rates: [:])
     

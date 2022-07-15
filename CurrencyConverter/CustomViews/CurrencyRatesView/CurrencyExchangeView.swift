@@ -49,12 +49,7 @@ final class CurrencyExchangeView: UIView {
     
     private func addLabels() {
         labelsVstack = labels.vstacked(spacing: 12, alignment: .fill, distribution: .fillProportionally)
-        addSubview(labelsVstack)
-        NSLayoutConstraint.activate([
-            labelsVstack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2),
-            labelsVstack.topAnchor.constraint(equalTo: tileLabelAndSubtitleVstack.bottomAnchor, constant: 22),
-            labelsVstack.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
+        labelsVstack.centered(in: self)
     }
     
     private func convertToUSDollar(from currencyCode: String) -> String {
