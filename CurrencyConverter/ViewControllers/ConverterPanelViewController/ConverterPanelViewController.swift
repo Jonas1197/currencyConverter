@@ -167,8 +167,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                 self?.currencyLastUpdatedLabel.visible()
             }
         }
-
-        currencyLastUpdatedLabel.text = "\(Constants.Text.ratesLastUpdatedLabel)\(dateString)"
     }
     
     private func emptyTextFields() {

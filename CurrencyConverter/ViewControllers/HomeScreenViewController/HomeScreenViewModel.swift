@@ -67,6 +67,10 @@ final class HomeScreenViewModel: NSObject {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             floatingPanel.move(to: .half, animated: true)
+            
+            var coordinate = item.placemark.coordinate
+            coordinate.latitude += -0.005
+            self.currentUserRegion = .init(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         }
     }
     
