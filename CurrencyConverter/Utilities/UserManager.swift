@@ -46,6 +46,8 @@ struct UserManager {
     var currencyListData: Data
     
     @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.lastUpdatedTimestamp, defaultValue: "")
-    var currencyUpdatedTimestamp: String
+    var currencyUpdatedTimestamp: String { didSet {
+        Constants.NotificationName.currenciesUpdated.post()
+    }}
 }
 

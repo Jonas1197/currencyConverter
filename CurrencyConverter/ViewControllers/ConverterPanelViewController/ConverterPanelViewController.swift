@@ -48,9 +48,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         
         configureCurrencyPicker()
         viewModel.updateCurrencyRatesDate()
-        
         configureCurrencyExchangeView()
-        
     }
     
     private func configureCurrencyExchangeView() {
@@ -154,6 +152,17 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func configureCurrencyLastUpdatedLabel(dateString: String) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) { [weak self] in
+            self?.currencyLastUpdatedLabel
+                .invisible()
+                .setText("\(Constants.Text.ratesLastUpdatedLabel)\(dateString)")
+            
+        } completion: { _ in
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) { [weak self] in
+                self?.currencyLastUpdatedLabel.visible()
+            }
+        }
+
         currencyLastUpdatedLabel.text = "\(Constants.Text.ratesLastUpdatedLabel)\(dateString)"
     }
     

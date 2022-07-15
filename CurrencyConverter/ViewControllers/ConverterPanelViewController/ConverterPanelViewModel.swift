@@ -46,7 +46,10 @@ final class ConverterPanelViewModel: NSObject {
             trailingCurrencyModel = usd
         }
         
-        
+        Constants.NotificationName.currenciesUpdated.observe { [weak self] _ in
+            print("\n~~> [ConverterManager] Currencies updated!")
+            self?.updateCurrencyRatesDate()
+        }
     }
     
     func move(to position: FloatingPanelState, animated: Bool = true, handler: (() -> Void)? = nil) {

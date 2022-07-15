@@ -67,6 +67,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
             do {
                 let currenciesListData  = try JSONEncoder().encode(parsedCurrenciesData)
                 let conversionRatesData = try JSONEncoder().encode(parsedConversionRatesData)
+                
                 UserManager.shared.currencyList     = parsedCurrenciesData
                 UserManager.shared.currencyListData = currenciesListData
 
@@ -103,7 +104,6 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
         homeScreenViewController = .init(viewModel: .init(output: self))
         navigationController.pushViewController(homeScreenViewController, animated: true)
     }
-    
 }
 
 //MARK: - OnboardingOutput

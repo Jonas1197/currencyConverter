@@ -52,5 +52,18 @@ enum Constants {
         static let ratesLastUpdatedLabel = "Currency rates last updated: "
     }
     
-    
+    //MARK: - Notifications
+    enum NotificationName: String {
+        case currenciesUpdated
+        
+        func post(_ userInfo: [String : Any] = [:]) {
+            NotificationCenter.default.post(.init(name: .init(rawValue: rawValue), object: nil, userInfo: userInfo))
+        }
+        
+        func observe(_ queue: OperationQueue? = .main, _ handler: @escaping (Notification) -> Void) {
+            NotificationCenter.default.addObserver(forName: .init(rawValue: rawValue), object: nil, queue: queue) { notification in
+                handler(notification)
+            }
+        }
+    }
 }
