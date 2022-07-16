@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - UIView
 extension UIView {
     static func animateOnMain(withDuration duration: TimeInterval, delay: TimeInterval = 0, options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut], _ animations: @escaping () -> Void, didFinish: ((Bool) -> Void)? = nil) {
         DispatchQueue.main.async {

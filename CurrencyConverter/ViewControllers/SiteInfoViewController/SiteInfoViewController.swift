@@ -39,7 +39,7 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
         
         backButton.bordered(width: 2, color: Constants.Colors.deepBlue!)
         
-        nameLabel.text        = item.name            ?? "N/A"
+        nameLabel.text        = item.name            ?? "Not provided by business"
         phoneNumberLabel.text = item.phoneNumber     ?? "Not provided by business"
         addressLabel.text     = item.placemark.title ?? "Not provided by business"
         

@@ -24,6 +24,7 @@ final class HomeScreenViewModel: NSObject {
     @Published var currentUserRegion:     MKCoordinateRegion?
     @Published var searchResults:         [MKMapItem] = []
     @Published var selectedMapItem:       MKMapItem?
+    @Published var deselectAnnotation:    Bool?
     
     init(output: HomeScreenOutput?) {
         super.init()
@@ -135,6 +136,7 @@ extension HomeScreenViewModel: ConverterPanelDelegate {
 extension HomeScreenViewModel: SiteInfoDelegate {
     func userTappedBackButton() {
         presentConverterPanel()
+        deselectAnnotation = true
     }
 }
 

@@ -112,8 +112,9 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
         
         //MARK: Floating panel state changed
-        subscribe(to: \.$floatingPanelState) { [unowned self] state in
-            guard let state = state else { return }
+        subscribe(to: \.$floatingPanelState) { [weak self] state in
+            guard let self  = self,
+                  let state = state else { return }
             
             UIView.animateOnMain(withDuration: 0.3) {
                 if let keyboardAppeared = viewModel.keyboardAppeared {
@@ -121,11 +122,11 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                         self.currencyExchangeView.visible()
                     } else if !keyboardAppeared {
                         self.currencyExchangeView.translucent(state == .full ? 1 : 0)
-                        _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing, leadingButton, trailingButton, arrowsImageView, leadingTextField, trailingTextField, currencyLastUpdatedLabel, findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                        _ = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.arrowsImageView, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
                     }
                     
                 } else {
-                    _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing, leadingButton, trailingButton, arrowsImageView, leadingTextField, trailingTextField, currencyLastUpdatedLabel, findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                    _ = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.arrowsImageView, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
                     self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                 }
             }

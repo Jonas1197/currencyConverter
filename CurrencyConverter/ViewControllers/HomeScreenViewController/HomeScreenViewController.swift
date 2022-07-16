@@ -108,6 +108,13 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
             guard let item = item else { return }
             viewModel.presentSiteInfoPanel(forSelectedItem: item)
         }
+        
+        //MARK: Deselect annotation
+        subscribe(to: \.$deselectAnnotation) { [unowned self] deselect in
+            guard let _                  = deselect,
+                  let selectedAnnotation = mapView.selectedAnnotations.first else { return }
+            mapView.deselectAnnotation(selectedAnnotation, animated: true)
+        }
     }
     
     //MARK: - Actions
