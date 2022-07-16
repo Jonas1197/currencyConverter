@@ -105,31 +105,28 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         subscribe(to: \.$keyboardAppeared) { [unowned self] appeared in
             guard let appeared = appeared else { return }
             
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
-                    guard let self = self else { return }
-                    _ = [self.findConversionStoresButton, self.currencyExchangeView].map { $0!.translucent(appeared ? 0 : 1) }
-                }
+            UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                _ = [self.findConversionStoresButton, self.currencyExchangeView].map { $0!.translucent(appeared ? 0 : 1) }
             }
         }
         
         //MARK: Floating panel state changed
-        subscribe(to: \.$floatingPanelState) { state in
+        subscribe(to: \.$floatingPanelState) { [unowned self] state in
             guard let state = state else { return }
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [unowned self] in
-                    if let keyboardAppeared = viewModel.keyboardAppeared {
-                        if !keyboardAppeared && state == .full {
-                            self.currencyExchangeView.visible()
-                        } else if !keyboardAppeared {
-                            self.currencyExchangeView.translucent(state == .full ? 1 : 0)
-                            _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing, leadingButton, trailingButton, arrowsImageView, leadingTextField, trailingTextField, currencyLastUpdatedLabel, findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
-                        }
-                        
-                    } else {
-                        _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing, leadingButton, trailingButton, arrowsImageView, leadingTextField, trailingTextField, currencyLastUpdatedLabel, findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+            
+            UIView.animateOnMain(withDuration: 0.3) {
+                if let keyboardAppeared = viewModel.keyboardAppeared {
+                    if !keyboardAppeared && state == .full {
+                        self.currencyExchangeView.visible()
+                    } else if !keyboardAppeared {
                         self.currencyExchangeView.translucent(state == .full ? 1 : 0)
+                        _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing, leadingButton, trailingButton, arrowsImageView, leadingTextField, trailingTextField, currencyLastUpdatedLabel, findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
                     }
+                    
+                } else {
+                    _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing, leadingButton, trailingButton, arrowsImageView, leadingTextField, trailingTextField, currencyLastUpdatedLabel, findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                    self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                 }
             }
         }
@@ -157,13 +154,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func configureCurrencyLastUpdatedLabel(dateString: String) {
-        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) { [weak self] in
+        UIView.animateOnMain(withDuration: 0.3) { [weak self] in
             self?.currencyLastUpdatedLabel
                 .invisible()
                 .setText("\(Constants.Text.ratesLastUpdatedLabel)\(dateString)")
-            
-        } completion: { _ in
-            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) { [weak self] in
+        } didFinish: { [weak self] _ in
+            UIView.animateOnMain(withDuration: 0.3) {
                 self?.currencyLastUpdatedLabel.visible()
             }
         }
@@ -174,32 +170,28 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func animateWhitenButtons() {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
-                _ = [self?.trailingButton, self?.leadingButton].map {
-                    $0?.backgroundColored(.white)
-                        .coloredText(Constants.Colors.deepBlue!)
-                }
+        UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+            _ = [self?.trailingButton, self?.leadingButton].map {
+                $0?.backgroundColored(.white)
+                    .coloredText(Constants.Colors.deepBlue!)
             }
         }
     }
     
     private func animateButton(_ button: UIButton, leading: Bool) {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
-                button
-                    .backgroundColored(Constants.Colors.deepBlue!)
-                    .coloredText(.white)
-                
-                if leading {
-                    self?.trailingButton
-                        .backgroundColored(.white)
-                        .coloredText(Constants.Colors.deepBlue!)
-                } else {
-                    self?.leadingButton
-                        .backgroundColored(.white)
-                        .coloredText(Constants.Colors.deepBlue!)
-                }
+        UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+            button
+                .backgroundColored(Constants.Colors.deepBlue!)
+                .coloredText(.white)
+            
+            if leading {
+                self?.trailingButton
+                    .backgroundColored(.white)
+                    .coloredText(Constants.Colors.deepBlue!)
+            } else {
+                self?.leadingButton
+                    .backgroundColored(.white)
+                    .coloredText(Constants.Colors.deepBlue!)
             }
         }
     }
@@ -207,17 +199,16 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     //MARK: - Actions
     @IBAction func trailingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
-                    sender.titleLabel?.adjustedFontSizeToFitWidth()
-                    sender
-                        .backgroundColored(Constants.Colors.deepBlue!)
-                        .coloredText(.white)
-                    
-                    self?.leadingButton
-                        .backgroundColored(.white)
-                        .coloredText(Constants.Colors.deepBlue!)
-                }
+            
+            UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+                sender.titleLabel?.adjustedFontSizeToFitWidth()
+                sender
+                    .backgroundColored(Constants.Colors.deepBlue!)
+                    .coloredText(.white)
+                
+                self?.leadingButton
+                    .backgroundColored(.white)
+                    .coloredText(Constants.Colors.deepBlue!)
             }
             
             viewModel.selectedButtonTag = sender.tag

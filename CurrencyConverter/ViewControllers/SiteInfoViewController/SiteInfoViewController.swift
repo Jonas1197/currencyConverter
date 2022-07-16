@@ -80,10 +80,8 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
         //MARK: Floating panel state changed
         subscribe(to: \.$floatingPanelState) { state in
             guard let state = state else { return }
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
-                    self?.currencyExchangeView.translucent(state == .full ? 1 : 0)
-                }
+            UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+                self?.currencyExchangeView.translucent(state == .full ? 1 : 0)
             }
         }
     }
