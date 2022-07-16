@@ -68,7 +68,8 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
                 let currenciesListData  = try JSONEncoder().encode(parsedCurrenciesData)
                 let conversionRatesData = try JSONEncoder().encode(parsedConversionRatesData)
                 
-                UserManager.shared.currencyList     = parsedCurrenciesData
+                setCurrencyList(parsedCurrenciesData, accordingToAvailableRates: parsedConversionRatesData)
+//                UserManager.shared.currencyList     = parsedCurrenciesData
                 UserManager.shared.currencyListData = currenciesListData
 
                 UserManager.shared.conversionRates     = parsedConversionRatesData
@@ -93,11 +94,49 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
                 let decodedConversionRatesData = try JSONDecoder().decode(ConversionModel.self, from: conversionRatesData)
                 
                 UserManager.shared.conversionRates = decodedConversionRatesData
-                UserManager.shared.currencyList    = decodedCurrencyData
+                setCurrencyList(decodedCurrencyData, accordingToAvailableRates: decodedConversionRatesData)
+//                UserManager.shared.currencyList    = decodedCurrencyData
             } catch {
                 print("\n~~> Couldn't decode parsed data: \(error.localizedDescription)")
             }
         }
+    }
+    
+    private func setCurrencyList(_ list: [CurrencyModel], accordingToAvailableRates rates: ConversionModel) {
+        var filtered: [CurrencyModel] = []
+        
+        for item in list {
+            var contains = false
+            for filteredItem in filtered {
+                if item.AlphabeticCode == filteredItem.AlphabeticCode {
+                    contains = true
+                    break
+                } else {
+                    contains = false
+                }
+            }
+            
+            if contains {
+                continue
+            } else {
+                
+                if rates.conversion_rates.contains(where: { $0.key == item.AlphabeticCode }) {
+                    filtered.append(item)
+                }
+                
+            }
+        }
+        
+        filtered = filtered.sorted(by: {
+            if let firstItemCurrency = $0.Currency,
+               let secondItemCurrency = $1.Currency {
+                return firstItemCurrency < secondItemCurrency
+            }
+            
+            return false
+        })
+        
+        UserManager.shared.currencyList = filtered
     }
     
     func homescreen() {

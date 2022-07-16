@@ -42,8 +42,8 @@ final class SiteInfoViewModel: NSObject {
     func openMapButtonAction() {
         guard let item = item else { return }
         
-        let latitude   = Double( item.placemark.coordinate.latitude)
-        let longitude  = Double( item.placemark.coordinate.longitude)
+        let latitude   = Double(item.placemark.coordinate.latitude)
+        let longitude  = Double(item.placemark.coordinate.longitude)
  
         let appleURL  = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
         let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
