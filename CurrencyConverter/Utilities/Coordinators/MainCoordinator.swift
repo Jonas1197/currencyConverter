@@ -106,24 +106,9 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
         var filtered: [CurrencyModel] = []
         
         for item in list {
-            var contains = false
-            for filteredItem in filtered {
-                if item.AlphabeticCode == filteredItem.AlphabeticCode {
-                    contains = true
-                    break
-                } else {
-                    contains = false
-                }
-            }
-            
-            if contains {
-                continue
-            } else {
-                
-                if rates.conversion_rates.contains(where: { $0.key == item.AlphabeticCode }) {
-                    filtered.append(item)
-                }
-                
+            if !filtered.contains(where: { $0.AlphabeticCode == item.AlphabeticCode }),
+               rates.conversion_rates.contains(where: { $0.key == item.AlphabeticCode }) {
+                filtered.append(item)
             }
         }
         
