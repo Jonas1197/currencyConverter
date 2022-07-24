@@ -42,16 +42,23 @@ final class SiteInfoViewModel: NSObject {
     func openMapButtonAction() {
         guard let item = item else { return }
         
-        let latitude   = Double(item.placemark.coordinate.latitude)
-        let longitude  = Double(item.placemark.coordinate.longitude)
- 
-        let appleURL  = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
-        let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
-        let wazeURL   = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+        let latitude  = Double(item.placemark.coordinate.latitude)
+        let longitude = Double(item.placemark.coordinate.longitude)
         
-        let googleItem              = ("Google Map", URL(string:googleURL)!)
-        let wazeItem                = ("Waze", URL(string:wazeURL)!)
-        var installedNavigationApps = [("Apple Maps", URL(string:appleURL)!)]
+        var installedNavigationApps = [(
+            Constants.Navigation.appleMaps().name,
+            Constants.Navigation.appleMaps(latitude, longitude).url
+        )]
+        
+        let googleItem = (
+            Constants.Navigation.googleMaps().name,
+            Constants.Navigation.googleMaps(latitude, longitude).url
+        )
+        
+        let wazeItem = (
+            Constants.Navigation.waze().name,
+            Constants.Navigation.waze(latitude, longitude).url
+        )
         
         if UIApplication.shared.canOpenURL(googleItem.1) {
             installedNavigationApps.append(googleItem)

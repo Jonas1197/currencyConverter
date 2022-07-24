@@ -22,6 +22,36 @@ enum Constants {
         var url: URL { .init(string: rawValue)! }
     }
     
+    enum Navigation {
+        case googleMaps(Double = 0, Double = 0)
+        case appleMaps(Double = 0, Double = 0)
+        case waze(Double = 0, Double = 0)
+        
+        var name: String {
+            switch self {
+            case .googleMaps(_, _):
+                return "Google Maps"
+            case .appleMaps(_, _):
+                return "Apple Maps"
+            case .waze(_, _):
+                return "Waze"
+            }
+        }
+        
+        var url: URL {
+            switch self {
+            case .appleMaps(let latitude, let longitude):
+                return .init(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)")!
+                
+            case .googleMaps(let latitude, let longitude):
+                return .init(string: "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving")!
+                
+            case .waze(let latitude, let longitude):
+                return .init(string: "waze://?ll=\(latitude),\(longitude)&navigate=false")!
+            }
+        }
+    }
+    
     //MARK: - Colors
     enum Colors {
         static let deepBlue            = UIColor(named: "deepBlue")
