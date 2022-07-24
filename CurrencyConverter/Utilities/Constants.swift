@@ -10,6 +10,11 @@ import UIKit
 
 enum Constants {
     
+    //MARK: - General
+    enum General {
+        static let animationDuration: CGFloat = 0.3
+    }
+    
     //MARK: - Web
     enum Web: String {
         case currenciesUrl = "https://datahub.io/core/currency-codes/r/codes-all.json"

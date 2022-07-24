@@ -89,6 +89,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
         let conversionRatesData = UserManager.shared.conversionRatesData
         
         if currenciesData.count != Data().count || conversionRatesData.count != Data().count {
+    
             do {
                 let decodedCurrencyData = try JSONDecoder().decode([CurrencyModel].self, from: currenciesData)
                 let decodedConversionRatesData = try JSONDecoder().decode(ConversionModel.self, from: conversionRatesData)
@@ -100,6 +101,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
                 print("\n~~> Couldn't decode parsed data: \(error.localizedDescription)")
             }
         }
+    
     }
     
     private func setCurrencyList(_ list: [CurrencyModel], accordingToAvailableRates rates: ConversionModel) {

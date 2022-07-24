@@ -105,7 +105,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         subscribe(to: \.$keyboardAppeared) { [unowned self] appeared in
             guard let appeared = appeared else { return }
             
-            UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+            UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
                 guard let self = self else { return }
                 _ = [self.findConversionStoresButton, self.currencyExchangeView].map { $0!.translucent(appeared ? 0 : 1) }
             }
@@ -116,17 +116,19 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             guard let self  = self,
                   let state = state else { return }
             
-            UIView.animateOnMain(withDuration: 0.3) {
+            UIView.animateOnMain(withDuration: Constants.General.animationDuration) {
+                let viewsToAnimate = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.arrowsImageView, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton]
+                
                 if let keyboardAppeared = viewModel.keyboardAppeared {
                     if !keyboardAppeared && state == .full {
                         self.currencyExchangeView.visible()
                     } else if !keyboardAppeared {
                         self.currencyExchangeView.translucent(state == .full ? 1 : 0)
-                        _ = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.arrowsImageView, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                        _ = viewsToAnimate.map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
                     }
                     
                 } else {
-                    _ = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.arrowsImageView, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton].map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                    _ = viewsToAnimate.map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
                     self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                 }
             }
@@ -155,12 +157,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func configureCurrencyLastUpdatedLabel(dateString: String) {
-        UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+        UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
             self?.currencyLastUpdatedLabel
                 .invisible()
                 .setText("\(Constants.Text.ratesLastUpdatedLabel)\(dateString)")
         } didFinish: { [weak self] _ in
-            UIView.animateOnMain(withDuration: 0.3) {
+            UIView.animateOnMain(withDuration: Constants.General.animationDuration) {
                 self?.currencyLastUpdatedLabel.visible()
             }
         }
@@ -171,7 +173,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func animateWhitenButtons() {
-        UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+        UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
             _ = [self?.trailingButton, self?.leadingButton].map {
                 $0?.backgroundColored(.white)
                     .coloredText(Constants.Colors.deepBlue!)
@@ -180,7 +182,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func animateButton(_ button: UIButton, leading: Bool) {
-        UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+        UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
             button
                 .backgroundColored(Constants.Colors.deepBlue!)
                 .coloredText(.white)
@@ -201,7 +203,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBAction func trailingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             
-            UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+            UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
                 sender.titleLabel?.adjustedFontSizeToFitWidth()
                 sender
                     .backgroundColored(Constants.Colors.deepBlue!)

@@ -80,7 +80,7 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
         //MARK: Floating panel state changed
         subscribe(to: \.$floatingPanelState) { state in
             guard let state = state else { return }
-            UIView.animateOnMain(withDuration: 0.3) { [weak self] in
+            UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
                 self?.currencyExchangeView.translucent(state == .full ? 1 : 0)
             }
         }
@@ -98,7 +98,6 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
             viewModel.handleBackButtonTapped()
         }
     }
-    
     
     @objc private func urlLabelTapped(_ sender: UITapGestureRecognizer) {
         self.urlLabel.actionWithSpringAnimation {
