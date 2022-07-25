@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3D28CA4E287C14D4009BB63E /* CurrencyExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */; };
 		3D28CA50287C14DC009BB63E /* CurrencyExchangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */; };
+		75648090288DB9D800353FE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564808E288DB9D800353FE5 /* SettingsViewController.swift */; };
+		75648091288DB9D800353FE5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7564808F288DB9D800353FE5 /* SettingsViewController.xib */; };
+		75648093288DB9DF00353FE5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75648092288DB9DF00353FE5 /* SettingsViewModel.swift */; };
 		75D898A528709A6E00433661 /* UniversalHTTP in Frameworks */ = {isa = PBXBuildFile; productRef = 75D898A428709A6E00433661 /* UniversalHTTP */; };
 		75D898A8287433B200433661 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 75D898A7287433B200433661 /* FloatingPanel */; };
 		75D898AA2874346F00433661 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898A92874346F00433661 /* LocationManager.swift */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeView.swift; sourceTree = "<group>"; };
 		3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyExchangeView.xib; sourceTree = "<group>"; };
+		7564808E288DB9D800353FE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7564808F288DB9D800353FE5 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		75648092288DB9DF00353FE5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		75D898A92874346F00433661 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		75D898AC2874476000433661 /* ConverterPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelViewController.swift; sourceTree = "<group>"; };
 		75D898AD2874476000433661 /* ConverterPanelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConverterPanelViewController.xib; sourceTree = "<group>"; };
@@ -114,6 +120,16 @@
 				3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */,
 			);
 			path = CurrencyRatesView;
+			sourceTree = "<group>";
+		};
+		7564808D288DB9C900353FE5 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7564808E288DB9D800353FE5 /* SettingsViewController.swift */,
+				75648092288DB9DF00353FE5 /* SettingsViewModel.swift */,
+				7564808F288DB9D800353FE5 /* SettingsViewController.xib */,
+			);
+			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		75D898AB2874473900433661 /* ConverterPanelViewController */ = {
@@ -223,6 +239,7 @@
 		75E8E200286EE6E6008EE3AA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7564808D288DB9C900353FE5 /* SettingsViewController */,
 				75D898D4287ADD3500433661 /* SiteInfoViewController */,
 				75D898AB2874473900433661 /* ConverterPanelViewController */,
 				75E8E20F286EE8F1008EE3AA /* OnboardingViewController */,
@@ -332,6 +349,7 @@
 			files = (
 				75E8E1F0286EE457008EE3AA /* LaunchScreen.storyboard in Resources */,
 				75E8E219286EFEC4008EE3AA /* HomeScreenViewController.xib in Resources */,
+				75648091288DB9D800353FE5 /* SettingsViewController.xib in Resources */,
 				75E8E1ED286EE457008EE3AA /* Assets.xcassets in Resources */,
 				75D898D8287ADD5B00433661 /* SiteInfoViewController.xib in Resources */,
 				75D898B8287466CD00433661 /* Heebo-Bold.ttf in Resources */,
@@ -360,6 +378,7 @@
 				75E8E1FD286EE61C008EE3AA /* MainCoordinator.swift in Sources */,
 				75D898AE2874476000433661 /* ConverterPanelViewController.swift in Sources */,
 				75E8E207286EE73A008EE3AA /* HomeScreenViewModel.swift in Sources */,
+				75648093288DB9DF00353FE5 /* SettingsViewModel.swift in Sources */,
 				75E8E22628703A93008EE3AA /* Constants.swift in Sources */,
 				75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */,
 				75E8E1FF286EE660008EE3AA /* UserManager.swift in Sources */,
@@ -373,6 +392,7 @@
 				75E8E1E6286EE454008EE3AA /* SceneDelegate.swift in Sources */,
 				75E8E212286EE90D008EE3AA /* OnboardingViewController.swift in Sources */,
 				75E8E20D286EE8D5008EE3AA /* OnboardingCoordinator.swift in Sources */,
+				75648090288DB9D800353FE5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

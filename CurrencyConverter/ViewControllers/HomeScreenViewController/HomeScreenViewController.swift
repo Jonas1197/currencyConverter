@@ -13,8 +13,9 @@ import EKSwiftSuite
 
 final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
 
-    @IBOutlet weak var mapView:            MKMapView!
-    @IBOutlet weak var locateMeButton:     UIButton!
+    @IBOutlet weak var mapView:        MKMapView!
+    @IBOutlet weak var locateMeButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     private var floatingPanel: FloatingPanelController!
     
@@ -28,7 +29,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        locateMeButton.roundCorners(to: .rounded)
+        _ = [locateMeButton, settingsButton].map { $0!.roundCorners(to: .rounded)}
     }
     
     
@@ -39,7 +40,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         LocationManager.shared.delegate = viewModel
         LocationManager.shared.requestLocationAuthorization()
         configureFloatingPanel()
-        configureLocateMeButton()
+        configureButtons()
         
         mapView.delegate = viewModel
     }
@@ -72,8 +73,9 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         present(floatingPanel, animated: true, completion: nil)
     }
     
-    private func configureLocateMeButton() {
-        locateMeButton.shadowed(with: .black, offset: .init(width: 0, height: -3), radius: 12, 0.3)
+    private func configureButtons() {
+        _ = [locateMeButton, settingsButton].map { $0!.shadowed(with: .black, offset: .init(width: 0, height: -3), radius: 12, 0.3)
+        }
     }
     
     override func subscribeToViewModel(_ viewModel: HomeScreenViewModel) {
@@ -121,6 +123,13 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     @IBAction func locateMeButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             viewModel.zoomOnUserLocation()
+        }
+    }
+    
+    @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        sender.actionWithSpringAnimation { [unowned self] in
+            floatingPanel.dismiss(animated: true, completion: nil)
+            viewModel.presentSettings()
         }
     }
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="locateMeButton" destination="dsm-Du-zHn" id="t51-cI-Qh4"/>
                 <outlet property="mapView" destination="XPY-F0-Qen" id="QZC-Je-us6"/>
+                <outlet property="settingsButton" destination="A9e-Ic-QMQ" id="pcW-Zg-vmO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,28 +24,47 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XPY-F0-Qen">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn">
-                    <rect key="frame" x="22" y="722" width="40" height="40"/>
-                    <color key="backgroundColor" name="deepBlue"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="Y0m-Qw-0TP"/>
-                        <constraint firstAttribute="height" constant="40" id="z8Z-dx-B3V"/>
-                    </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="location.fill" catalog="system"/>
-                    <connections>
-                        <action selector="locateMeButtonTapped:" destination="-1" eventType="touchUpInside" id="0xW-tb-Miy"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-vs-hG7">
+                    <rect key="frame" x="32" y="675" width="40" height="102"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" name="deepBlue"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Y0m-Qw-0TP"/>
+                                <constraint firstAttribute="height" constant="40" id="z8Z-dx-B3V"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="location.fill" catalog="system"/>
+                            <connections>
+                                <action selector="locateMeButtonTapped:" destination="-1" eventType="touchUpInside" id="0xW-tb-Miy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9e-Ic-QMQ">
+                            <rect key="frame" x="0.0" y="62" width="40" height="40"/>
+                            <color key="backgroundColor" name="deepYellow"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Vhr-YN-Aie"/>
+                                <constraint firstAttribute="height" constant="40" id="zVE-Y6-t6X"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="gearshape.fill" catalog="system"/>
+                            <connections>
+                                <action selector="settingsButtonTapped:" destination="-1" eventType="touchUpInside" id="RGN-0J-6Tf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="dsm-Du-zHn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="Gd0-4h-6nW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="g6l-vs-hG7" secondAttribute="bottom" constant="85" id="Peb-4p-te4"/>
                 <constraint firstAttribute="bottom" secondItem="XPY-F0-Qen" secondAttribute="bottom" id="YQK-e2-Haz"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Yxs-7f-qXv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dsm-Du-zHn" secondAttribute="bottom" constant="100" id="aAf-co-CUg"/>
+                <constraint firstItem="g6l-vs-hG7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="e6N-45-KWA"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="scM-Y7-eIx"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="woH-X6-beF"/>
             </constraints>
@@ -52,9 +72,13 @@
         </view>
     </objects>
     <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <namedColor name="deepBlue">
             <color red="0.24300000071525574" green="0.3919999897480011" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="deepYellow">
+            <color red="0.94901960784313721" green="0.72156862745098038" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

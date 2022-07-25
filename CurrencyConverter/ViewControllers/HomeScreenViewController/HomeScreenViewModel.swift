@@ -13,7 +13,7 @@ import MapKit
 import NotSwiftUI
 
 protocol HomeScreenOutput: AnyObject {
-    
+    func presentsSettings()
 }
 
 final class HomeScreenViewModel: NSObject {
@@ -38,6 +38,10 @@ final class HomeScreenViewModel: NSObject {
         }
         
         currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
+    }
+    
+    func presentSettings() {
+        output?.presentsSettings()
     }
     
     func listenToKeyboardEvents() {

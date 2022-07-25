@@ -17,6 +17,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     
     //MARK: ViewControllers
     var homeScreenViewController: HomeScreenViewController!
+    var settingsViewController:   SettingsViewController!
     
     //MARK: - Lifecycle
     init(windowScene: UIWindowScene) {
@@ -130,6 +131,11 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
         homeScreenViewController = .init(viewModel: .init(output: self))
         navigationController.pushViewController(homeScreenViewController, animated: true)
     }
+    
+    func settings() {
+        settingsViewController = .init(viewModel: .init(self))
+        navigationController.present(settingsViewController, animated: true, completion: nil)
+    }
 }
 
 //MARK: - OnboardingOutput
@@ -141,5 +147,12 @@ extension MainCoordinator: OnboardingCoordinatorOutput {
 
 //MARK: - HomeScreenOutput
 extension MainCoordinator: HomeScreenOutput {
+    func presentsSettings() {
+        settings()
+    }
+}
+
+//MARK: - SettingsOutput
+extension MainCoordinator: SettingsOutput {
     
 }
