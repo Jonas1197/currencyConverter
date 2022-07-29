@@ -16,6 +16,10 @@ final class InAppPurchaseHelper: NSObject, Subscribable {
         .init()
     }()
     
+    static var canMakePurchases: Bool {
+        SKPaymentQueue.canMakePayments()
+    }
+    
     private override init() {
         super.init()
         SKPaymentQueue.default().add(self)
@@ -26,6 +30,8 @@ final class InAppPurchaseHelper: NSObject, Subscribable {
     
     private var productIdentifiers: Set<String> = [Constants.InAppPurchase.smallDonationProductId]
     private var productRequest:     SKRequest?
+    
+    
     
     func makePurchase(_ product: SKProduct) {
         print("\n~~> [InAppPurchaseHelper] Requesting to purchase product: \(product.productIdentifier)")
