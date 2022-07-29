@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D28CA4E287C14D4009BB63E /* CurrencyExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */; };
 		3D28CA50287C14DC009BB63E /* CurrencyExchangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */; };
+		754F3B1E28940AEF00F0352A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754F3B1D28940AEF00F0352A /* StoreKit.framework */; };
+		754F3B2028940DA600F0352A /* InAppPurchaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B1F28940DA600F0352A /* InAppPurchaseHelper.swift */; };
 		75648090288DB9D800353FE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564808E288DB9D800353FE5 /* SettingsViewController.swift */; };
 		75648091288DB9D800353FE5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7564808F288DB9D800353FE5 /* SettingsViewController.xib */; };
 		75648093288DB9DF00353FE5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75648092288DB9DF00353FE5 /* SettingsViewModel.swift */; };
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeView.swift; sourceTree = "<group>"; };
 		3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyExchangeView.xib; sourceTree = "<group>"; };
+		754F3B1D28940AEF00F0352A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		754F3B1F28940DA600F0352A /* InAppPurchaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseHelper.swift; sourceTree = "<group>"; };
 		7564808E288DB9D800353FE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7564808F288DB9D800353FE5 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		75648092288DB9DF00353FE5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			files = (
 				75D898A528709A6E00433661 /* UniversalHTTP in Frameworks */,
 				75D898A8287433B200433661 /* FloatingPanel in Frameworks */,
+				754F3B1E28940AEF00F0352A /* StoreKit.framework in Frameworks */,
 				75E8E224287038D6008EE3AA /* NotSwiftUI in Frameworks */,
 				75E8E1F9286EE59E008EE3AA /* EKSwiftSuite in Frameworks */,
 			);
@@ -120,6 +125,14 @@
 				3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */,
 			);
 			path = CurrencyRatesView;
+			sourceTree = "<group>";
+		};
+		754F3B1C28940AEF00F0352A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				754F3B1D28940AEF00F0352A /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7564808D288DB9C900353FE5 /* SettingsViewController */ = {
@@ -184,6 +197,7 @@
 			children = (
 				75E8E1E2286EE454008EE3AA /* CurrencyConverter */,
 				75E8E1E1286EE454008EE3AA /* Products */,
+				754F3B1C28940AEF00F0352A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,6 +246,7 @@
 				75D898A92874346F00433661 /* LocationManager.swift */,
 				75D898B928781CB900433661 /* Extensions.swift */,
 				75D898C5287883F900433661 /* Networking */,
+				754F3B1F28940DA600F0352A /* InAppPurchaseHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -382,6 +397,7 @@
 				75E8E22628703A93008EE3AA /* Constants.swift in Sources */,
 				75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */,
 				75E8E1FF286EE660008EE3AA /* UserManager.swift in Sources */,
+				754F3B2028940DA600F0352A /* InAppPurchaseHelper.swift in Sources */,
 				75D898B12874477B00433661 /* ConverterPanelViewModel.swift in Sources */,
 				75E8E218286EFEC4008EE3AA /* HomeScreenViewController.swift in Sources */,
 				75E8E20B286EE802008EE3AA /* BindableViewController.swift in Sources */,
@@ -532,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
@@ -550,7 +566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasg.Converty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -565,7 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
@@ -583,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasg.Converty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -15,6 +15,11 @@ enum Constants {
         static let animationDuration: CGFloat = 0.3
     }
     
+    //MARK: - InAppPurchase
+    enum InAppPurchase {
+        static let smallDonationProductId = "convertySmallDonation"
+    }
+    
     //MARK: - Web
     enum Web: String {
         case currenciesUrl = "https://datahub.io/core/currency-codes/r/codes-all.json"

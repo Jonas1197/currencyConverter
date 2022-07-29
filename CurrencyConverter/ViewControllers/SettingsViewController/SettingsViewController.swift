@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class SettingsViewController: BaseViewController<SettingsViewModel> {
     
@@ -29,6 +30,19 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         super.viewDidDisappear(animated)
         viewModel.output?.settingsDidDisappear()
     }
+    
+    override func subscribeToViewModel(_ viewModel: SettingsViewModel) {
+        subscribe(to: \.$purchaseComplete) { [weak self] complete in
+            guard let self     = self,
+                  let complete = complete else { return }
+            
+            if complete {
+                print("\n~~> [Settings] Purchase completed!")
+            } else {
+                print("\n~~> [Settings] Purchase failed.")
+            }
+        }
+    }
 
     //MARK: - SetUp
     private func setUp() {
@@ -47,9 +61,8 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     }
     
     @IBAction func donateButtonTapped(_ sender: UIButton) {
-        sender.actionWithSpringAnimation {
-            //
+        sender.actionWithSpringAnimation { [unowned self] in
+            viewModel.makeDonation()
         }
     }
-    
 }
