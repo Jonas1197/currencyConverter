@@ -13,6 +13,12 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        UIDevice.forceOrientation(.portrait)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.output?.settingsDidDisappear()
     }
 
 

@@ -23,6 +23,7 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        UIDevice.forceOrientation(.portrait)
     }
     
     override func viewDidLayoutSubviews() {

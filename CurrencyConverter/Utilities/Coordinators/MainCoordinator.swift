@@ -154,5 +154,7 @@ extension MainCoordinator: HomeScreenOutput {
 
 //MARK: - SettingsOutput
 extension MainCoordinator: SettingsOutput {
-    
+    func settingsDidDisappear() {
+        homeScreenViewController.configureFloatingPanel()
+    }
 }

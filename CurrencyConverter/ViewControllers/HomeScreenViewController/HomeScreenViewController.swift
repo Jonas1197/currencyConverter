@@ -25,6 +25,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        UIDevice.forceOrientation(.portrait)
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,7 +46,7 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         mapView.delegate = viewModel
     }
     
-    private func configureFloatingPanel() {
+    func configureFloatingPanel() {
         floatingPanel = .init(delegate: viewModel)
         self.viewModel.floatingPanel = floatingPanel
         

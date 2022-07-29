@@ -27,7 +27,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-vs-hG7">
                     <rect key="frame" x="32" y="675" width="40" height="102"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn" userLabel="Locate me button">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                             <color key="backgroundColor" name="deepBlue"/>
                             <constraints>
@@ -41,7 +41,7 @@
                                 <action selector="locateMeButtonTapped:" destination="-1" eventType="touchUpInside" id="0xW-tb-Miy"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9e-Ic-QMQ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9e-Ic-QMQ" userLabel="Settings button">
                             <rect key="frame" x="0.0" y="62" width="40" height="40"/>
                             <color key="backgroundColor" name="deepYellow"/>
                             <constraints>

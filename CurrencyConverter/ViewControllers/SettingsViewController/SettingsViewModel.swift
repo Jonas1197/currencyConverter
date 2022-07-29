@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SettingsOutput: AnyObject {
-    
+    func settingsDidDisappear()
 }
 
 final class SettingsViewModel {
@@ -17,4 +17,5 @@ final class SettingsViewModel {
     init(_ output: SettingsOutput) {
         self.output = output
     }
+    
 }

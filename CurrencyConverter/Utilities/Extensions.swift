@@ -16,3 +16,30 @@ extension UIView {
         }
     }
 }
+
+
+//MARK: - UIDevice
+extension UIDevice {
+    static func forceOrientation(_ orientation: UIInterfaceOrientationMask) {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+    }
+    
+    /**
+     Force the device into portrait mode.
+     */
+    static func forcePortrait() {
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
+    /**
+     Force the device into landscpae mode.
+     */
+    static func forceLandscape() {
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+}
