@@ -51,12 +51,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             guard let self     = self,
                   let complete = complete else { return }
             
-            if complete {
-                print("\n~~> [Settings] Purchase completed!")
-            } else {
-                print("\n~~> [Settings] Purchase failed.")
-            }
-            
+            self.presentTransactionalert(complete)
             self.dismissLoadingView()
         }
     }
@@ -99,6 +94,17 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                 self?.loadingIndicator.removeFromSuperview()
             }
 
+        }
+    }
+    
+    private func presentTransactionalert(_ complete: Bool) {
+        let title = complete ? "Purchase complete!" : "Oops!"
+        let text = complete ? "Thank you! :)" : "Something went wrong. You were not charged."
+        let ac = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Close", style: .cancel)
+        ac.addAction(dismiss)
+        DispatchQueue.main.async {
+            self.present(ac, animated: true)
         }
     }
     
