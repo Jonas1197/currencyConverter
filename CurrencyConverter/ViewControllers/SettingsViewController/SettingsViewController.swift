@@ -61,7 +61,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         radiusValueLabel.text = "\(UserManager.shared.zoomRadius) meters"
         donateButton.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
         
-        if InAppPurchaseHelper.canMakePurchases {
+        if !InAppPurchaseHelper.canMakePurchases {
             donateButton
                 .translucent(0.4)
                 .isUserInteractionEnabled = false
