@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NotSwiftUI
 import StoreKit
 
 final class SettingsViewController: BaseViewController<SettingsViewModel> {
@@ -13,6 +14,19 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     @IBOutlet weak var radiusValueLabel: UILabel!
     @IBOutlet weak var radiusSlider:     UISlider!
     @IBOutlet weak var donateButton: UIButton!
+    
+    private var loadingBackground = Object
+        .view(backgroundColor: .white.withAlphaComponent(0.7))
+        .create()
+        .invisible()
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = Constants.Colors.deepBlue
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,6 +45,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         viewModel.output?.settingsDidDisappear()
     }
     
+    
     override func subscribeToViewModel(_ viewModel: SettingsViewModel) {
         subscribe(to: \.$purchaseComplete) { [weak self] complete in
             guard let self     = self,
@@ -41,6 +56,8 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             } else {
                 print("\n~~> [Settings] Purchase failed.")
             }
+            
+            self.dismissLoadingView()
         }
     }
 
@@ -48,6 +65,31 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     private func setUp() {
         radiusValueLabel.text = "\(UserManager.shared.zoomRadius) meters"
         donateButton.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
+    }
+    
+    private func presentLoadingView() {
+        DispatchQueue.main.async {
+            self.loadingBackground.filled(in: self.view)
+            self.loadingIndicator.centered(in: self.loadingBackground)
+            
+            UIView.animate(withDuration: Constants.General.animationDuration, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                self?.loadingBackground.visible()
+                self?.loadingIndicator.startAnimating()
+            }
+        }
+    }
+    
+    private func dismissLoadingView() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: Constants.General.animationDuration, delay: 0, options: [.allowUserInteraction, .curveEaseInOut]) { [weak self] in
+                self?.loadingBackground.invisible()
+            } completion: { [weak self] _ in
+                self?.loadingIndicator.stopAnimating()
+                self?.loadingBackground.removeFromSuperview()
+                self?.loadingIndicator.removeFromSuperview()
+            }
+
+        }
     }
     
     //MARK: - Actions
@@ -62,6 +104,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     
     @IBAction func donateButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
+            presentLoadingView()
             viewModel.makeDonation()
         }
     }
