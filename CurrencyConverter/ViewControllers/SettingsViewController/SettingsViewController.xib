@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Heebo-Bold.ttf">
+            <string>Heebo-Bold</string>
+        </array>
         <array key="Heebo-Medium.ttf">
             <string>Heebo-Medium</string>
         </array>
@@ -19,6 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="CurrencyConverter" customModuleProvider="target">
             <connections>
+                <outlet property="donateButton" destination="A1M-Z2-Bws" id="VaK-qP-EUV"/>
                 <outlet property="radiusSlider" destination="Ufg-am-Dy5" id="aDU-jM-JCb"/>
                 <outlet property="radiusValueLabel" destination="60H-sS-ps0" id="XDK-y9-6gE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -59,28 +63,78 @@
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1M-Z2-Bws">
+                    <rect key="frame" x="22" y="752" width="370" height="48"/>
+                    <color key="backgroundColor" name="deepBlue"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="FqQ-Du-TsI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="24"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Donate $1">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="donateButtonTapped:" destination="-1" eventType="touchUpInside" id="Gqt-c7-rRX"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7o-bK-uwf">
+                    <rect key="frame" x="22" y="668" width="370" height="62"/>
+                    <string key="text">This app is free of charge, for life. I found myself in similar situations so I thought of creating a solution. If you'd like to donate though, this would be much appriciated!</string>
+                    <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="14"/>
+                    <color key="textColor" name="titleLabel"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me get drunk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-ht-acn">
+                    <rect key="frame" x="22" y="616" width="370" height="30"/>
+                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
+                    <color key="textColor" name="titleLabel"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="55z-yA-2ci" secondAttribute="trailing" constant="22" id="0ZW-Mr-aun"/>
                 <constraint firstAttribute="trailing" secondItem="7Ho-5N-5T0" secondAttribute="trailing" constant="32" id="1t9-ZV-Xn7"/>
+                <constraint firstItem="A1M-Z2-Bws" firstAttribute="top" secondItem="S7o-bK-uwf" secondAttribute="bottom" constant="22" id="1yt-gR-HO5"/>
                 <constraint firstItem="55z-yA-2ci" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="4Lw-21-16O"/>
+                <constraint firstItem="S7o-bK-uwf" firstAttribute="top" secondItem="mtT-ht-acn" secondAttribute="bottom" constant="22" id="Dt4-Oq-5Wd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A1M-Z2-Bws" secondAttribute="trailing" constant="22" id="L7W-8z-Dp8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ufg-am-Dy5" secondAttribute="trailing" constant="32" id="NW0-qc-8NI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="60H-sS-ps0" secondAttribute="trailing" constant="32" id="NmM-5U-gtB"/>
                 <constraint firstItem="Ufg-am-Dy5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="O5a-2y-6lG"/>
                 <constraint firstItem="60H-sS-ps0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="Q1z-kl-gxI"/>
                 <constraint firstItem="60H-sS-ps0" firstAttribute="top" secondItem="7Ho-5N-5T0" secondAttribute="bottom" constant="12" id="QAs-Dl-O4T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="A1M-Z2-Bws" secondAttribute="bottom" constant="62" id="UHq-q5-m6B"/>
+                <constraint firstItem="A1M-Z2-Bws" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="Z7c-RR-ACk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mtT-ht-acn" secondAttribute="trailing" constant="22" id="ZbO-cR-pUj"/>
+                <constraint firstAttribute="trailing" secondItem="S7o-bK-uwf" secondAttribute="trailing" constant="22" id="Zx0-hE-rJB"/>
                 <constraint firstItem="Ufg-am-Dy5" firstAttribute="top" secondItem="60H-sS-ps0" secondAttribute="bottom" constant="8" id="ieY-Hn-aTg"/>
                 <constraint firstItem="7Ho-5N-5T0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="ixn-1r-Ibf"/>
                 <constraint firstItem="55z-yA-2ci" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="jGO-OT-4aR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Onu-tA-ZoZ" secondAttribute="trailing" constant="22" id="k5w-7S-sgm"/>
                 <constraint firstItem="Onu-tA-ZoZ" firstAttribute="top" secondItem="55z-yA-2ci" secondAttribute="bottom" constant="18" id="m11-y0-rgd"/>
                 <constraint firstItem="7Ho-5N-5T0" firstAttribute="top" secondItem="Onu-tA-ZoZ" secondAttribute="bottom" constant="12" id="nbX-iZ-fyq"/>
+                <constraint firstItem="S7o-bK-uwf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="22" id="sHS-qV-tmh"/>
                 <constraint firstItem="Onu-tA-ZoZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="vx9-ho-GHt"/>
+                <constraint firstItem="mtT-ht-acn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="z3a-iO-oZc"/>
             </constraints>
             <point key="canvasLocation" x="139" y="114"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v21-tq-8Sc">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="45"/>
+            <color key="backgroundColor" name="deepBlue"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="45" id="2nO-k0-pdB"/>
+            </constraints>
+            <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="24"/>
+            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+            <state key="normal" title="Find conversion stores">
+                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            </state>
+            <point key="canvasLocation" x="804" y="85"/>
+        </button>
     </objects>
     <resources>
         <namedColor name="deepBlue">
