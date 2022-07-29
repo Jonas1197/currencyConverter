@@ -9,6 +9,7 @@ import Foundation
 
 protocol SettingsOutput: AnyObject {
     func settingsDidDisappear()
+    func settingsUpdated()
 }
 
 final class SettingsViewModel {

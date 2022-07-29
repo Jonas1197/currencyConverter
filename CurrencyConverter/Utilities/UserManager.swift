@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EKSwiftSuite
 
 @propertyWrapper struct UserDefaultsWrapper<Value> {
     let key:          String
@@ -37,7 +38,10 @@ struct UserManager {
     
     var conversionRates: ConversionModel = .init(result: "", conversion_rates: [:])
     
-    var currencyList: [CurrencyModel] = [] 
+    var currencyList: [CurrencyModel] = []
+    
+    @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.zoomRadius, defaultValue: 2000)
+    var zoomRadius: Int
     
     @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.conversionRatesData, defaultValue: .init())
     var conversionRatesData: Data

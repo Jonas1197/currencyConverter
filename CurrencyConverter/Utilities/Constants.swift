@@ -80,6 +80,7 @@ enum Constants {
         static let lastUpdatedTimestamp = "lastUpdatedTimestamp"
         static let currencyData         = "currencyData"
         static let conversionRatesData  = "conversionRatesData"
+        static let zoomRadius           = "zoomRadius"
     }
     
     //MARK: - Text

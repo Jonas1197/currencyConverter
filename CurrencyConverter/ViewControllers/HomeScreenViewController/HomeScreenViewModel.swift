@@ -37,7 +37,8 @@ final class HomeScreenViewModel: NSObject {
             return
         }
         
-        currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        let zoomRadius = CLLocationDistance(UserManager.shared.zoomRadius)
+        currentUserRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: zoomRadius, longitudinalMeters: zoomRadius)
     }
     
     func presentSettings() {
@@ -75,6 +76,7 @@ final class HomeScreenViewModel: NSObject {
             
             var coordinate = item.placemark.coordinate
             coordinate.latitude += -0.005
+            
             self.currentUserRegion = .init(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         }
     }

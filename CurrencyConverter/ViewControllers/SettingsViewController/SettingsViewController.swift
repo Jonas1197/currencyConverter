@@ -9,6 +9,11 @@ import UIKit
 
 class SettingsViewController: BaseViewController<SettingsViewModel> {
 
+    
+    @IBOutlet weak var radiusValueLabel: UILabel!
+    @IBOutlet weak var radiusSlider:     UISlider!
+    
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,19 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
 
     //MARK: - SetUp
     private func setUp() {
-        
+        radiusValueLabel.text = "\(UserManager.shared.zoomRadius) meters"
     }
-
+    
+    //MARK: - Actions
+    @IBAction func radiusValueChanged(_ sender: UISlider) {
+        print("\n~~> Zoom radius value: \(sender.value)")
+        
+        let value = Int(sender.value)
+        radiusValueLabel.text = "\(value) meters"
+        
+        UserManager.shared.zoomRadius = value
+        
+//        viewModel.output?.settingsUpdated()
+    }
+    
 }

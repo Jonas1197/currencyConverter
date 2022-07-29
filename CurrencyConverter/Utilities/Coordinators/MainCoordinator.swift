@@ -157,4 +157,8 @@ extension MainCoordinator: SettingsOutput {
     func settingsDidDisappear() {
         homeScreenViewController.configureFloatingPanel()
     }
+    
+    func settingsUpdated() {
+        homeScreenViewController.viewModel.zoomOnUserLocation()
+    }
 }
