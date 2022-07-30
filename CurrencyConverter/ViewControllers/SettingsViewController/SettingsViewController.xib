@@ -78,7 +78,7 @@
                         <action selector="donateButtonTapped:" destination="-1" eventType="touchUpInside" id="Gqt-c7-rRX"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7o-bK-uwf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7o-bK-uwf">
                     <rect key="frame" x="22" y="668" width="370" height="62"/>
                     <string key="text">This app is free of charge, for life. I found myself in similar situations so I thought of creating a solution. If you'd like to donate though, this would be much appriciated!</string>
                     <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="14"/>
@@ -86,7 +86,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me get drunk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-ht-acn">
-                    <rect key="frame" x="22" y="616" width="370" height="30"/>
+                    <rect key="frame" x="22" y="626" width="370" height="30"/>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                 <constraint firstAttribute="trailing" secondItem="7Ho-5N-5T0" secondAttribute="trailing" constant="32" id="1t9-ZV-Xn7"/>
                 <constraint firstItem="A1M-Z2-Bws" firstAttribute="top" secondItem="S7o-bK-uwf" secondAttribute="bottom" constant="22" id="1yt-gR-HO5"/>
                 <constraint firstItem="55z-yA-2ci" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="4Lw-21-16O"/>
-                <constraint firstItem="S7o-bK-uwf" firstAttribute="top" secondItem="mtT-ht-acn" secondAttribute="bottom" constant="22" id="Dt4-Oq-5Wd"/>
+                <constraint firstItem="S7o-bK-uwf" firstAttribute="top" secondItem="mtT-ht-acn" secondAttribute="bottom" constant="12" id="Dt4-Oq-5Wd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A1M-Z2-Bws" secondAttribute="trailing" constant="22" id="L7W-8z-Dp8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ufg-am-Dy5" secondAttribute="trailing" constant="32" id="NW0-qc-8NI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="60H-sS-ps0" secondAttribute="trailing" constant="32" id="NmM-5U-gtB"/>
