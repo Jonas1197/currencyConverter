@@ -16,23 +16,25 @@ protocol SettingsOutput: AnyObject {
 
 final class SettingsViewModel {
     weak var output: SettingsOutput?
+    private var inAppPurchaseHelper: InAppPurchaseHelper!
     
     @Published var purchaseComplete: Bool?
     
     init(_ output: SettingsOutput) {
         self.output = output
+        inAppPurchaseHelper = .init()
         subscribeToInAppPurchaseHelper()
     }
     
     private func subscribeToInAppPurchaseHelper() {
         
-        InAppPurchaseHelper.shared.subscribe(to: InAppPurchaseHelper.shared.$product) { [weak self] prodcut in
+        inAppPurchaseHelper.subscribe(to: inAppPurchaseHelper.$product) { [weak self] prodcut in
             guard let self    = self,
                   let product = prodcut else { return }
             self.makePurchase(product)
         }
         
-        InAppPurchaseHelper.shared.subscribe(to: InAppPurchaseHelper.shared.$purchaseComplete) { [weak self] complete in
+        inAppPurchaseHelper.subscribe(to: inAppPurchaseHelper.$purchaseComplete) { [weak self] complete in
             guard let self     = self,
                   let complete = complete else { return }
             
@@ -45,11 +47,11 @@ final class SettingsViewModel {
     }
     
     private func requestDonationProdcut() {
-        InAppPurchaseHelper.shared.requestProduct()
+        inAppPurchaseHelper.requestProduct()
     }
     
     private func makePurchase(_ product: SKProduct) {
-        InAppPurchaseHelper.shared.makePurchase(product)
+        inAppPurchaseHelper.makePurchase(product)
     }
     
 }

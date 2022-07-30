@@ -12,15 +12,11 @@ import Combine
 final class InAppPurchaseHelper: NSObject, Subscribable {
     var cancellable: [AnyCancellable] = []
     
-    static var shared: InAppPurchaseHelper = {
-        .init()
-    }()
-    
     static var canMakePurchases: Bool {
         SKPaymentQueue.canMakePayments()
     }
     
-    private override init() {
+    override init() {
         super.init()
         SKPaymentQueue.default().add(self)
     }
