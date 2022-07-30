@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  CurrencyConverter
+
+  Created by Jonas Gamburg on 30/07/2022.
+  
+*/
+
+//MARK: - ConverterPanelViewController
+
+"converterVC_titleLabel"            = "Währungsrechner";
+"converterVC_tapToChoose"           = "Währung auswählen";
+"converterVC_tapToEnterPlaceholder" = "Wert eingeben";
+"converterVC_currencyRates"         = "Währungskurse zuletzt aktualisiert:";
+"converterVC_findButton"            = "Finde Wechselstuben in der Nähe";
+
+
+//MARK: - SiteInfoViewController
+
+"siteInfoVC_nameLabel"  = "Name des Ortes";
+"siteInfoVC_goButton"   = "Los!";
+"siteInfoVC_backButton" = "Zurück";
+
+
+//MARK: - SettingsViewController
+
+"settingsVC_titleLabel"              = "Einstellungen";
+"settingsVC_searchRadiusLabel"       = "Suchradius";
+"settingsVC_searchRadiusDescription" = "Der Suchradius, der benutzt wird, wenn die Karte präsentiert wird.";
+"settingsVC_donateLabel"             = "Kauf mir ein Bier! ";
+"settingsVC_donateDescription"       = "Diese App ist frei und enthält keine Gebühren. Ich war selbst in ähnlichen Situationen, wenn ich nach eine Wechelstube gesucht habe und wollte dafür eine bequeme Lösung anbieten. Falls Du mich unterstützen möchtest, dies würde ich sehr einschätzen!";

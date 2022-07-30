@@ -81,6 +81,29 @@ enum Constants {
         static let bold    = "Heebo-Bold"
     }
     
+    //MARK: - Localized Text
+    enum LocalizedText {
+        
+        //MARK: ConverterPanelViewController
+        static let converterVC_titleLabel            = "converterVC_titleLabel"
+        static let converterVC_tapToChoose           = "converterVC_tapToChoose"
+        static let converterVC_tapToEnterPlaceholder = "converterVC_tapToEnterPlaceholder"
+        static let converterVC_currencyRates         = "converterVC_currencyRates"
+        static let converterVC_findButton            = "converterVC_findButton"
+        
+        //MARK: SiteInfoViewController
+        static let siteInfoVC_nameLabel  = "siteInfoVC_nameLabel"
+        static let siteInfoVC_goButton   = "siteInfoVC_goButton"
+        static let siteInfoVC_backButton = "siteInfoVC_backButton"
+        
+        //MARK: SettingsViewController
+        static let settingsVC_titleLabel              = "settingsVC_titleLabel"
+        static let settingsVC_searchRadiusLabel       = "settingsVC_searchRadiusLabel"
+        static let settingsVC_searchRadiusDescription = "settingsVC_searchRadiusDescription"
+        static let settingsVC_donateLabel             = "settingsVC_donateLabel"
+        static let settingsVC_donateDescription       = "settingsVC_donateDescription"
+    }
+    
     //MARK: - UserDefaults keys
     enum UserDefaultsKeys {
         static let lastUpdatedTimestamp = "lastUpdatedTimestamp"

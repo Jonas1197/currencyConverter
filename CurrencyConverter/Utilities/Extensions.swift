@@ -43,3 +43,12 @@ extension UIDevice {
         UIDevice.current.setValue(value, forKey: "orientation")
     }
 }
+
+//MARK: - String
+extension String {
+    func localized(_ lang: String = Locale.current.languageCode ?? "en") ->String {
+        let path   = Bundle.main.path(forResource: lang, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
+}

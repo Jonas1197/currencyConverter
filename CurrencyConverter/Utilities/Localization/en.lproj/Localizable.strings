@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  CurrencyConverter
+
+  Created by Jonas Gamburg on 30/07/2022.
+  
+*/
+
+//MARK: - ConverterPanelViewController
+
+"converterVC_titleLabel"            = "Converter";
+"converterVC_tapToChoose"           = "Tap to choose currency";
+"converterVC_tapToEnterPlaceholder" = "Tap to enter";
+"converterVC_currencyRates"         = "Currency rates last updated:";
+"converterVC_findButton"            = "Find conversion stores";
+
+
+//MARK: - SiteInfoViewController
+
+"siteInfoVC_nameLabel"  = "Site name";
+"siteInfoVC_goButton"   = "Go!";
+"siteInfoVC_backButton" = "Back";
+
+
+//MARK: - SettingsViewController
+
+"settingsVC_titleLabel"              = "Settings";
+"settingsVC_searchRadiusLabel"       = "Search radius";
+"settingsVC_searchRadiusDescription" = "Choose the zoom radius when sesarching for conversion stores.";
+"settingsVC_donateLabel"             = "Help me get drunk";
+"settingsVC_donateDescription"       = "This app is free of charge, for life. I found myself in similar situations so I thought of creating a solution. If you'd like to donate though, this would be much appriciated!";
