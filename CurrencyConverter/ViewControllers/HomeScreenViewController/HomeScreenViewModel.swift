@@ -14,6 +14,7 @@ import NotSwiftUI
 
 protocol HomeScreenOutput: AnyObject {
     func presentsSettings()
+    func presentCurrencySelector(leading: Bool)
 }
 
 final class HomeScreenViewModel: NSObject {
@@ -135,6 +136,10 @@ extension HomeScreenViewModel: ConverterPanelDelegate {
             guard let results = await LocationManager.shared.search(term: "Money Exchange", inRegion: currentUserRegion) else { return }
             self.searchResults = results
         }
+    }
+    
+    func presentCurrencyPicker(leading: Bool) {
+        output?.presentCurrencySelector(leading: leading)
     }
 }
 

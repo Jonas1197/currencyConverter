@@ -181,6 +181,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
     }
     
+    //MARK: Animation buttons tapped
     private func animateButton(_ button: UIButton, leading: Bool) {
         UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
             button
@@ -200,6 +201,8 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     //MARK: - Actions
+    
+    //MARK: Trrailing button tapped
     @IBAction func trailingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             
@@ -216,21 +219,28 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
-            textFieldContainer.becomeFirstResponder()
+//            textFieldContainer.becomeFirstResponder()
+            
+            dismiss(animated: true)
+            viewModel.delegate?.presentCurrencyPicker(leading: false)
             emptyTextFields()
         }
     }
     
+    //MARK: Leading button tapped
     @IBAction func leadingButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             animateButton(sender, leading: true)
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
-            textFieldContainer.becomeFirstResponder()
+//            textFieldContainer.becomeFirstResponder()
+            dismiss(animated: true)
+            viewModel.delegate?.presentCurrencyPicker(leading: true)
             emptyTextFields()
         }
     }
     
+    //MARK: Find conversion stores button
     @IBAction func findConversionStoresButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
             animateButton(sender, leading: false)
@@ -240,6 +250,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
     }
     
+    //MARK: Textfield editing chagned
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         if !valueRetrieved {
             if let text = sender.text,
@@ -255,11 +266,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
     }
     
+    //MARK: Textfield editing begin
     @IBAction func textFieldEditingBegin(_ sender: UITextField) {
         animateWhitenButtons()
     }
     
-    
+    //MARK: Touches began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         animateWhitenButtons()

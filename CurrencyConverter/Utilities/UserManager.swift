@@ -34,6 +34,9 @@ struct UserManager {
      */
     var didSeeOnboarding = true
     
+    var selectedLeadingCurrencyModel:  CurrencyModel?
+    var selectedTrailingCurrencyModel: CurrencyModel?
+    
     var currencyExchangeViewCurrencies: [String] = ["USD", "EUR", "ILS", "CZK", "CH", "GBP", "RUB"]
     
     var conversionRates: ConversionModel = .init(result: "", conversion_rates: [:])

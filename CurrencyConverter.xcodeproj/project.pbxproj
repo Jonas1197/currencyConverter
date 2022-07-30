@@ -11,6 +11,11 @@
 		3D28CA50287C14DC009BB63E /* CurrencyExchangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */; };
 		754F3B1E28940AEF00F0352A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754F3B1D28940AEF00F0352A /* StoreKit.framework */; };
 		754F3B2028940DA600F0352A /* InAppPurchaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B1F28940DA600F0352A /* InAppPurchaseHelper.swift */; };
+		754F3B2428951D7700F0352A /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B2228951D7700F0352A /* CurrencySelectorViewController.swift */; };
+		754F3B2528951D7700F0352A /* CurrencySelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754F3B2328951D7700F0352A /* CurrencySelectorViewController.xib */; };
+		754F3B2728951D8000F0352A /* CurrencySelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B2628951D8000F0352A /* CurrencySelectorViewModel.swift */; };
+		754F3B2B2895217E00F0352A /* CurrencySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B292895217E00F0352A /* CurrencySelectorTableViewCell.swift */; };
+		754F3B2C2895217E00F0352A /* CurrencySelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754F3B2A2895217E00F0352A /* CurrencySelectorTableViewCell.xib */; };
 		75648090288DB9D800353FE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564808E288DB9D800353FE5 /* SettingsViewController.swift */; };
 		75648091288DB9D800353FE5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7564808F288DB9D800353FE5 /* SettingsViewController.xib */; };
 		75648093288DB9DF00353FE5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75648092288DB9DF00353FE5 /* SettingsViewModel.swift */; };
@@ -56,6 +61,11 @@
 		3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyExchangeView.xib; sourceTree = "<group>"; };
 		754F3B1D28940AEF00F0352A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		754F3B1F28940DA600F0352A /* InAppPurchaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseHelper.swift; sourceTree = "<group>"; };
+		754F3B2228951D7700F0352A /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
+		754F3B2328951D7700F0352A /* CurrencySelectorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencySelectorViewController.xib; sourceTree = "<group>"; };
+		754F3B2628951D8000F0352A /* CurrencySelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewModel.swift; sourceTree = "<group>"; };
+		754F3B292895217E00F0352A /* CurrencySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewCell.swift; sourceTree = "<group>"; };
+		754F3B2A2895217E00F0352A /* CurrencySelectorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencySelectorTableViewCell.xib; sourceTree = "<group>"; };
 		7564808E288DB9D800353FE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7564808F288DB9D800353FE5 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		75648092288DB9DF00353FE5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -133,6 +143,26 @@
 				754F3B1D28940AEF00F0352A /* StoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		754F3B2128951D6100F0352A /* CurrencySelectorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				754F3B282895216500F0352A /* CurrencySelectorTableViewCell */,
+				754F3B2228951D7700F0352A /* CurrencySelectorViewController.swift */,
+				754F3B2628951D8000F0352A /* CurrencySelectorViewModel.swift */,
+				754F3B2328951D7700F0352A /* CurrencySelectorViewController.xib */,
+			);
+			path = CurrencySelectorViewController;
+			sourceTree = "<group>";
+		};
+		754F3B282895216500F0352A /* CurrencySelectorTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				754F3B292895217E00F0352A /* CurrencySelectorTableViewCell.swift */,
+				754F3B2A2895217E00F0352A /* CurrencySelectorTableViewCell.xib */,
+			);
+			path = CurrencySelectorTableViewCell;
 			sourceTree = "<group>";
 		};
 		7564808D288DB9C900353FE5 /* SettingsViewController */ = {
@@ -254,6 +284,7 @@
 		75E8E200286EE6E6008EE3AA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				754F3B2128951D6100F0352A /* CurrencySelectorViewController */,
 				7564808D288DB9C900353FE5 /* SettingsViewController */,
 				75D898D4287ADD3500433661 /* SiteInfoViewController */,
 				75D898AB2874473900433661 /* ConverterPanelViewController */,
@@ -369,9 +400,11 @@
 				75D898D8287ADD5B00433661 /* SiteInfoViewController.xib in Resources */,
 				75D898B8287466CD00433661 /* Heebo-Bold.ttf in Resources */,
 				75D898B6287466CD00433661 /* Heebo-Medium.ttf in Resources */,
+				754F3B2C2895217E00F0352A /* CurrencySelectorTableViewCell.xib in Resources */,
 				3D28CA50287C14DC009BB63E /* CurrencyExchangeView.xib in Resources */,
 				75D898AF2874476000433661 /* ConverterPanelViewController.xib in Resources */,
 				75E8E213286EE90D008EE3AA /* OnboardingViewController.xib in Resources */,
+				754F3B2528951D7700F0352A /* CurrencySelectorViewController.xib in Resources */,
 				75D898B7287466CD00433661 /* Heebo-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,17 +430,20 @@
 				75E8E22628703A93008EE3AA /* Constants.swift in Sources */,
 				75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */,
 				75E8E1FF286EE660008EE3AA /* UserManager.swift in Sources */,
+				754F3B2728951D8000F0352A /* CurrencySelectorViewModel.swift in Sources */,
 				754F3B2028940DA600F0352A /* InAppPurchaseHelper.swift in Sources */,
 				75D898B12874477B00433661 /* ConverterPanelViewModel.swift in Sources */,
 				75E8E218286EFEC4008EE3AA /* HomeScreenViewController.swift in Sources */,
 				75E8E20B286EE802008EE3AA /* BindableViewController.swift in Sources */,
 				75D898DA287ADD6D00433661 /* SiteInfoViewModel.swift in Sources */,
 				75E8E209286EE7CF008EE3AA /* BaseViewController.swift in Sources */,
+				754F3B2428951D7700F0352A /* CurrencySelectorViewController.swift in Sources */,
 				75E8E215286EE917008EE3AA /* OnboardingViewModel.swift in Sources */,
 				75D898C82878842000433661 /* CurrencyModel.swift in Sources */,
 				75E8E1E6286EE454008EE3AA /* SceneDelegate.swift in Sources */,
 				75E8E212286EE90D008EE3AA /* OnboardingViewController.swift in Sources */,
 				75E8E20D286EE8D5008EE3AA /* OnboardingCoordinator.swift in Sources */,
+				754F3B2B2895217E00F0352A /* CurrencySelectorTableViewCell.swift in Sources */,
 				75648090288DB9D800353FE5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;
@@ -581,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyConverter/Info.plist;

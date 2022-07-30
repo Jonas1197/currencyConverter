@@ -16,8 +16,9 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     var navigationController: UINavigationController
     
     //MARK: ViewControllers
-    var homeScreenViewController: HomeScreenViewController!
-    var settingsViewController:   SettingsViewController!
+    var homeScreenViewController:       HomeScreenViewController!
+    var settingsViewController:         SettingsViewController!
+    var currencySelectorViewController: CurrencySelectorViewController!
     
     //MARK: - Lifecycle
     init(windowScene: UIWindowScene) {
@@ -70,7 +71,6 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
                 let conversionRatesData = try JSONEncoder().encode(parsedConversionRatesData)
                 
                 setCurrencyList(parsedCurrenciesData, accordingToAvailableRates: parsedConversionRatesData)
-//                UserManager.shared.currencyList     = parsedCurrenciesData
                 UserManager.shared.currencyListData = currenciesListData
 
                 UserManager.shared.conversionRates     = parsedConversionRatesData
@@ -97,12 +97,10 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
                 
                 UserManager.shared.conversionRates = decodedConversionRatesData
                 setCurrencyList(decodedCurrencyData, accordingToAvailableRates: decodedConversionRatesData)
-//                UserManager.shared.currencyList    = decodedCurrencyData
             } catch {
                 print("\n~~> Couldn't decode parsed data: \(error.localizedDescription)")
             }
         }
-    
     }
     
     private func setCurrencyList(_ list: [CurrencyModel], accordingToAvailableRates rates: ConversionModel) {
@@ -116,7 +114,7 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
         }
         
         filtered = filtered.sorted(by: {
-            if let firstItemCurrency = $0.Currency,
+            if let firstItemCurrency  = $0.Currency,
                let secondItemCurrency = $1.Currency {
                 return firstItemCurrency < secondItemCurrency
             }
@@ -134,7 +132,12 @@ final class MainCoordinator: BaseCoordinator<UIViewController> {
     
     func settings() {
         settingsViewController = .init(viewModel: .init(self))
-        navigationController.present(settingsViewController, animated: true, completion: nil)
+        navigationController.present(settingsViewController, animated: true)
+    }
+    
+    func currencySelector(leading: Bool) {
+        currencySelectorViewController = .init(viewModel: .init(self, leading: leading))
+        navigationController.present(currencySelectorViewController, animated: true)
     }
 }
 
@@ -150,6 +153,10 @@ extension MainCoordinator: HomeScreenOutput {
     func presentsSettings() {
         settings()
     }
+    
+    func presentCurrencySelector(leading: Bool) {
+        currencySelector(leading: leading)
+    }
 }
 
 //MARK: - SettingsOutput
@@ -161,4 +168,25 @@ extension MainCoordinator: SettingsOutput {
     func settingsUpdated() {
         homeScreenViewController.viewModel.zoomOnUserLocation()
     }
+}
+
+//MARK: - CurrencySelectorOutput
+extension MainCoordinator: CurrencySelectorOutput {
+    
+    func currencySelectorDidDisappear() {
+        homeScreenViewController.configureFloatingPanel()
+    }
+    
+    func currencySelectorDidSelectCurrency(_ currencyName: CurrencyModel, leading: Bool) {
+        currencySelectorViewController.dismiss(animated: true)
+        
+        if leading {
+            UserManager.shared.selectedLeadingCurrencyModel = currencyName
+        } else {
+            UserManager.shared.selectedTrailingCurrencyModel = currencyName
+        }
+        
+    }
+    
+   
 }

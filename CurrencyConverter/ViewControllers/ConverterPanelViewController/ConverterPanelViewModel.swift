@@ -10,6 +10,7 @@ import FloatingPanel
 
 protocol ConverterPanelDelegate: AnyObject {
     func findConversionStores()
+    func presentCurrencyPicker(leading: Bool)
 }
 
 
@@ -38,14 +39,23 @@ final class ConverterPanelViewModel: NSObject {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
         
-        if let euro = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "EUR" }) {
-            leadingCurrencyModel = euro
+        
+        if let leadingCurrencyModel = UserManager.shared.selectedLeadingCurrencyModel,
+           let first = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == leadingCurrencyModel.AlphabeticCode }) {
+            self.leadingCurrencyModel = first
+            
+        } else if let euro = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "EUR" }) {
+            self.leadingCurrencyModel = euro
         }
         
-        if let usd = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "USD" }) {
+        if let trailingCurrencyModel = UserManager.shared.selectedTrailingCurrencyModel,
+           let first = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == trailingCurrencyModel.AlphabeticCode }) {
+            self.trailingCurrencyModel = first
+            
+        } else if let usd = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "USD" }) {
             trailingCurrencyModel = usd
         }
-        
+                
         Constants.NotificationName.currenciesUpdated.observe { [weak self] _ in
             print("\n~~> [ConverterManager] Currencies updated!")
             self?.updateCurrencyRatesDate()

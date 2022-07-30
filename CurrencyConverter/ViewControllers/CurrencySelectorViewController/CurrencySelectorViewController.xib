@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Heebo-Medium.ttf">
+            <string>Heebo-Medium</string>
+        </array>
+        <array key="Heebo-Regular.ttf">
+            <string>Heebo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencySelectorViewController" customModule="CurrencyConverter" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="cq4-1f-29H" id="1mS-Xk-exE"/>
+                <outlet property="tableView" destination="tXh-Li-YZY" id="Hmm-2N-ttC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-ur-Lob">
+                    <rect key="frame" x="22" y="70" width="209" height="45"/>
+                    <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="30"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-Li-YZY">
+                    <rect key="frame" x="22" y="223.5" width="370" height="638.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on a currency to select it or search a currency by its name." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmV-Vo-u6j">
+                    <rect key="frame" x="22" y="123" width="370" height="41.5"/>
+                    <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="14"/>
+                    <color key="textColor" name="titleLabel"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cq4-1f-29H">
+                    <rect key="frame" x="0.0" y="172.5" width="414" height="51"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tXh-Li-YZY" secondAttribute="trailing" constant="22" id="2mN-pT-XH4"/>
+                <constraint firstItem="cmV-Vo-u6j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="6cc-Lz-I6l"/>
+                <constraint firstItem="zDD-ur-Lob" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="8G7-eD-fON"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cmV-Vo-u6j" secondAttribute="trailing" constant="22" id="EgZ-Ak-V4B"/>
+                <constraint firstItem="tXh-Li-YZY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="KX3-Yy-juT"/>
+                <constraint firstItem="cq4-1f-29H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="R36-PB-2tT"/>
+                <constraint firstItem="cq4-1f-29H" firstAttribute="top" secondItem="cmV-Vo-u6j" secondAttribute="bottom" constant="8" id="UA4-yd-TnF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tXh-Li-YZY" secondAttribute="bottom" id="ZEI-Un-SUw"/>
+                <constraint firstItem="cmV-Vo-u6j" firstAttribute="top" secondItem="zDD-ur-Lob" secondAttribute="bottom" constant="8" id="b3z-Ux-spU"/>
+                <constraint firstItem="cq4-1f-29H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="f09-pe-YUD"/>
+                <constraint firstItem="zDD-ur-Lob" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="26" id="sXQ-5N-uSh"/>
+                <constraint firstItem="tXh-Li-YZY" firstAttribute="top" secondItem="cq4-1f-29H" secondAttribute="bottom" id="xoC-Lm-o45"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="titleLabel">
+            <color red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

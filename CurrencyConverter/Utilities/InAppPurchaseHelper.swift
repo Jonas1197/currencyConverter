@@ -27,11 +27,7 @@ final class InAppPurchaseHelper: NSObject, Subscribable {
     private var productIdentifiers: Set<String> = [Constants.InAppPurchase.smallDonationProductId]
     private var productRequest:     SKRequest?
     
-    
-    
     func makePurchase(_ product: SKProduct) {
-        print("\n~~> [InAppPurchaseHelper] Requesting to purchase product: \(product.productIdentifier)")
-        
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
@@ -49,7 +45,8 @@ extension InAppPurchaseHelper: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if let product = response.products.first {
             self.product = product
-            print("\n~~> [InAppPurchaseHelper] Produt retrieved with identifier: \(product.productIdentifier)")
+        } else {
+            print("\n~~> [InAppPurchaseHelper] Product was not found,")
         }
     }
     
@@ -76,13 +73,11 @@ extension InAppPurchaseHelper: SKPaymentTransactionObserver {
     }
     
     private func complete(transaction: SKPaymentTransaction) {
-        print("\n~~> [InAppPurchaseHelper] Purchase completed!")
         purchaseComplete = true
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func fail(transaction: SKPaymentTransaction) {
-        print("\n~~> [InAppPurchaseHelper] Purchase failed.")
         purchaseComplete = false
         if let transactionError = transaction.error as NSError?,
            let localizedDescription = transaction.error?.localizedDescription,

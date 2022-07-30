@@ -71,6 +71,7 @@ enum Constants {
     enum Identifier {
         static let quickGlanceCell = "quickGlanceCell"
         static let annotationId    = "Annotation"
+        static let currencyCell    = "currencyCell"
     }
     
     //MARK: - Font
