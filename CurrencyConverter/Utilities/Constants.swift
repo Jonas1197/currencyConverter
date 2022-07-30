@@ -102,7 +102,8 @@ enum Constants {
         static let settingsVC_searchRadiusDescription = "settingsVC_searchRadiusDescription"
         static let settingsVC_donateLabel             = "settingsVC_donateLabel"
         static let settingsVC_donateDescription       = "settingsVC_donateDescription"
-    }
+        static let settingsVC_donateButton            = "settingsVC_donateButton"
+     }
     
     //MARK: - UserDefaults keys
     enum UserDefaultsKeys {

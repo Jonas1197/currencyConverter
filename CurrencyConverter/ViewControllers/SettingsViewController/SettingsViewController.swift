@@ -76,6 +76,22 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                 .translucent(1)
                 .isUserInteractionEnabled = true
         }
+        
+        localize()
+    }
+    
+    private func localize() {
+        titleLabel.text = Constants.LocalizedText.settingsVC_titleLabel.localized()
+        
+        searchRadiusTitleLabel.text = Constants.LocalizedText.settingsVC_searchRadiusLabel.localized()
+        
+        searchRadiusDescriptionLabel.text = Constants.LocalizedText.settingsVC_searchRadiusDescription.localized()
+        
+        donationLabel.text = Constants.LocalizedText.settingsVC_donateLabel.localized()
+        
+        donationDescriptionLabel.text = Constants.LocalizedText.settingsVC_donateDescription.localized()
+        
+        donateButton.setText("\(Constants.LocalizedText.settingsVC_donateButton.localized()) $0.99")
     }
     
     private func presentLoadingView() {

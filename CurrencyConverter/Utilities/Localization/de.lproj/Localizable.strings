@@ -29,3 +29,4 @@
 "settingsVC_searchRadiusDescription" = "Der Suchradius, der benutzt wird, wenn die Karte präsentiert wird.";
 "settingsVC_donateLabel"             = "Kauf mir ein Bier! ";
 "settingsVC_donateDescription"       = "Diese App ist frei und enthält keine Gebühren. Ich war selbst in ähnlichen Situationen, wenn ich nach eine Wechelstube gesucht habe und wollte dafür eine bequeme Lösung anbieten. Falls Du mich unterstützen möchtest, dies würde ich sehr einschätzen!";
+"settingsVC_donateButton"            = "Spenden";

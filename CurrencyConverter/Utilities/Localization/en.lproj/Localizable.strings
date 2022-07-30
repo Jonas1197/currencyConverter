@@ -29,3 +29,4 @@
 "settingsVC_searchRadiusDescription" = "Choose the zoom radius when sesarching for conversion stores.";
 "settingsVC_donateLabel"             = "Help me get drunk";
 "settingsVC_donateDescription"       = "This app is free of charge, for life. I found myself in similar situations so I thought of creating a solution. If you'd like to donate though, this would be much appriciated!";
+"settingsVC_donateButton"            = "Donate";
