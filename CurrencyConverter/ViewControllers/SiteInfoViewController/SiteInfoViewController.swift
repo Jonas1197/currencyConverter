@@ -59,12 +59,9 @@ final class SiteInfoViewController: BaseViewController<SiteInfoViewModel> {
     }
     
     private func localize() {
-        let sfSymbolAttachment = NSTextAttachment()
-        sfSymbolAttachment.image = .init(systemName: "")
         let goButtonString = NSMutableAttributedString(string: "")
-        goButtonString.append(.init(attachment: sfSymbolAttachment))
         goButtonString.append(.init(string: " \(Constants.LocalizedText.siteInfoVC_goButton.localized())"))
-        goButton.titleLabel?.attributedText = goButtonString
+        goButton.setAttributedTitle(goButtonString, for: .normal)
         backButton.setText(Constants.LocalizedText.siteInfoVC_backButton.localized())
     }
     

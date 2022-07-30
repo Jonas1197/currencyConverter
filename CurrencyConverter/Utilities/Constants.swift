@@ -81,6 +81,10 @@ enum Constants {
         static let bold    = "Heebo-Bold"
     }
     
+    enum SFSymbol {
+        static let arrowTriangle = "arrow.triangle.turn.up.right.diamond.fill"
+    }
+    
     //MARK: - Localized Text
     enum LocalizedText {
         
