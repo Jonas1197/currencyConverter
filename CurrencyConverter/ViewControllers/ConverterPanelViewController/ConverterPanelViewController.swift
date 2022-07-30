@@ -52,6 +52,17 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         configureCurrencyPicker()
         viewModel.updateCurrencyRatesDate()
         configureCurrencyExchangeView()
+        
+        localize()
+    }
+    
+    private func localize() {
+        titleLabel.text = Constants.LocalizedText.converterVC_titleLabel.localized()
+        _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing].map { $0?.text = Constants.LocalizedText.converterVC_tapToChoose.localized() }
+        
+        _ = [leadingTextField, trailingTextField].map { $0?.placeholder = Constants.LocalizedText.converterVC_tapToEnterPlaceholder.localized() }
+        
+        findConversionStoresButton.setText(Constants.LocalizedText.converterVC_findButton.localized() )
     }
     
     private func configureCurrencyExchangeView() {
@@ -160,7 +171,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         UIView.animateOnMain(withDuration: Constants.General.animationDuration) { [weak self] in
             self?.currencyLastUpdatedLabel
                 .invisible()
-                .setText("\(Constants.Text.ratesLastUpdatedLabel)\(dateString)")
+                .setText("\(Constants.LocalizedText.converterVC_currencyRates.localized()) \(dateString)")
         } didFinish: { [weak self] _ in
             UIView.animateOnMain(withDuration: Constants.General.animationDuration) {
                 self?.currencyLastUpdatedLabel.visible()

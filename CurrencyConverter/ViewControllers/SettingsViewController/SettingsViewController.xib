@@ -23,8 +23,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="CurrencyConverter" customModuleProvider="target">
             <connections>
                 <outlet property="donateButton" destination="A1M-Z2-Bws" id="VaK-qP-EUV"/>
+                <outlet property="donationDescriptionLabel" destination="S7o-bK-uwf" id="5x4-Ts-Zmy"/>
+                <outlet property="donationLabel" destination="mtT-ht-acn" id="TrC-pv-eGf"/>
                 <outlet property="radiusSlider" destination="Ufg-am-Dy5" id="aDU-jM-JCb"/>
                 <outlet property="radiusValueLabel" destination="60H-sS-ps0" id="XDK-y9-6gE"/>
+                <outlet property="searchRadiusDescriptionLabel" destination="7Ho-5N-5T0" id="6VN-dE-1O7"/>
+                <outlet property="searchRadiusTitleLabel" destination="Onu-tA-ZoZ" id="aZc-27-kfI"/>
+                <outlet property="titleLabel" destination="55z-yA-2ci" id="zVu-v2-jwb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -51,14 +56,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2000" minValue="300" maxValue="4000" translatesAutoresizingMaskIntoConstraints="NO" id="Ufg-am-Dy5">
-                    <rect key="frame" x="30" y="261" width="354" height="31"/>
+                    <rect key="frame" x="30" y="261.5" width="354" height="31"/>
                     <color key="tintColor" name="deepBlue"/>
                     <connections>
                         <action selector="radiusValueChanged:" destination="-1" eventType="valueChanged" id="aGx-Vy-FCB"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60H-sS-ps0">
-                    <rect key="frame" x="32" y="223.5" width="350" height="29.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X meters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60H-sS-ps0">
+                    <rect key="frame" x="32" y="223.5" width="350" height="30"/>
                     <fontDescription key="fontDescription" name="Heebo-Medium" family="Heebo" pointSize="20"/>
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>

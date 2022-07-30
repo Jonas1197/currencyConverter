@@ -11,9 +11,15 @@ import StoreKit
 
 final class SettingsViewController: BaseViewController<SettingsViewModel> {
     
-    @IBOutlet weak var radiusValueLabel: UILabel!
-    @IBOutlet weak var radiusSlider:     UISlider!
-    @IBOutlet weak var donateButton: UIButton!
+    @IBOutlet weak var titleLabel:                   UILabel!
+    @IBOutlet weak var searchRadiusTitleLabel:       UILabel!
+    @IBOutlet weak var searchRadiusDescriptionLabel: UILabel!
+    @IBOutlet weak var radiusValueLabel:             UILabel!
+    @IBOutlet weak var radiusSlider:                 UISlider!
+    @IBOutlet weak var donateButton:                 UIButton!
+    @IBOutlet weak var donationLabel:                UILabel!
+    @IBOutlet weak var donationDescriptionLabel:     UILabel!
+    
     
     private var loadingBackground = Object
         .view(backgroundColor: .white.withAlphaComponent(0.7))
