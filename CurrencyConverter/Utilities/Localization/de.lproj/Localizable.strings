@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   CurrencyConverter
 
@@ -28,5 +28,5 @@
 "settingsVC_searchRadiusLabel"       = "Suchradius";
 "settingsVC_searchRadiusDescription" = "Der Suchradius, der benutzt wird, wenn die Karte präsentiert wird.";
 "settingsVC_donateLabel"             = "Kauf mir ein Bier! ";
-"settingsVC_donateDescription"       = "Diese App ist frei und enthält keine Gebühren. Ich war selbst in ähnlichen Situationen, wenn ich nach eine Wechelstube gesucht habe und wollte dafür eine bequeme Lösung anbieten. Falls Du mich unterstützen möchtest, dies würde ich sehr einschätzen!";
+"settingsVC_donateDescription"       = "Diese App ist frei und enthält keine Gebühren. Ich war selbst oft genug in der Situation Geld wechseln zu wollen, aber nicht wusste wo ich eine Wechselstube finde. Dafür wollte ich eine bequeme Lösung finden und euch daran teilhaben lassen. Falls Ihr mich unterstützen möchtet, würde ich das sehr schätzen!";
 "settingsVC_donateButton"            = "Spenden";

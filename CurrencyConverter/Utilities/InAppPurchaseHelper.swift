@@ -63,8 +63,8 @@ extension InAppPurchaseHelper: SKPaymentTransactionObserver {
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchasing: break
-            case .purchased:  complete(transaction: transaction)
-            case .failed:     fail(transaction: transaction)
+            case .purchased:  complete(transaction)
+            case .failed:     fail(transaction)
             case .restored:   break
             case .deferred:   break
             @unknown default: break
@@ -72,12 +72,12 @@ extension InAppPurchaseHelper: SKPaymentTransactionObserver {
         }
     }
     
-    private func complete(transaction: SKPaymentTransaction) {
+    private func complete(_ transaction: SKPaymentTransaction) {
         purchaseComplete = true
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
-    private func fail(transaction: SKPaymentTransaction) {
+    private func fail(_ transaction: SKPaymentTransaction) {
         purchaseComplete = false
         if let transactionError = transaction.error as NSError?,
            let localizedDescription = transaction.error?.localizedDescription,
