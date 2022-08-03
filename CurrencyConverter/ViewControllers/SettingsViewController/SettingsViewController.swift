@@ -65,6 +65,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     //MARK: - SetUp
     private func setUp() {
         radiusValueLabel.text = "\(UserManager.shared.zoomRadius) meters"
+        radiusSlider.setValue(Float(UserManager.shared.zoomRadius), animated: false)
         donateButton.shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
         
         if !InAppPurchaseHelper.canMakePurchases {

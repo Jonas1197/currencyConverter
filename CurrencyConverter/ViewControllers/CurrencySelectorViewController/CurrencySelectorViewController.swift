@@ -35,6 +35,8 @@ final class CurrencySelectorViewController: BaseViewController<CurrencySelectorV
     
     //MARK: - SetUp
     private func setUp() {
+        searchBar.placeholder = Constants.LocalizedText.currencySelectorVC_tapToSearch.localized()
+        
         tableView.register(.init(nibName: String(describing: CurrencySelectorTableViewCell.self), bundle: nil), forCellReuseIdentifier: Constants.Identifier.currencyCell)
         tableView.delegate   = viewModel
         tableView.dataSource = viewModel

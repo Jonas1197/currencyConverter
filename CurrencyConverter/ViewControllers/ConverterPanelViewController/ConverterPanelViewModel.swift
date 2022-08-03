@@ -40,22 +40,28 @@ final class ConverterPanelViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
         
         
-        if let leadingCurrencyModel = UserManager.shared.selectedLeadingCurrencyModel,
-           let first = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == leadingCurrencyModel.AlphabeticCode }) {
-            self.leadingCurrencyModel = first
+        if let leadingCurrencyModelData = UserManager.shared.selectedLeadingCurrencyModelData,
+           let leadingCurrencyModel     = try? JSONDecoder().decode(CurrencyModel.self, from: leadingCurrencyModelData) {
+            self.leadingCurrencyModel = leadingCurrencyModel
+            
+        } else if let leadingCurrencyModel = UserManager.shared.selectedLeadingCurrencyModel {
+            self.leadingCurrencyModel = leadingCurrencyModel
             
         } else if let euro = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "EUR" }) {
             self.leadingCurrencyModel = euro
         }
         
-        if let trailingCurrencyModel = UserManager.shared.selectedTrailingCurrencyModel,
-           let first = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == trailingCurrencyModel.AlphabeticCode }) {
-            self.trailingCurrencyModel = first
+        if let trailingCurrencyModelData = UserManager.shared.selectedTrailingCurrencyModelData,
+           let trailingCurrencyModel     = try? JSONDecoder().decode(CurrencyModel.self, from: trailingCurrencyModelData) {
+            self.trailingCurrencyModel = trailingCurrencyModel
+            
+        } else if let trailingCurrencyModel = UserManager.shared.selectedTrailingCurrencyModel {
+            self.trailingCurrencyModel = trailingCurrencyModel
             
         } else if let usd = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "USD" }) {
-            trailingCurrencyModel = usd
+            self.leadingCurrencyModel = usd
         }
-                
+         
         Constants.NotificationName.currenciesUpdated.observe { [weak self] _ in
             print("\n~~> [ConverterManager] Currencies updated!")
             self?.updateCurrencyRatesDate()
@@ -110,30 +116,5 @@ final class ConverterPanelViewModel: NSObject {
     @objc private func keyboardWillHide(_ notification: Notification) {
         floatingPanel?.move(to: .full, animated: true, completion: nil)
         keyboardAppeared = false
-    }
-}
-
-//MARK: UIPickerViewDelegate
-extension ConverterPanelViewModel: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        UserManager.shared.currencyList.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        UserManager.shared.currencyList[row].Currency
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("\n Button tag: \(selectedButtonTag)")
-        if selectedButtonTag == 0 {
-            leadingCurrencyModel = UserManager.shared.currencyList[row]
-            
-        } else if selectedButtonTag == 1 {
-            trailingCurrencyModel = UserManager.shared.currencyList[row]
-        }
     }
 }

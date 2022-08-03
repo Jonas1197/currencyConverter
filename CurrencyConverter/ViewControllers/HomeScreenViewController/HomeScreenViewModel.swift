@@ -21,11 +21,12 @@ final class HomeScreenViewModel: NSObject {
     weak var output: HomeScreenOutput?
     weak var floatingPanel: FloatingPanelController?
     
-    @Published var isKeyboardShowing:     Bool?
-    @Published var currentUserRegion:     MKCoordinateRegion?
-    @Published var searchResults:         [MKMapItem] = []
-    @Published var selectedMapItem:       MKMapItem?
-    @Published var deselectAnnotation:    Bool?
+    @Published var isKeyboardShowing:          Bool?
+    @Published var currentUserRegion:          MKCoordinateRegion?
+    @Published var searchResults:              [MKMapItem] = []
+    @Published var selectedMapItem:            MKMapItem?
+    @Published var deselectAnnotation:         Bool?
+    @Published var hstackTopConstraintEnabled: Bool?
     
     init(output: HomeScreenOutput?) {
         super.init()
@@ -53,10 +54,13 @@ final class HomeScreenViewModel: NSObject {
     }
     
     func presentConverterPanel() {
+        
         guard let floatingPanel = floatingPanel else { return }
         floatingPanel.move(to: .hidden, animated: true)
+        
         let viewModel      = ConverterPanelViewModel(floatingPanel: floatingPanel)
         viewModel.delegate = self
+        
         let vc             = ConverterPanelViewController(viewModel: viewModel)
         floatingPanel.set(contentViewController: vc)
         
@@ -66,10 +70,13 @@ final class HomeScreenViewModel: NSObject {
     }
     
     func presentSiteInfoPanel(forSelectedItem item: MKMapItem) {
+        
         guard let floatingPanel = floatingPanel else { return }
         floatingPanel.move(to: .hidden, animated: true)
+        
         let vc = SiteInfoViewController(viewModel: .init(floatingPanel: floatingPanel, item: item))
         vc.viewModel.delegate = self
+        
         floatingPanel.set(contentViewController: vc)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -94,6 +101,8 @@ final class HomeScreenViewModel: NSObject {
 //MARK: - FloatingPanelControllerDelegate
 extension HomeScreenViewModel: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        
+        hstackTopConstraintEnabled = fpc.state == .half
         
         if let converterPanel = floatingPanel?.contentViewController as? ConverterPanelViewController {
             converterPanel.viewModel.floatingPanelState = fpc.state

@@ -30,3 +30,6 @@
 "settingsVC_donateLabel"             = "Kauf mir ein Bier! ";
 "settingsVC_donateDescription"       = "Diese App ist frei und enthält keine Gebühren. Ich war selbst oft genug in der Situation Geld wechseln zu wollen, aber nicht wusste wo ich eine Wechselstube finde. Dafür wollte ich eine bequeme Lösung finden und euch daran teilhaben lassen. Falls Ihr mich unterstützen möchtet, würde ich das sehr schätzen!";
 "settingsVC_donateButton"            = "Spenden";
+
+//MARK: - CurrencySelectorViewController
+"currencySelectorVC_tapToSearch" = "Tippen um zu suchen";

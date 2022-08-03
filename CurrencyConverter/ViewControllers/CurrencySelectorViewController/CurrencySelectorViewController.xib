@@ -44,7 +44,7 @@
                     <color key="textColor" name="titleLabel"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cq4-1f-29H">
+                <searchBar contentMode="redraw" placeholder="Tap to search currency" translatesAutoresizingMaskIntoConstraints="NO" id="cq4-1f-29H">
                     <rect key="frame" x="0.0" y="172.5" width="414" height="51"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>

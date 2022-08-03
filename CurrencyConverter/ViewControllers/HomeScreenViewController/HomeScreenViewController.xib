@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeScreenViewController" customModule="CurrencyConverter" customModuleProvider="target">
             <connections>
+                <outlet property="buttonsHstackBottomConstraint" destination="Peb-4p-te4" id="vjF-6R-Yi7"/>
+                <outlet property="buttonsHstackTopConstraint" destination="hLo-lG-vVk" id="fVa-rp-ubo"/>
+                <outlet property="buttonsVstack" destination="g6l-vs-hG7" id="Srt-bW-Lho"/>
                 <outlet property="locateMeButton" destination="dsm-Du-zHn" id="t51-cI-Qh4"/>
                 <outlet property="mapView" destination="XPY-F0-Qen" id="QZC-Je-us6"/>
                 <outlet property="settingsButton" destination="A9e-Ic-QMQ" id="pcW-Zg-vmO"/>
@@ -22,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XPY-F0-Qen">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                 </mapView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-vs-hG7">
-                    <rect key="frame" x="32" y="675" width="40" height="102"/>
+                    <rect key="frame" x="32" y="96" width="40" height="125"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-Du-zHn" userLabel="Locate me button">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -42,7 +45,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9e-Ic-QMQ" userLabel="Settings button">
-                            <rect key="frame" x="0.0" y="62" width="40" height="40"/>
+                            <rect key="frame" x="0.0" y="62" width="40" height="63"/>
                             <color key="backgroundColor" name="deepYellow"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Vhr-YN-Aie"/>
@@ -65,6 +68,7 @@
                 <constraint firstAttribute="bottom" secondItem="XPY-F0-Qen" secondAttribute="bottom" id="YQK-e2-Haz"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Yxs-7f-qXv"/>
                 <constraint firstItem="g6l-vs-hG7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="e6N-45-KWA"/>
+                <constraint firstItem="g6l-vs-hG7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="52" id="hLo-lG-vVk"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="scM-Y7-eIx"/>
                 <constraint firstItem="XPY-F0-Qen" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="woH-X6-beF"/>
             </constraints>

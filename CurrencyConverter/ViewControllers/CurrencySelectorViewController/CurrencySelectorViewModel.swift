@@ -34,6 +34,16 @@ final class CurrencySelectorViewModel: NSObject {
     func disappeared() {
         output?.currencySelectorDidDisappear()
     }
+    
+    private func saveSelectedCurrencyModel(_ model: CurrencyModel) {
+        guard let data = try? JSONEncoder().encode(model) else { return }
+        
+        if selectingLeadingCurrency {
+            UserManager.shared.selectedLeadingCurrencyModelData  = data
+        } else {
+            UserManager.shared.selectedTrailingCurrencyModelData = data
+        }
+    }
 }
 
 //MARK: - UITableViewController
@@ -55,7 +65,9 @@ extension CurrencySelectorViewModel: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        output?.currencySelectorDidSelectCurrency(currencies[indexPath.row], leading: selectingLeadingCurrency)
+        let selectedCurrencyModel = currencies[indexPath.row]
+        saveSelectedCurrencyModel(selectedCurrencyModel)
+        output?.currencySelectorDidSelectCurrency(selectedCurrencyModel, leading: selectingLeadingCurrency)
     }
     
 }

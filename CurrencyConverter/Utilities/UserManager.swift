@@ -35,6 +35,7 @@ struct UserManager {
     var didSeeOnboarding = true
     
     var selectedLeadingCurrencyModel:  CurrencyModel?
+    
     var selectedTrailingCurrencyModel: CurrencyModel?
     
     var currencyExchangeViewCurrencies: [String] = ["USD", "EUR", "ILS", "CZK", "CH", "GBP", "RUB"]
@@ -42,6 +43,12 @@ struct UserManager {
     var conversionRates: ConversionModel = .init(result: "", conversion_rates: [:])
     
     var currencyList: [CurrencyModel] = []
+    
+    @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.leadingCurrencyModel, defaultValue: nil)
+    var selectedLeadingCurrencyModelData: Data?
+    
+    @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.trailingCurrencyModel, defaultValue: nil)
+    var selectedTrailingCurrencyModelData: Data?
     
     @UserDefaultsWrapper(key: Constants.UserDefaultsKeys.zoomRadius, defaultValue: 2000)
     var zoomRadius: Int

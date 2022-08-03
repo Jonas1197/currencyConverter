@@ -107,14 +107,19 @@ enum Constants {
         static let settingsVC_donateLabel             = "settingsVC_donateLabel"
         static let settingsVC_donateDescription       = "settingsVC_donateDescription"
         static let settingsVC_donateButton            = "settingsVC_donateButton"
+        
+        //MARK: CurrencySelectorViewController
+        static let currencySelectorVC_tapToSearch = "currencySelectorVC_tapToSearch"
      }
     
     //MARK: - UserDefaults keys
     enum UserDefaultsKeys {
-        static let lastUpdatedTimestamp = "lastUpdatedTimestamp"
-        static let currencyData         = "currencyData"
-        static let conversionRatesData  = "conversionRatesData"
-        static let zoomRadius           = "zoomRadius"
+        static let lastUpdatedTimestamp  = "lastUpdatedTimestamp"
+        static let currencyData          = "currencyData"
+        static let conversionRatesData   = "conversionRatesData"
+        static let zoomRadius            = "zoomRadius"
+        static let leadingCurrencyModel  = "leadingCurrencyModel"
+        static let trailingCurrencyModel = "trailingCurrencyModel"
     }
     
     //MARK: - Text

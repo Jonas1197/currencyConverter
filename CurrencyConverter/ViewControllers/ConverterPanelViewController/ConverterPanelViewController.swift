@@ -25,7 +25,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     private var valueRetrieved = false
     private var textFieldContainer: UITextField!
-    private var currencyPicker:     UIPickerView!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -49,9 +48,11 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         findConversionStoresButton
             .shadowed(with: .black, offset: .init(width: 0, height: 2), radius: 12, 0.3)
         
-        configureCurrencyPicker()
         viewModel.updateCurrencyRatesDate()
         configureCurrencyExchangeView()
+        
+        arrowsImageView.translucent(0.3)
+        findConversionStoresButton.titleLabel?.adjustedFontSizeToFitWidth()
         
         localize()
     }
@@ -128,7 +129,7 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                   let state = state else { return }
             
             UIView.animateOnMain(withDuration: Constants.General.animationDuration) {
-                let viewsToAnimate = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.arrowsImageView, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton]
+                let viewsToAnimate = [self.tapToChooseCurrencyLabelLeading, self.tapToChooseCurrencyLabelTrailing, self.leadingButton, self.trailingButton, self.leadingTextField, self.trailingTextField, self.currencyLastUpdatedLabel, self.findConversionStoresButton]
                 
                 if let keyboardAppeared = viewModel.keyboardAppeared {
                     if !keyboardAppeared && state == .full {
@@ -136,10 +137,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                     } else if !keyboardAppeared {
                         self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                         _ = viewsToAnimate.map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                        self.arrowsImageView.translucent((state == .half || state == .full) ? 0.3 : 0)
                     }
                     
                 } else {
                     _ = viewsToAnimate.map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
+                    self.arrowsImageView.translucent(state == .tip ? 0 : 0.3)
                     self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                 }
             }
@@ -156,15 +159,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         }
         
         valueRetrieved = false
-    }
-    
-    private func configureCurrencyPicker() {
-        textFieldContainer        = .init(frame: .zero)
-        currencyPicker            = .init()
-        currencyPicker.delegate   = viewModel
-        currencyPicker.dataSource = viewModel
-        view.addSubview(textFieldContainer)
-        textFieldContainer.inputView = currencyPicker
     }
     
     private func configureCurrencyLastUpdatedLabel(dateString: String) {

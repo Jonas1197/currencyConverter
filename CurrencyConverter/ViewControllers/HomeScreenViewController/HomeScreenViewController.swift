@@ -16,6 +16,11 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
     @IBOutlet weak var mapView:        MKMapView!
     @IBOutlet weak var locateMeButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var buttonsVstack:  UIStackView!
+    
+    @IBOutlet var buttonsHstackBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var buttonsHstackTopConstraint: NSLayoutConstraint!
+    
     
     private var floatingPanel: FloatingPanelController!
     
@@ -42,6 +47,9 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
         LocationManager.shared.requestLocationAuthorization()
         configureFloatingPanel()
         configureButtons()
+        
+        buttonsHstackTopConstraint.isActive    = true
+        buttonsHstackBottomConstraint.isActive = false
         
         mapView.delegate = viewModel
     }
@@ -118,11 +126,24 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
                   let selectedAnnotation = mapView.selectedAnnotations.first else { return }
             mapView.deselectAnnotation(selectedAnnotation, animated: true)
         }
+        
+        subscribe(to: \.$hstackTopConstraintEnabled) { [unowned self] enabled in
+            guard let enabled          = enabled,
+                  let topConstraint    = buttonsHstackTopConstraint,
+                  let bottomConstraint = buttonsHstackBottomConstraint else { return }
+            
+            UIView.animateOnMain(withDuration: 0.3) {
+                topConstraint.isActive    = enabled
+                bottomConstraint.isActive = !enabled
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     //MARK: - Actions
     @IBAction func locateMeButtonTapped(_ sender: UIButton) {
         sender.actionWithSpringAnimation { [unowned self] in
+            floatingPanel.move(to: .tip, animated: true)
             viewModel.zoomOnUserLocation()
         }
     }
