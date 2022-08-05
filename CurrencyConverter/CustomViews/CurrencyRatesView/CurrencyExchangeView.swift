@@ -26,11 +26,24 @@ final class CurrencyExchangeView: UIView {
     }
     
     func configure(withModel model: CurrencyExchangeViewModel) {
+        print("configured")
         self.model = model
         
         createLabels()
         addLabels()
     }
+    
+//    func update(withNewModel model: CurrencyExchangeViewModel? = nil) {
+//        for view in subviews {
+//            view.removeFromSuperview()
+//        }
+//        
+//        if let model = model {
+//            configure(withModel: model)
+//        } else {
+//            configure(withModel: self.model ?? .init(valuesToConvert: []))
+//        }
+//    }
     
     private func createLabels() {
         guard let model = model else { return }
@@ -39,9 +52,10 @@ final class CurrencyExchangeView: UIView {
                let value         = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == currencyCode }) {
                 
                 let currencyRateLabel = Object
-                    .label(text: "\(currencyModel.Currency ?? "N/A") - \(Double(round(100 * value.value)) / 100)", textAlignment: .center, backgroundColor: .clear, textColor: Constants.Colors.text!)
+                    .label(text: "\(currencyModel.Currency ?? Constants.LocalizedText.general_notAvaialble.localized()) - \(Double(round(100 * value.value)) / 100)", textAlignment: .center, backgroundColor: .clear, textColor: Constants.Colors.text!)
                     .create()
                     .fonted(ofType: .custom(Constants.Font.medium), size: 16)
+                
                 labels.append(currencyRateLabel)
             }
         }
@@ -58,9 +72,8 @@ final class CurrencyExchangeView: UIView {
     }
     
     private func convertToUSDollar(from currencyCode: String) -> String {
-        
-        guard  let devider = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == currencyCode }),
-               let devisor = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == "USD" }) else { return "N/A" }
+        guard let devider = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == currencyCode }),
+              let devisor = UserManager.shared.conversionRates.conversion_rates.first(where: { $0.key == "USD" }) else { return Constants.LocalizedText.general_notAvaialble.localized() }
         
         let convertedValue = Double(round(100 * (1 * (devider.value / devisor.value))) / 100)
         

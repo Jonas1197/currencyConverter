@@ -6,6 +6,9 @@
   
 */
 
+//MARK: - General
+"general_notAvaialble" = "Nicht verfügbar";
+
 //MARK: - ConverterPanelViewController
 
 "converterVC_titleLabel"            = "Währungsrechner";
@@ -13,6 +16,7 @@
 "converterVC_tapToEnterPlaceholder" = "Wert eingeben";
 "converterVC_currencyRates"         = "Währungskurse zuletzt aktualisiert:";
 "converterVC_findButton"            = "Finde Wechselstuben in der Nähe";
+"converterVC_ratesBeingUpdates"     = "Währungskursen werden aktualisiert...";
 
 
 //MARK: - SiteInfoViewController

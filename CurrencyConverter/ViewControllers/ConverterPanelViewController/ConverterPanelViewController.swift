@@ -21,9 +21,10 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     @IBOutlet weak var tapToChooseCurrencyLabelLeading:  UILabel!
     @IBOutlet weak var tapToChooseCurrencyLabelTrailing: UILabel!
     
-    private let currencyExchangeView = CurrencyExchangeView.instantiateFromNib()
+    private var currencyExchangeView = CurrencyExchangeView.instantiateFromNib()
     
-    private var valueRetrieved = false
+    private var valueRetrieved                 = false
+    private var currencyExchangeViewConfigured = false
     private var textFieldContainer: UITextField!
     
     //MARK: - Lifecycle
@@ -51,13 +52,17 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         viewModel.updateCurrencyRatesDate()
         configureCurrencyExchangeView()
         
-        arrowsImageView.translucent(0.3)
+        arrowsImageView
+            .targeted(self, action: #selector(arrowsImageViewTapped(_:)))
+            .isUserInteractionEnabled = true
+        
         findConversionStoresButton.titleLabel?.adjustedFontSizeToFitWidth()
         
         localize()
     }
     
     private func localize() {
+        currencyLastUpdatedLabel.text = Constants.LocalizedText.converterVC_ratesBeingUpdates.localized()
         titleLabel.text = Constants.LocalizedText.converterVC_titleLabel.localized()
         _ = [tapToChooseCurrencyLabelLeading, tapToChooseCurrencyLabelTrailing].map { $0?.text = Constants.LocalizedText.converterVC_tapToChoose.localized() }
         
@@ -67,16 +72,20 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     }
     
     private func configureCurrencyExchangeView() {
-        currencyExchangeView.translatesAutoresizingMaskIntoConstraints = false
-        currencyExchangeView.configure(withModel: .init(valuesToConvert: UserManager.shared.currencyExchangeViewCurrencies))
-        currencyExchangeView.invisible()
-        view.addSubview(currencyExchangeView)
-        NSLayoutConstraint.activate([
-            currencyExchangeView.topAnchor.constraint(equalTo: findConversionStoresButton.bottomAnchor, constant: 42),
-            currencyExchangeView.leadingAnchor.constraint(equalTo: findConversionStoresButton.leadingAnchor),
-            currencyExchangeView.trailingAnchor.constraint(equalTo: findConversionStoresButton.trailingAnchor),
-            currencyExchangeView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -22)
-        ])
+        if !currencyExchangeViewConfigured {
+            currencyExchangeView.translatesAutoresizingMaskIntoConstraints = false
+            currencyExchangeView.configure(withModel: .init(valuesToConvert: UserManager.shared.currencyExchangeViewCurrencies))
+            currencyExchangeView.invisible()
+            view.addSubview(currencyExchangeView)
+            NSLayoutConstraint.activate([
+                currencyExchangeView.topAnchor.constraint(equalTo: findConversionStoresButton.bottomAnchor, constant: 42),
+                currencyExchangeView.leadingAnchor.constraint(equalTo: findConversionStoresButton.leadingAnchor),
+                currencyExchangeView.trailingAnchor.constraint(equalTo: findConversionStoresButton.trailingAnchor),
+                currencyExchangeView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -22)
+            ])
+            
+            currencyExchangeViewConfigured = true
+        }
     }
     
     override func subscribeToViewModel(_ viewModel: ConverterPanelViewModel) {
@@ -99,6 +108,10 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         subscribe(to: \.$lastUpdatedDateString) { [unowned self] dateString in
             guard let dateString = dateString else { return }
             configureCurrencyLastUpdatedLabel(dateString: dateString)
+            currencyExchangeView.removeFromSuperview()
+            currencyExchangeView = .instantiateFromNib()
+            currencyExchangeViewConfigured = false
+            configureCurrencyExchangeView()
         }
         
         //MARK: Trailing text field update
@@ -137,12 +150,12 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
                     } else if !keyboardAppeared {
                         self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                         _ = viewsToAnimate.map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
-                        self.arrowsImageView.translucent((state == .half || state == .full) ? 0.3 : 0)
+                        self.arrowsImageView.translucent((state == .half || state == .full) ? 1 : 0)
                     }
                     
                 } else {
                     _ = viewsToAnimate.map { $0!.translucent((state == .half || state == .full) ? 1 : 0)}
-                    self.arrowsImageView.translucent(state == .tip ? 0 : 0.3)
+                    self.arrowsImageView.translucent(state == .tip ? 0 : 1)
                     self.currencyExchangeView.translucent(state == .full ? 1 : 0)
                 }
             }
@@ -224,7 +237,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
-//            textFieldContainer.becomeFirstResponder()
             
             dismiss(animated: true)
             viewModel.delegate?.presentCurrencyPicker(leading: false)
@@ -238,7 +250,6 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
             animateButton(sender, leading: true)
             viewModel.selectedButtonTag = sender.tag
             viewModel.move(to: .full)
-//            textFieldContainer.becomeFirstResponder()
             dismiss(animated: true)
             viewModel.delegate?.presentCurrencyPicker(leading: true)
             emptyTextFields()
@@ -257,18 +268,51 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
     
     //MARK: Textfield editing chagned
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        
         if !valueRetrieved {
             if let text = sender.text,
                text != "" {
-                viewModel.convert(valueFromTextField: sender)
+                var editedText = text
+                
+                if text.contains(",") {
+                    editedText = editedText.replacingOccurrences(of: ",", with: ".")
+                }
+                
+                let stringElements = Array(editedText)
+                var numberOfDots = 0
+                _ = stringElements.map {
+                    numberOfDots += ($0 == ".") ? 1 : 0
+                }
+                
+                if numberOfDots > 1 {
+                    editedText.removeLast()
+                }
+                
+                textFieldEditingAllowed(sender, text: editedText)
+                
             } else {
                 if sender.tag == 0 {
                     trailingTextField.text = ""
+                    viewModel.trailingTextFieldText = ""
+                    
                 } else {
                     leadingTextField.text = ""
+                    viewModel.leadingTextFieldText = ""
                 }
+                
+                textFieldEditingAllowed(sender, text: "")
             }
         }
+    }
+    
+    private func textFieldEditingAllowed(_ sender: UITextField, text: String) {
+        if sender.tag == 0 {
+            viewModel.leadingTextFieldText = text
+        } else {
+            viewModel.trailingTextFieldText = text
+        }
+        
+        viewModel.convert(valueFromTextField: sender)
     }
     
     //MARK: Textfield editing begin
@@ -276,12 +320,21 @@ final class ConverterPanelViewController: BaseViewController<ConverterPanelViewM
         animateWhitenButtons()
     }
     
+    @objc private func arrowsImageViewTapped(_ sender: UITapGestureRecognizer) {
+        arrowsImageView.actionWithSpringAnimation {
+            self.viewModel.switchCurrencyModels()
+        }
+    }
+    
     //MARK: Touches began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         animateWhitenButtons()
-        if viewModel.floatingPanel?.state == .full {
-            viewModel.floatingPanel?.move(to: .half, animated: true)
+        
+        if touches.first?.view != arrowsImageView {
+            if viewModel.floatingPanel?.state == .full {
+                viewModel.floatingPanel?.move(to: .half, animated: true)
+            }
         }
     }
 }

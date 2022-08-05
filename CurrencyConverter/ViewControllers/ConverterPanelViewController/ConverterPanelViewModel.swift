@@ -59,9 +59,9 @@ final class ConverterPanelViewModel: NSObject {
             self.trailingCurrencyModel = trailingCurrencyModel
             
         } else if let usd = UserManager.shared.currencyList.first(where: { $0.AlphabeticCode == "USD" }) {
-            self.leadingCurrencyModel = usd
+            self.trailingCurrencyModel = usd
         }
-         
+        
         Constants.NotificationName.currenciesUpdated.observe { [weak self] _ in
             print("\n~~> [ConverterManager] Currencies updated!")
             self?.updateCurrencyRatesDate()
@@ -104,6 +104,11 @@ final class ConverterPanelViewModel: NSObject {
                 leadingTextFieldText = "\(convertedValue)"
             }
         }
+    }
+    
+    func switchCurrencyModels() {
+        (leadingCurrencyModel, trailingCurrencyModel) = (trailingCurrencyModel, leadingCurrencyModel)
+        (leadingTextFieldText, trailingTextFieldText) = (trailingTextFieldText, leadingTextFieldText)
     }
     
     

@@ -88,12 +88,16 @@ enum Constants {
     //MARK: - Localized Text
     enum LocalizedText {
         
+        //MARK: General
+        static let general_notAvaialble = "general_notAvaialble"
+        
         //MARK: ConverterPanelViewController
         static let converterVC_titleLabel            = "converterVC_titleLabel"
         static let converterVC_tapToChoose           = "converterVC_tapToChoose"
         static let converterVC_tapToEnterPlaceholder = "converterVC_tapToEnterPlaceholder"
         static let converterVC_currencyRates         = "converterVC_currencyRates"
         static let converterVC_findButton            = "converterVC_findButton"
+        static let converterVC_ratesBeingUpdates     = "converterVC_ratesBeingUpdates" 
         
         //MARK: SiteInfoViewController
         static let siteInfoVC_nameLabel  = "siteInfoVC_nameLabel"

@@ -6,6 +6,9 @@
   
 */
 
+//MARK: - General
+"general_notAvaialble" = "Not available";
+
 //MARK: - ConverterPanelViewController
 
 "converterVC_titleLabel"            = "Converter";
@@ -13,6 +16,7 @@
 "converterVC_tapToEnterPlaceholder" = "Tap to enter";
 "converterVC_currencyRates"         = "Currency rates last updated:";
 "converterVC_findButton"            = "Find conversion stores";
+"converterVC_ratesBeingUpdates"     = "Exchange rates are being updated...";
 
 
 //MARK: - SiteInfoViewController

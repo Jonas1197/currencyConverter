@@ -16,7 +16,7 @@ class CurrencySelectorTableViewCell: UITableViewCell {
     }}
     
     private func configure() {
-        currencyLabel.text = currencyName ?? "N/A"
+        currencyLabel.text = currencyName ?? Constants.LocalizedText.general_notAvaialble.localized()
     }
     
 }
