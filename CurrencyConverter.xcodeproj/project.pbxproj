@@ -16,6 +16,13 @@
 		754F3B2728951D8000F0352A /* CurrencySelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B2628951D8000F0352A /* CurrencySelectorViewModel.swift */; };
 		754F3B2B2895217E00F0352A /* CurrencySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F3B292895217E00F0352A /* CurrencySelectorTableViewCell.swift */; };
 		754F3B2C2895217E00F0352A /* CurrencySelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754F3B2A2895217E00F0352A /* CurrencySelectorTableViewCell.xib */; };
+		7556B8D0289D430300BA936A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7556B8CF289D430200BA936A /* WidgetKit.framework */; };
+		7556B8D2289D430300BA936A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7556B8D1289D430300BA936A /* SwiftUI.framework */; };
+		7556B8D5289D430300BA936A /* ConvertyLocatorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556B8D4289D430300BA936A /* ConvertyLocatorWidget.swift */; };
+		7556B8D8289D430700BA936A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7556B8D7289D430700BA936A /* Assets.xcassets */; };
+		7556B8DA289D430700BA936A /* ConvertyLocatorWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7556B8D6289D430300BA936A /* ConvertyLocatorWidget.intentdefinition */; };
+		7556B8DB289D430700BA936A /* ConvertyLocatorWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7556B8D6289D430300BA936A /* ConvertyLocatorWidget.intentdefinition */; };
+		7556B8DE289D430700BA936A /* ConvertyLocatorWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7556B8CE289D430200BA936A /* ConvertyLocatorWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		75648090288DB9D800353FE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564808E288DB9D800353FE5 /* SettingsViewController.swift */; };
 		75648091288DB9D800353FE5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7564808F288DB9D800353FE5 /* SettingsViewController.xib */; };
 		75648093288DB9DF00353FE5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75648092288DB9DF00353FE5 /* SettingsViewModel.swift */; };
@@ -57,6 +64,30 @@
 		75E8E23428705175008EE3AA /* Subscribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E23328705175008EE3AA /* Subscribable.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7556B8DC289D430700BA936A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75E8E1D8286EE454008EE3AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7556B8CD289D430200BA936A;
+			remoteInfo = ConvertyLocatorWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7556B8E2289D430700BA936A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7556B8DE289D430700BA936A /* ConvertyLocatorWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3D28CA4D287C14D4009BB63E /* CurrencyExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeView.swift; sourceTree = "<group>"; };
 		3D28CA4F287C14DC009BB63E /* CurrencyExchangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyExchangeView.xib; sourceTree = "<group>"; };
@@ -67,6 +98,13 @@
 		754F3B2628951D8000F0352A /* CurrencySelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewModel.swift; sourceTree = "<group>"; };
 		754F3B292895217E00F0352A /* CurrencySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewCell.swift; sourceTree = "<group>"; };
 		754F3B2A2895217E00F0352A /* CurrencySelectorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencySelectorTableViewCell.xib; sourceTree = "<group>"; };
+		7556B8CE289D430200BA936A /* ConvertyLocatorWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ConvertyLocatorWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7556B8CF289D430200BA936A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7556B8D1289D430300BA936A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7556B8D4289D430300BA936A /* ConvertyLocatorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertyLocatorWidget.swift; sourceTree = "<group>"; };
+		7556B8D6289D430300BA936A /* ConvertyLocatorWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ConvertyLocatorWidget.intentdefinition; sourceTree = "<group>"; };
+		7556B8D7289D430700BA936A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7556B8D9289D430700BA936A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7564808E288DB9D800353FE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7564808F288DB9D800353FE5 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		75648092288DB9DF00353FE5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -108,6 +146,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7556B8CB289D430200BA936A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7556B8D2289D430300BA936A /* SwiftUI.framework in Frameworks */,
+				7556B8D0289D430300BA936A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75E8E1DD286EE454008EE3AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				754F3B1D28940AEF00F0352A /* StoreKit.framework */,
+				7556B8CF289D430200BA936A /* WidgetKit.framework */,
+				7556B8D1289D430300BA936A /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,6 +215,17 @@
 				754F3B2A2895217E00F0352A /* CurrencySelectorTableViewCell.xib */,
 			);
 			path = CurrencySelectorTableViewCell;
+			sourceTree = "<group>";
+		};
+		7556B8D3289D430300BA936A /* ConvertyLocatorWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7556B8D4289D430300BA936A /* ConvertyLocatorWidget.swift */,
+				7556B8D6289D430300BA936A /* ConvertyLocatorWidget.intentdefinition */,
+				7556B8D7289D430700BA936A /* Assets.xcassets */,
+				7556B8D9289D430700BA936A /* Info.plist */,
+			);
+			path = ConvertyLocatorWidget;
 			sourceTree = "<group>";
 		};
 		7564808D288DB9C900353FE5 /* SettingsViewController */ = {
@@ -237,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				75E8E1E2286EE454008EE3AA /* CurrencyConverter */,
+				7556B8D3289D430300BA936A /* ConvertyLocatorWidget */,
 				75E8E1E1286EE454008EE3AA /* Products */,
 				754F3B1C28940AEF00F0352A /* Frameworks */,
 			);
@@ -246,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				75E8E1E0286EE454008EE3AA /* CurrencyConverter.app */,
+				7556B8CE289D430200BA936A /* ConvertyLocatorWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -338,6 +400,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7556B8CD289D430200BA936A /* ConvertyLocatorWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7556B8DF289D430700BA936A /* Build configuration list for PBXNativeTarget "ConvertyLocatorWidgetExtension" */;
+			buildPhases = (
+				7556B8CA289D430200BA936A /* Sources */,
+				7556B8CB289D430200BA936A /* Frameworks */,
+				7556B8CC289D430200BA936A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConvertyLocatorWidgetExtension;
+			productName = ConvertyLocatorWidgetExtension;
+			productReference = 7556B8CE289D430200BA936A /* ConvertyLocatorWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		75E8E1DF286EE454008EE3AA /* CurrencyConverter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75E8E1F4286EE457008EE3AA /* Build configuration list for PBXNativeTarget "CurrencyConverter" */;
@@ -345,10 +424,12 @@
 				75E8E1DC286EE454008EE3AA /* Sources */,
 				75E8E1DD286EE454008EE3AA /* Frameworks */,
 				75E8E1DE286EE454008EE3AA /* Resources */,
+				7556B8E2289D430700BA936A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7556B8DD289D430700BA936A /* PBXTargetDependency */,
 			);
 			name = CurrencyConverter;
 			packageProductDependencies = (
@@ -371,6 +452,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					7556B8CD289D430200BA936A = {
+						CreatedOnToolsVersion = 13.2;
+					};
 					75E8E1DF286EE454008EE3AA = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -397,11 +481,20 @@
 			projectRoot = "";
 			targets = (
 				75E8E1DF286EE454008EE3AA /* CurrencyConverter */,
+				7556B8CD289D430200BA936A /* ConvertyLocatorWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7556B8CC289D430200BA936A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7556B8D8289D430700BA936A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75E8E1DE286EE454008EE3AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -426,6 +519,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7556B8CA289D430200BA936A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7556B8D5289D430300BA936A /* ConvertyLocatorWidget.swift in Sources */,
+				7556B8DA289D430700BA936A /* ConvertyLocatorWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75E8E1DC286EE454008EE3AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,6 +547,7 @@
 				75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */,
 				75E8E1FF286EE660008EE3AA /* UserManager.swift in Sources */,
 				754F3B2728951D8000F0352A /* CurrencySelectorViewModel.swift in Sources */,
+				7556B8DB289D430700BA936A /* ConvertyLocatorWidget.intentdefinition in Sources */,
 				754F3B2028940DA600F0352A /* InAppPurchaseHelper.swift in Sources */,
 				75D898B12874477B00433661 /* ConverterPanelViewModel.swift in Sources */,
 				75E8E218286EFEC4008EE3AA /* HomeScreenViewController.swift in Sources */,
@@ -463,6 +566,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7556B8DD289D430700BA936A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7556B8CD289D430200BA936A /* ConvertyLocatorWidgetExtension */;
+			targetProxy = 7556B8DC289D430700BA936A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		75D2F484289599A5005ED5C0 /* Localizable.strings */ = {
@@ -485,6 +596,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7556B8E0289D430700BA936A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 678L74QEPX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ConvertyLocatorWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ConvertyLocatorWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonasg.Converty.ConvertyLocatorWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7556B8E1289D430700BA936A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 678L74QEPX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ConvertyLocatorWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ConvertyLocatorWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonasg.Converty.ConvertyLocatorWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		75E8E1F2286EE457008EE3AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -606,6 +771,7 @@
 		75E8E1F5286EE457008EE3AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -639,6 +805,7 @@
 		75E8E1F6286EE457008EE3AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -672,6 +839,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7556B8DF289D430700BA936A /* Build configuration list for PBXNativeTarget "ConvertyLocatorWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7556B8E0289D430700BA936A /* Debug */,
+				7556B8E1289D430700BA936A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		75E8E1DB286EE454008EE3AA /* Build configuration list for PBXProject "CurrencyConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
