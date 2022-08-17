@@ -65,6 +65,7 @@ enum Constants {
         static let text                = UIColor(named: "text")
         static let titleLabel          = UIColor(named: "titleLabel")
         static let deepYellow          = UIColor(named: "deepYellow")
+        static let greyish             = UIColor(named: "greyish")
     }
     
     //MARK: - Identifier
