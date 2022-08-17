@@ -132,10 +132,12 @@ final class HomeScreenViewController: BaseViewController<HomeScreenViewModel> {
                   let topConstraint    = buttonsHstackTopConstraint,
                   let bottomConstraint = buttonsHstackBottomConstraint else { return }
             
-            UIView.animateOnMain(withDuration: 0.3) {
-                topConstraint.isActive    = enabled
-                bottomConstraint.isActive = !enabled
-                self.view.layoutIfNeeded()
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: [.allowUserInteraction, .curveEaseInOut]) {
+                    topConstraint.isActive    = enabled
+                    bottomConstraint.isActive = !enabled
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }

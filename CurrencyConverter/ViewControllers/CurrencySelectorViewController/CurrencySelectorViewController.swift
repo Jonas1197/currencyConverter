@@ -26,9 +26,9 @@ final class CurrencySelectorViewController: BaseViewController<CurrencySelectorV
     }
     
     override func subscribeToViewModel(_ viewModel: CurrencySelectorViewModel) {
-        subscribe(to: \.$reloadsTableView) { [unowned self] reloads in
+        subscribe(to: \.$reloadsTableView) { [weak self] reloads in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }

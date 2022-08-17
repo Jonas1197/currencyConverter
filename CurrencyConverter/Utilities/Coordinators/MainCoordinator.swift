@@ -185,8 +185,5 @@ extension MainCoordinator: CurrencySelectorOutput {
         } else {
             UserManager.shared.selectedTrailingCurrencyModel = currencyName
         }
-        
     }
-    
-   
 }

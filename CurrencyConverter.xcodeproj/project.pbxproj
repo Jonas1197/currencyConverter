@@ -37,7 +37,6 @@
 		75D898DA287ADD6D00433661 /* SiteInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D898D9287ADD6D00433661 /* SiteInfoViewModel.swift */; };
 		75E8E1E4286EE454008EE3AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E1E3286EE454008EE3AA /* AppDelegate.swift */; };
 		75E8E1E6286EE454008EE3AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E1E5286EE454008EE3AA /* SceneDelegate.swift */; };
-		75E8E1E8286EE454008EE3AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8E1E7286EE454008EE3AA /* ViewController.swift */; };
 		75E8E1ED286EE457008EE3AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E1EC286EE457008EE3AA /* Assets.xcassets */; };
 		75E8E1F0286EE457008EE3AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E8E1EE286EE457008EE3AA /* LaunchScreen.storyboard */; };
 		75E8E1F9286EE59E008EE3AA /* EKSwiftSuite in Frameworks */ = {isa = PBXBuildFile; productRef = 75E8E1F8286EE59E008EE3AA /* EKSwiftSuite */; };
@@ -88,7 +87,6 @@
 		75E8E1E0286EE454008EE3AA /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E8E1E3286EE454008EE3AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75E8E1E5286EE454008EE3AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		75E8E1E7286EE454008EE3AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75E8E1EC286EE457008EE3AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75E8E1EF286EE457008EE3AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75E8E1F1286EE457008EE3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				75E8E200286EE6E6008EE3AA /* ViewControllers */,
 				75E8E1FB286EE60D008EE3AA /* Utilities */,
 				75E8E1FA286EE607008EE3AA /* Lifecycle */,
-				75E8E1E7286EE454008EE3AA /* ViewController.swift */,
 				75E8E1EC286EE457008EE3AA /* Assets.xcassets */,
 				75E8E1EE286EE457008EE3AA /* LaunchScreen.storyboard */,
 				75E8E1F1286EE457008EE3AA /* Info.plist */,
@@ -434,7 +431,6 @@
 				3D28CA4E287C14D4009BB63E /* CurrencyExchangeView.swift in Sources */,
 				75D898D7287ADD5B00433661 /* SiteInfoViewController.swift in Sources */,
 				75D898BA28781CB900433661 /* Extensions.swift in Sources */,
-				75E8E1E8286EE454008EE3AA /* ViewController.swift in Sources */,
 				75D898C428786ADD00433661 /* NetworkManager.swift in Sources */,
 				75D898AA2874346F00433661 /* LocationManager.swift in Sources */,
 				75E8E1FD286EE61C008EE3AA /* MainCoordinator.swift in Sources */,
